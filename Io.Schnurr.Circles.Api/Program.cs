@@ -1,10 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+builder.Services.AddCors();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCors(builder => builder
+    .WithOrigins(app.Configuration["AllowSpecificOrigins"] ?? throw new Exception("Allowed origins not found"))
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+);
 
 app.UseHttpsRedirection();
 
@@ -21,7 +24,7 @@ app.MapGet("/weatherforecast", () =>
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             Random.Shared.Next(-20, 55),
             summaries[Random.Shared.Next(summaries.Length)]
-        ))
+          ))
         .ToArray();
     return forecast;
 });
