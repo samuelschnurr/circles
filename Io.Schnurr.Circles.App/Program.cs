@@ -1,4 +1,4 @@
-using Io.Schnurr.Circles.Client;
+using Io.Schnurr.Circles.App;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
