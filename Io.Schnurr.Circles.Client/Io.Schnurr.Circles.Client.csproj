@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Io.Schnurr.Circles.Shared.csproj" />
+    <ProjectReference Include="..\Io.Schnurr.Circles.Shared\Io.Schnurr.Circles.Shared.csproj" />
   </ItemGroup>
 
 </Project>
