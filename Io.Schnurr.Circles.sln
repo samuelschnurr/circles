@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.Circles.Client",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.Circles.Shared", "Io.Schnurr.Circles.Shared\Io.Schnurr.Circles.Shared.csproj", "{1741E599-2FBD-4DEC-9A61-DE102D4EB33D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Io.Schnurr.Circles.Api", "Io.Schnurr.Circles.Api\Io.Schnurr.Circles.Api.csproj", "{2ADD57BD-48EE-4FD3-8254-4BA1B066FAF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1741E599-2FBD-4DEC-9A61-DE102D4EB33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1741E599-2FBD-4DEC-9A61-DE102D4EB33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1741E599-2FBD-4DEC-9A61-DE102D4EB33D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ADD57BD-48EE-4FD3-8254-4BA1B066FAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADD57BD-48EE-4FD3-8254-4BA1B066FAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADD57BD-48EE-4FD3-8254-4BA1B066FAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADD57BD-48EE-4FD3-8254-4BA1B066FAF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
