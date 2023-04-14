@@ -6,7 +6,7 @@ builder.Services.AddCors();
 var app = builder.Build();
 
 app.UseCors(builder => builder
-    .WithOrigins(app.Configuration["AllowSpecificOrigins"] ?? throw new Exception("Allowed origins not found"))
+    .WithOrigins(app.Configuration["AllowSpecificOrigins"]?.Split(";") ?? throw new Exception("Allowed origins not found"))
     .AllowAnyMethod()
     .AllowAnyHeader()
 );
