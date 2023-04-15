@@ -32,4 +32,12 @@ internal static class WeatherForecastService
             ? TypedResults.Ok(forecast)
             : TypedResults.NotFound();
     }
+
+    internal static void MapRoutes(WebApplication app)
+    {
+        // Using MapGroup to not duplicate "/weatherforecast/..." in mappings
+        var weatherforecast = app.MapGroup(nameof(WeatherForecast));
+        weatherforecast.MapGet("/", WeatherForecastService.GetAll);
+        weatherforecast.MapGet("/{id}", WeatherForecastService.GetById);
+    }
 }
