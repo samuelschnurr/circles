@@ -1,6 +1,5 @@
 ﻿@page "/circles"
 @using Io.Schnurr.Circles.Shared
-@inject HttpClient Http
 
 <PageTitle>Circles</PageTitle>
 
@@ -35,13 +34,4 @@ else
             }
         </tbody>
     </table>
-}
-
-@code {
-    private WeatherForecast[]? forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
-    }
 }
