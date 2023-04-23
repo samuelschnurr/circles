@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Routing;
 
-namespace Io.Schnurr.Circles.App.Shared;
+namespace Io.Schnurr.Circles.App.Shared.Navigation;
 
 public partial class NavMenu
 {
