@@ -13,9 +13,9 @@ public partial class NavMenu
         collapseNavMenu = !collapseNavMenu;
     }
 
-    protected MenuItem[] menuItems = new MenuItem[] {
-        new MenuItem("Board", "", "oi oi-grid-three-up", NavLinkMatch.All),
-        new MenuItem("Pins", "pins", "oi oi-pin"),
-        new MenuItem("Circles", "circles", "oi oi-target")
+    protected Models.NavMenuItem[] navMenuItems = new Models.NavMenuItem[] {
+        new Models.NavMenuItem("Board", "", "oi oi-grid-three-up", NavLinkMatch.All),
+        new Models.NavMenuItem("Pins", "pins", "oi oi-pin"),
+        new Models.NavMenuItem("Circles", "circles", "oi oi-target")
     };
 }
