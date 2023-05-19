@@ -8,9 +8,11 @@
 <MudLayout>
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="((e) => drawerToggle())" />
-        Circles
     </MudAppBar>
     <MudDrawer @bind-Open="drawerOpen">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h5" Class="mt-1">Circles</MudText>
+        </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
