@@ -3,10 +3,10 @@
 public partial class MainLayout
 {
     private bool isDarkMode = false;
-    private bool drawerOpen = true;
+    private bool isDrawerOpen = true;
 
     private void drawerToggle()
     {
-        drawerOpen = !drawerOpen;
+        isDrawerOpen = !isDrawerOpen;
     }
 }
