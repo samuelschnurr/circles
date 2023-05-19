@@ -1,7 +1,7 @@
 ﻿@using Io.Schnurr.Circles.App.Shared;
 @inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider @bind-IsDarkMode="isDarkMode"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -16,6 +16,11 @@
             <MudText Typo="Typo.h5" Class="mt-1">Circles</MudText>
         </MudDrawerHeader>
         <NavMenu />
+        <MudSpacer />
+        <MudContainer>
+            <MudDivider />
+            <MudSwitch @bind-Checked="@isDarkMode" Color="Color.Primary" Size="Size.Small" Class="ma-3" Label="Dark Mode on" LabelPosition="LabelPosition.Start" />
+        </MudContainer>
     </MudDrawer>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Medium">
