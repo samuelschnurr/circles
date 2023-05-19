@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Io.Schnurr.Circles.Shared\Io.Schnurr.Circles.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\css\" />
-  </ItemGroup>
-
 </Project>

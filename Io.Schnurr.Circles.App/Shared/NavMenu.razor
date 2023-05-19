@@ -1,0 +1,6 @@
+﻿<MudNavMenu>
+    @foreach (var item in navMenuItems)
+    {
+        <MudNavLink Href="@item.href" Icon="@item.icon" Match="item.match">@item.label</MudNavLink>
+    }
+</MudNavMenu>
