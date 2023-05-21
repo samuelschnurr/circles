@@ -1,4 +1,4 @@
-﻿namespace Io.Schnurr.Circles.App.Shared;
+﻿namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class MainLayout
 {
