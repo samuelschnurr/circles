@@ -1,7 +1,7 @@
 ﻿@using System.Net.Http.Json
 @using Io.Schnurr.Circles.Shared;
 
-<MudTable ServerData="new Func<TableState, Task<TableData<WeatherForecast>>>(ServerReload)" Hover="true" Striped="true" @ref="table">
+<MudTable ServerData="new Func<TableState, Task<TableData<WeatherForecast>>>(async state => await ServerReload(state, true))" Hover="true" Striped="true" @ref="table">
     <ToolBarContent>
         <MudSpacer />
         <MudTextField T="string" ValueChanged="(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
