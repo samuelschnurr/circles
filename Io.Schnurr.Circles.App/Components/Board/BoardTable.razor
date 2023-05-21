@@ -1,8 +1,6 @@
 ﻿@using System.Net.Http.Json
 @using Io.Schnurr.Circles.Shared;
 
-<PageTitle>Board</PageTitle>
-
 <MudTable ServerData="new Func<TableState, Task<TableData<WeatherForecast>>>(ServerReload)" Hover="true" Striped="true" @ref="table">
     <ToolBarContent>
         <MudSpacer />
@@ -10,10 +8,16 @@
     </ToolBarContent>
     <HeaderContent>
         <MudTh><MudTableSortLabel SortLabel="id_field" T="WeatherForecast">Id</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="date_field" T="WeatherForecast">Date</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="temperatureC_field" T="WeatherForecast">Temp C.</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="temperatureF_field" T="WeatherForecast">Temp F.</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="summary_field" T="WeatherForecast">Summary</MudTableSortLabel></MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Date">@context.Date</MudTd>
+        <MudTd DataLabel="Temp C.">@context.TemperatureC</MudTd>
+        <MudTd DataLabel="Temp F.">@context.TemperatureF</MudTd>
         <MudTd DataLabel="Summary">@context.Summary</MudTd>
     </RowTemplate>
     <NoRecordsContent>

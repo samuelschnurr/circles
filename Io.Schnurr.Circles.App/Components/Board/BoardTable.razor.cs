@@ -8,7 +8,7 @@ namespace Io.Schnurr.Circles.App.Components.Board;
 public partial class BoardTable
 {
     [Inject]
-    private HttpClient httpClient { get; set; } = default!;
+    private HttpClient HttpClient { get; set; } = default!;
     private IEnumerable<WeatherForecast> pagedData;
     private MudTable<WeatherForecast> table;
     private int totalItems;
@@ -19,7 +19,7 @@ public partial class BoardTable
     /// </summary>
     private async Task<TableData<WeatherForecast>> ServerReload(TableState state)
     {
-        IEnumerable<WeatherForecast>? data = await httpClient.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        IEnumerable<WeatherForecast>? data = await HttpClient.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
         await Task.Delay(300);
         data = data!.Where(element =>
         {

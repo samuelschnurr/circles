@@ -5,7 +5,7 @@ public partial class MainLayout
     private bool isDarkMode = false;
     private bool isDrawerOpen = true;
 
-    private void drawerToggle()
+    private void DrawerToggle()
     {
         isDrawerOpen = !isDrawerOpen;
     }
