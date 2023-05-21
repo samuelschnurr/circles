@@ -1,14 +1,16 @@
 ﻿using System.Net.Http.Json;
 using Io.Schnurr.Circles.Shared;
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace Io.Schnurr.Circles.App.Shared.Board;
+namespace Io.Schnurr.Circles.App.Components.Board;
 
 public partial class BoardTable
 {
+    [Inject]
+    private HttpClient httpClient { get; set; } = default!;
     private IEnumerable<WeatherForecast> pagedData;
     private MudTable<WeatherForecast> table;
-
     private int totalItems;
     private string searchString = null;
 
@@ -17,7 +19,7 @@ public partial class BoardTable
     /// </summary>
     private async Task<TableData<WeatherForecast>> ServerReload(TableState state)
     {
-        IEnumerable<WeatherForecast>? data = await HttpClient.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        IEnumerable<WeatherForecast>? data = await httpClient.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
         await Task.Delay(300);
         data = data!.Where(element =>
         {

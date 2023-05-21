@@ -1,4 +1,8 @@
-﻿namespace Io.Schnurr.Circles.App.Components.Base;
+﻿using Io.Schnurr.Circles.App.Models;
+using Microsoft.AspNetCore.Components.Routing;
+using MudBlazor;
+
+namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class NavMenu
 {
