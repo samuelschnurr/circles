@@ -1,0 +1,29 @@
+﻿@using System.Net.Http.Json
+@using Io.Schnurr.Circles.Shared;
+@inject HttpClient HttpClient
+
+<PageTitle>Board</PageTitle>
+
+<MudTable ServerData="new Func<TableState, Task<TableData<WeatherForecast>>>(ServerReload)" Hover="true" Striped="true" @ref="table">
+    <ToolBarContent>
+        <MudSpacer />
+        <MudTextField T="string" ValueChanged="(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortLabel="id_field" T="WeatherForecast">Id</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="summary_field" T="WeatherForecast">Summary</MudTableSortLabel></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Summary">@context.Summary</MudTd>
+    </RowTemplate>
+    <NoRecordsContent>
+        <MudText>No matching records found</MudText>
+    </NoRecordsContent>
+    <LoadingContent>
+        <MudText>Loading...</MudText>
+    </LoadingContent>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>
