@@ -1,0 +1,4 @@
+﻿/* Apply margin-bottom to all direct descendants of this id to align to layout */
+#mainContent-mainContainer ::deep > * {
+    margin-bottom: 16px;
+}
