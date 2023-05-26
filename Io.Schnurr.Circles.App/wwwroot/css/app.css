@@ -49,7 +49,3 @@
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
-
-#mainContent-mainContainer > * {
-    margin-bottom: 16px;
-}
