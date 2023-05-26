@@ -2,7 +2,7 @@
 
 public partial class MainLayout
 {
-    private bool isDarkMode = false;
+    private bool isDarkMode;
     private bool isDrawerOpen = true;
 
     private void DrawerToggle()

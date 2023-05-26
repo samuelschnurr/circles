@@ -31,7 +31,7 @@ public partial class BoardTable
 
         data = data!.Where(element =>
             {
-                bool result = false;
+                bool result;
 
                 result = string.IsNullOrWhiteSpace(searchString)
                 || element.Id.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase)

@@ -3,4 +3,15 @@
 
 <PageTitle>Board</PageTitle>
 
-<BoardTable />
+<MudContainer Class="d-flex justify-end px-0" MaxWidth="MaxWidth.False">
+    <MudSwitch @bind-Checked="isTileView" ThumbIcon="@(isTileView ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
+</MudContainer>
+
+@if (isTileView)
+{
+    <h1>ToDo: Render Tiles</h1>
+}
+else
+{
+    <BoardTable />
+}
