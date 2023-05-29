@@ -11,6 +11,11 @@ public partial class Index : ILoadingComponent
     protected override async Task OnInitializedAsync()
     {
         IsTileView = await LocalStorage.GetItemAsync<bool?>(nameof(IsTileView));
+
+        if (IsTileView == null)
+        {
+            await HandleIsTileViewChanged(false);
+        }
     }
 
     private async Task HandleIsTileViewChanged(bool? value)
