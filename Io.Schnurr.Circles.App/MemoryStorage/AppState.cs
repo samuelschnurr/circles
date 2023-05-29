@@ -2,5 +2,20 @@
 
 public class AppState
 {
-    private bool IsLoading { get; set; }
+    public bool isLoading;
+
+    public bool IsLoading
+    {
+        get => isLoading;
+        set
+        {
+            isLoading = value;
+            NotifyStateChanged();
+        }
+    }
+
+    public event Action? OnChange;
+
+    private void NotifyStateChanged() => OnChange?.Invoke();
+
 }
