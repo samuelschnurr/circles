@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Io.Schnurr.Circles.App;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -9,5 +10,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiHttpsPath"] ?? throw new Exception("Api Path not found")) });
 builder.Services.AddMudServices();
+builder.Services.AddBlazoredLocalStorage();
 
 await builder.Build().RunAsync();
