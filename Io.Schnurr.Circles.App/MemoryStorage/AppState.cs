@@ -1,4 +1,4 @@
-﻿namespace Io.Schnurr.Circles.App.States;
+﻿namespace Io.Schnurr.Circles.App.MemoryStorage;
 
 public class AppState
 {
