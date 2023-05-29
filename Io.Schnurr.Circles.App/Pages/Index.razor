@@ -4,7 +4,7 @@
 <PageTitle>Board</PageTitle>
 
 <MudToolBar Class="d-flex justify-end px-0">
-    <MudSwitch T="bool" Checked="IsTileView" ThumbIconColor="Color.Dark" ThumbIcon="@(IsTileView ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
+    <MudSwitch T="bool" Checked="IsTileView" CheckedChanged="HandleIsTileViewChanged" ThumbIconColor="Color.Dark" ThumbIcon="@(IsTileView ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
 </MudToolBar>
 
 @if (IsTileView)
