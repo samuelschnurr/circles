@@ -2,6 +2,7 @@
 
 public partial class MainLayout
 {
+    // TODO State
     private bool isDarkMode;
     private bool isDrawerOpen = true;
 
