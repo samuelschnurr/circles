@@ -24,10 +24,17 @@
         </MudContainer>
     </MudDrawer>
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="py-8">
-            <span id="mainContent-mainContainer">
-                @Body
-            </span>
-        </MudContainer>
+        @if (AppState.IsLoading)
+        {
+            <MudProgressLinear Color="Color.Primary" Indeterminate="true" Size="Size.Large" />
+        }
+        else
+        {
+            <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="py-8">
+                <span id="mainContent-mainContainer">
+                    @Body
+                </span>
+            </MudContainer>
+        }
     </MudMainContent>
 </MudLayout>
