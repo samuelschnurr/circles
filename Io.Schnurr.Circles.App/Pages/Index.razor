@@ -1,13 +1,20 @@
 ﻿@page "/"
+@using Io.Schnurr.Circles.App.Components.Base
 @using Io.Schnurr.Circles.App.Components.Board
 
 <PageTitle>Board</PageTitle>
 
+@if (IsLoading())
+{
+    <ProgressBar/>
+    return;
+}
+
 <MudToolBar Class="d-flex justify-end px-0">
-    <MudSwitch T="bool" Checked="IsTileView" CheckedChanged="HandleIsTileViewChanged" ThumbIconColor="Color.Dark" ThumbIcon="@(IsTileView ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
+    <MudSwitch T="bool?" Checked="IsTileView" CheckedChanged="HandleIsTileViewChanged" ThumbIconColor="Color.Dark" ThumbIcon="@(ShowTileView() ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
 </MudToolBar>
 
-@if (IsTileView)
+@if (ShowTileView())
 {
     <h1>ToDo: Render Tiles</h1>
 }
