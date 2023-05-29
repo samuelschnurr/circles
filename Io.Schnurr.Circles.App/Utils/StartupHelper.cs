@@ -1,4 +1,4 @@
-﻿using Io.Schnurr.Circles.App.States;
+﻿using Io.Schnurr.Circles.App.MemoryStorage;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Io.Schnurr.Circles.App.Utils;
