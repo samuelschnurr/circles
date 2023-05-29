@@ -4,10 +4,10 @@
 <PageTitle>Board</PageTitle>
 
 <MudToolBar Class="d-flex justify-end px-0">
-    <MudSwitch @bind-Checked="isTileView" ThumbIconColor="Color.Dark" ThumbIcon="@(isTileView ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
+    <MudSwitch T="bool" Checked="IsTileView" ThumbIconColor="Color.Dark" ThumbIcon="@(IsTileView ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
 </MudToolBar>
 
-@if (isTileView)
+@if (IsTileView)
 {
     <h1>ToDo: Render Tiles</h1>
 }
