@@ -1,4 +1,3 @@
-using Blazored.LocalStorage;
 using Io.Schnurr.Circles.App;
 using Io.Schnurr.Circles.App.Utils;
 using Microsoft.AspNetCore.Components.Web;
@@ -13,7 +12,6 @@ builder.AddApiConfiguration();
 
 builder.Services.AddMudServices();
 
-builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddMemoryStorage();
 
 await builder.Build().RunAsync();

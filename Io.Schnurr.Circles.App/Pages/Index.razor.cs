@@ -10,7 +10,7 @@ public partial class Index : ILoadingComponent
 
     protected override async Task OnInitializedAsync()
     {
-        IsTileView = await LocalStorage.GetItemAsync<bool?>(nameof(IsTileView));
+        IsTileView = false; //GET FROM STATE
 
         if (IsTileView == null)
         {
@@ -21,7 +21,7 @@ public partial class Index : ILoadingComponent
     private async Task HandleIsTileViewChanged(bool? value)
     {
         IsTileView = value;
-        await LocalStorage.SetItemAsync(nameof(IsTileView), value);
+        //GET FROM STATE
     }
 
     private bool ShowTileView() => IsTileView!.Value;
