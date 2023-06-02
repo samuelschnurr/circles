@@ -1,7 +1,11 @@
-﻿namespace Io.Schnurr.Circles.App.Components.Base;
+﻿using Io.Schnurr.Circles.App.Store;
+
+namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class Drawer
 {
-    // TODO State
-    private bool isDarkMode;
+    private void ToggleDarkMode()
+    {
+        Dispatcher.Dispatch(new ToggleDarkModeAction());
+    }
 }

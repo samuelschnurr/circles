@@ -1,15 +1,16 @@
 ﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
 <MudDrawer Open="AppState.Value.IsDrawerOpen">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h5" Class="mt-1">Circles</MudText>
-        </MudDrawerHeader>
-        <NavMenu />
-        <MudSpacer />
-        <MudDivider Class="flex-grow-0" />
-        <MudContainer Class="d-flex justify-center my-1">
-            <MudToggleIconButton @bind-Toggled="isDarkMode"
-                                 Icon="@Icons.Material.Filled.DarkMode" Color="Color.Primary" Title="Activate Dark Mode"
-                                 ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Warning" ToggledTitle="Activate Light Mode" />
-        </MudContainer>
-    </MudDrawer>
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h5" Class="mt-1">Circles</MudText>
+    </MudDrawerHeader>
+    <NavMenu />
+    <MudSpacer />
+    <MudDivider Class="flex-grow-0" />
+    <MudContainer Class="d-flex justify-center my-1">
+        <MudToggleIconButton Toggled="@AppState.Value.IsDarkMode"
+                             ToggledChanged="ToggleDarkMode"
+                             Icon="@Icons.Material.Filled.DarkMode" Color="Color.Primary" Title="Activate Dark Mode"
+                             ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Warning" ToggledTitle="Activate Light Mode" />
+    </MudContainer>
+</MudDrawer>
