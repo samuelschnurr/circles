@@ -1,3 +1,5 @@
-﻿<div Class="d-flex justify-center align-center full-main-content-height pa-0 ma-0" style="@GetCenterCircularStyle()">
+﻿@using Io.Schnurr.Circles.App.Components.Base;
+
+<div Class="d-flex justify-center align-center full-main-content-height pa-0 ma-0 center-vertical @(!MainLayout.isDrawerOpen ? "center-horizontal-with-drawer" : null)">
     <MudProgressCircular Color="Color.Primary" Indeterminate="true" Size="Size.Medium" />
 </div>
