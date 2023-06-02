@@ -1,33 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider @bind-IsDarkMode="isDarkMode" />
+<MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar>
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="((e) => DrawerToggle())" />
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/samuelschnurr/circles" />
-    </MudAppBar>
-    <MudDrawer @bind-Open="isDrawerOpen">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h5" Class="mt-1">Circles</MudText>
-        </MudDrawerHeader>
-        <NavMenu />
-        <MudSpacer />
-        <MudDivider Class="flex-grow-0" />
-        <MudContainer Class="d-flex justify-center my-1">
-            <MudToggleIconButton @bind-Toggled="isDarkMode"
-                                 Icon="@Icons.Material.Filled.DarkMode" Color="Color.Primary" Title="Activate Dark Mode"
-                                 ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Warning" ToggledTitle="Activate Light Mode" />
-        </MudContainer>
-    </MudDrawer>
+    <AppBar />
+    <Drawer />
+    <AppBar />
     <MudMainContent>
-            <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="py-8">
-                <span id="mainContent-mainContainer">
-                    @Body
-                </span>
-            </MudContainer>
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="py-8">
+            <span id="mainContent-mainContainer">
+                @Body
+            </span>
+        </MudContainer>
     </MudMainContent>
 </MudLayout>
