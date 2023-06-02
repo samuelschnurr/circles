@@ -1,4 +1,5 @@
-﻿using Io.Schnurr.Circles.App.MemoryStorage;
+﻿using Fluxor;
+using Io.Schnurr.Circles.App.MemoryStorage;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Io.Schnurr.Circles.App.Utils;
@@ -12,6 +13,20 @@ internal static class StartupHelper
         builder.Services.AddScoped(sp => new HttpClient
         {
             BaseAddress = new Uri(baseAddress)
+        });
+    }
+
+    internal static void AddFluxorConfiguration(this WebAssemblyHostBuilder builder)
+    {
+        builder.Services.AddFluxor(options =>
+        {
+            options.ScanAssemblies(typeof(Program).Assembly);
+#if DEBUG
+            options.UseReduxDevTools(rdt =>
+            {
+                rdt.Name = nameof(Circles);
+            });
+#endif
         });
     }
 

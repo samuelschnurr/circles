@@ -1,4 +1,3 @@
-using Io.Schnurr.Circles.App;
 using Io.Schnurr.Circles.App.Utils;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -9,9 +8,9 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.AddApiConfiguration();
-
-builder.Services.AddMudServices();
+builder.AddFluxorConfiguration();
 
 builder.Services.AddMemoryStorage();
+builder.Services.AddMudServices();
 
 await builder.Build().RunAsync();
