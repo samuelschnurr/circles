@@ -1,5 +1,6 @@
 ﻿@using Io.Schnurr.Circles.App.Components.Base;
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
-<div Class="d-flex justify-center align-center full-main-content-height pa-0 ma-0 center-vertical @(!MainLayout.isDrawerOpen ? "center-horizontal-with-drawer" : null)">
+<div Class="d-flex justify-center align-center full-main-content-height pa-0 ma-0 center-vertical @(AppState.Value.IsDrawerOpen ? "center-horizontal-with-drawer" : null)">
     <MudProgressCircular Color="Color.Primary" Indeterminate="true" Size="Size.Medium" />
 </div>
