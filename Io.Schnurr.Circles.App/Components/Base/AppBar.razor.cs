@@ -1,9 +1,11 @@
-﻿namespace Io.Schnurr.Circles.App.Components.Base;
+﻿using Io.Schnurr.Circles.App.Store;
+
+namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class AppBar
 {
     private void ToggleDrawer()
     {
-        //TODO
+        Dispatcher.Dispatch(new ToggleDrawerAction());
     }
 }

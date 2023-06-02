@@ -3,25 +3,17 @@
 namespace Io.Schnurr.Circles.App.Store;
 
 [FeatureState]
-public class AppState
+public record AppState
 {
-    public bool IsDrawerOpen { get; } = true;
+    public bool IsDrawerOpen { get; init; } = true;
 
-    public AppState()
-    {
-
-    }
-
-    public AppState(bool isDrawerOpen)
-    {
-        IsDrawerOpen = isDrawerOpen;
-    }
+    public AppState() { }
 }
 
 public static class AppReducer
 {
     [ReducerMethod(typeof(ToggleDrawerAction))]
-    public static AppState ReduceToggleDrawerAction(AppState state) => new AppState(!state.IsDrawerOpen);
+    public static AppState ReduceToggleDrawerAction(AppState state) => state with { IsDrawerOpen = !state.IsDrawerOpen };
 }
 
 
