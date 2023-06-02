@@ -1,6 +1,7 @@
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
-@using Io.Schnurr.Circles.App.MemoryStorage;
+@using Fluxor;
+@using Io.Schnurr.Circles.App.Store;
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
@@ -11,4 +12,5 @@
 @using Io.Schnurr.Circles.App
 @using Io.Schnurr.Circles.App.Components.Core
 
-@inject AppState AppState
+@inject IDispatcher Dispatcher
+@inject IState<AppState> AppState
