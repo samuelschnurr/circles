@@ -1,5 +1,4 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.MemoryStorage;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Io.Schnurr.Circles.App.Utils;
@@ -28,10 +27,5 @@ internal static class StartupHelper
             });
 #endif
         });
-    }
-
-    internal static void AddMemoryStorage(this IServiceCollection serviceCollection)
-    {
-        serviceCollection.AddSingleton<AppState>();
     }
 }
