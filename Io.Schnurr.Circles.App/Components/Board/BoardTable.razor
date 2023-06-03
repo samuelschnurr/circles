@@ -1,5 +1,6 @@
 ﻿@using System.Net.Http.Json
 @using Io.Schnurr.Circles.Shared;
+@using Io.Schnurr.Circles.App.Store.App;
 
 <MudTable ServerData="new Func<TableState, Task<TableData<WeatherForecast>>>(async state => await ServerReload(state, true))" Hover="true" Striped="true" @ref="table">
     <ToolBarContent>
