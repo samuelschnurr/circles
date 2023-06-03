@@ -5,7 +5,7 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 [FeatureState]
 public record BoardState
 {
-    public bool IsTileView { get; init; } = true;
+    public bool? IsTileView { get; init; }
 
     public BoardState() { }
 }
