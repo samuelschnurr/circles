@@ -24,7 +24,12 @@ public class BoardEffects
     {
         var appState = await localStorageService.GetItemAsync<AppState>(persistanceName);
 
-        if (appState != null)
+        if (appState == null)
+        {
+            dispatcher.Dispatch(new OnInitializeAppStateAction());
+            // TODO: dispatcher.Dispatch(new OnPersistAppStateAction());
+        }
+        else
         {
             dispatcher.Dispatch(new OnSetAppStateAction(appState));
         }
