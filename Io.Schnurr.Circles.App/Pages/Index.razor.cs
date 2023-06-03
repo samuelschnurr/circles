@@ -1,4 +1,4 @@
-﻿using Io.Schnurr.Circles.App.Store;
+﻿using Io.Schnurr.Circles.App.Store.Board;
 
 namespace Io.Schnurr.Circles.App.Pages;
 
@@ -9,6 +9,7 @@ public partial class Index
     private void OnIsTileViewChanged()
     {
         Dispatcher.Dispatch(new OnIsTileViewChangedAction());
+        Dispatcher.Dispatch(new OnPersistBoardStateAction(BoardState.Value));
     }
 
     private bool ShowTileView() => BoardState.Value.IsTileView;

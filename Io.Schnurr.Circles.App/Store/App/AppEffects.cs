@@ -3,12 +3,12 @@ using Fluxor;
 
 namespace Io.Schnurr.Circles.App.Store.App;
 
-public class AppEffects
+public class BoardEffects
 {
     private readonly ILocalStorageService localStorageService;
     private const string persistanceName = "circles-app-settings";
 
-    public AppEffects(ILocalStorageService localStorageService)
+    public BoardEffects(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
     }
@@ -19,7 +19,7 @@ public class AppEffects
         await localStorageService.SetItemAsync(persistanceName, action.AppState);
     }
 
-    [EffectMethod(typeof(OnSetAppStateAction))]
+    [EffectMethod(typeof(OnLoadAppStateAction))]
     public async Task LoadState(IDispatcher dispatcher)
     {
         var appState = await localStorageService.GetItemAsync<AppState>(persistanceName);
