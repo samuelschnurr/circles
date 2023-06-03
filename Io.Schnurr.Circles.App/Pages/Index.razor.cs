@@ -1,28 +1,13 @@
-﻿using Io.Schnurr.Circles.App.Interfaces;
+﻿namespace Io.Schnurr.Circles.App.Pages;
 
-namespace Io.Schnurr.Circles.App.Pages;
-
-public partial class Index : ILoadingComponent
+public partial class Index
 {
-    private bool? IsTileView { get; set; }
+    public bool IsLoading() => true;// TODO
 
-    public bool IsLoading() => IsTileView == null;
-
-    protected override async Task OnInitializedAsync()
+    private void OnIsTileViewChanged()
     {
-        IsTileView = false; //GET FROM STATE
-
-        if (IsTileView == null)
-        {
-            await HandleIsTileViewChanged(false);
-        }
+        Dispatcher.Dispatch(new OnIsTileViewChangedAction());
     }
 
-    private async Task HandleIsTileViewChanged(bool? value)
-    {
-        IsTileView = value;
-        //GET FROM STATE
-    }
-
-    private bool ShowTileView() => IsTileView!.Value;
+    private bool ShowTileView() => BoardState.Value.IsTileView;
 }

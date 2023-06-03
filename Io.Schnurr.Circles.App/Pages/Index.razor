@@ -1,5 +1,7 @@
 ﻿@page "/"
 @using Io.Schnurr.Circles.App.Components.Board
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@inject IState<BoardState> BoardState
 
 <PageTitle>Board</PageTitle>
 
@@ -10,7 +12,7 @@
 }
 
 <MudToolBar Class="d-flex justify-end px-0">
-    <MudSwitch T="bool?" Checked="IsTileView" CheckedChanged="HandleIsTileViewChanged" ThumbIconColor="Color.Dark" ThumbIcon="@(ShowTileView() ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
+    <MudSwitch T="bool" Checked="@ShowTileView()" CheckedChanged="OnIsTileViewChanged" ThumbIconColor="Color.Dark" ThumbIcon="@(ShowTileView() ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
 </MudToolBar>
 
 @if (ShowTileView())
