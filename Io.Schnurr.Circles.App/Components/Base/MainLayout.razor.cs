@@ -5,14 +5,10 @@ namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class MainLayout
 {
-    protected override void OnAfterRender(bool firstRender)
+    protected override void OnInitialized()
     {
-        if (firstRender)
-        {
-            LoadStates();
-        }
+        LoadStates();
     }
-
     private void LoadStates()
     {
         Dispatcher.Dispatch(new OnLoadAppStateAction());
