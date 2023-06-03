@@ -7,5 +7,6 @@ public partial class Drawer
     private void OnIsDarkModeChanged()
     {
         Dispatcher.Dispatch(new OnIsDarkModeChangedAction());
+        Dispatcher.Dispatch(new OnPersistAppStateAction(AppState.Value));
     }
 }
