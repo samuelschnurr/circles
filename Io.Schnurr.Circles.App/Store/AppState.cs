@@ -14,10 +14,10 @@ public record AppState
 public static class AppReducer
 {
     [ReducerMethod(typeof(OnIsDrawerOpenChangedAction))]
-    public static AppState ReduceOnIsDrawerOpenChangedAction(AppState state) => state with { IsDrawerOpen = !state.IsDrawerOpen };
+    public static AppState HandleIsDrawerOpenChangedAction(AppState state) => state with { IsDrawerOpen = !state.IsDrawerOpen };
 
     [ReducerMethod(typeof(OnIsDarkModeChangedAction))]
-    public static AppState ReduceOnIsDarkModeChangedAction(AppState state) => state with { IsDarkMode = !state.IsDarkMode };
+    public static AppState HandleIsDarkModeChangedAction(AppState state) => state with { IsDarkMode = !state.IsDarkMode };
 }
 
 

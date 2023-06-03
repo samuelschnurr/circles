@@ -13,7 +13,7 @@ public record BoardState
 public static class BoardReducer
 {
     [ReducerMethod(typeof(OnIsTileViewChangedAction))]
-    public static BoardState ReduceOnIsTileViewChangedAction(BoardState state) => state with { IsTileView = !state.IsTileView };
+    public static BoardState HandleIsTileViewChangedAction(BoardState state) => state with { IsTileView = !state.IsTileView };
 }
 
 public class OnIsTileViewChangedAction { }
