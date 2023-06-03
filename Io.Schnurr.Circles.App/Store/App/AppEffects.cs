@@ -6,7 +6,7 @@ namespace Io.Schnurr.Circles.App.Store.App;
 public class BoardEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private const string persistanceName = "circles-app-settings";
+    private const string persistanceName = "circles-app";
 
     public BoardEffects(ILocalStorageService localStorageService)
     {
