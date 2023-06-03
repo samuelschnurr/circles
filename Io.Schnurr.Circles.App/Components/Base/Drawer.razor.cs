@@ -4,8 +4,8 @@ namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class Drawer
 {
-    private void ToggleDarkMode()
+    private void OnIsDarkModeChanged()
     {
-        Dispatcher.Dispatch(new ToggleDarkModeAction());
+        Dispatcher.Dispatch(new OnIsDarkModeChangedAction());
     }
 }

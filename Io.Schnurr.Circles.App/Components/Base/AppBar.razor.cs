@@ -4,8 +4,8 @@ namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class AppBar
 {
-    private void ToggleDrawer()
+    private void OnIsDrawerOpenChanged()
     {
-        Dispatcher.Dispatch(new ToggleDrawerAction());
+        Dispatcher.Dispatch(new OnIsDrawerOpenChangedAction());
     }
 }

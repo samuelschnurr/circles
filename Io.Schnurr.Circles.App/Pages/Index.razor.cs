@@ -1,4 +1,6 @@
-﻿namespace Io.Schnurr.Circles.App.Pages;
+﻿using Io.Schnurr.Circles.App.Store;
+
+namespace Io.Schnurr.Circles.App.Pages;
 
 public partial class Index
 {

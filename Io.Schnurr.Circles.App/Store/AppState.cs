@@ -13,14 +13,14 @@ public record AppState
 
 public static class AppReducer
 {
-    [ReducerMethod(typeof(ToggleDrawerAction))]
-    public static AppState ReduceToggleDrawerAction(AppState state) => state with { IsDrawerOpen = !state.IsDrawerOpen };
+    [ReducerMethod(typeof(OnIsDrawerOpenChangedAction))]
+    public static AppState ReduceOnIsDrawerOpenChangedAction(AppState state) => state with { IsDrawerOpen = !state.IsDrawerOpen };
 
-    [ReducerMethod(typeof(ToggleDarkModeAction))]
-    public static AppState ReduceToggleDarkModeAction(AppState state) => state with { IsDarkMode = !state.IsDarkMode };
+    [ReducerMethod(typeof(OnIsDarkModeChangedAction))]
+    public static AppState ReduceOnIsDarkModeChangedAction(AppState state) => state with { IsDarkMode = !state.IsDarkMode };
 }
 
 
-public class ToggleDrawerAction { }
+public class OnIsDrawerOpenChangedAction { }
 
-public class ToggleDarkModeAction { }
+public class OnIsDarkModeChangedAction { }
