@@ -11,10 +11,7 @@ public static class AppReducer
     public static AppState HandleIsDarkModeChangedAction(AppState state) => state with { IsDarkMode = !state.IsDarkMode };
 
     [ReducerMethod]
-    public static AppState OnAppStateSet(AppState state, AppStateSetAction action)
-    {
-        return action.AppState;
-    }
+    public static AppState HandleSetAppState(AppState state, OnSetAppStateAction action) => action.AppState;
 }
 
 
