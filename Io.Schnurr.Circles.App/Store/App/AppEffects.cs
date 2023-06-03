@@ -22,11 +22,11 @@ public class AppEffects
     [EffectMethod(typeof(OnSetAppStateAction))]
     public async Task LoadState(IDispatcher dispatcher)
     {
-        var counterState = await localStorageService.GetItemAsync<AppState>(persistanceName);
+        var appState = await localStorageService.GetItemAsync<AppState>(persistanceName);
 
-        if (counterState != null)
+        if (appState != null)
         {
-            dispatcher.Dispatch(new OnSetAppStateAction(counterState));
+            dispatcher.Dispatch(new OnSetAppStateAction(appState));
         }
     }
 }
