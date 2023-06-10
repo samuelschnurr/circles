@@ -1,6 +1,6 @@
 ﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
-<MudDrawer Open="AppState.Value.IsDrawerOpen">
+<MudDrawer Open="AppState.Value.IsDrawerOpen" OpenChanged="HandleOverlayClick">
     <MudDrawerHeader>
         <MudText Typo="Typo.h5" Class="mt-1">Circles</MudText>
     </MudDrawerHeader>
