@@ -3,12 +3,12 @@ using Fluxor;
 
 namespace Io.Schnurr.Circles.App.Store.App;
 
-public class BoardEffects
+public class AppEffects
 {
     private readonly ILocalStorageService localStorageService;
     private const string persistanceName = "circles-app";
 
-    public BoardEffects(ILocalStorageService localStorageService)
+    public AppEffects(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
     }
