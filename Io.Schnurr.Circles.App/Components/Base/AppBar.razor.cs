@@ -6,6 +6,6 @@ public partial class AppBar
 {
     private void OnIsDrawerOpenChanged()
     {
-        Dispatcher.Dispatch(new OnIsDrawerOpenChangedAction());
+        Dispatcher.Dispatch(new OnSetAppStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
     }
 }
