@@ -13,7 +13,7 @@
 }
 
 <MudToolBar Class="d-flex justify-end px-0">
-    <MudSwitch T="bool" Checked="@ShowTileView()" CheckedChanged="OnIsTileViewChanged" ThumbIconColor="Color.Dark" ThumbIcon="@(ShowTileView() ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
+    <MudSwitch T="bool" Checked="@ShowTileView()" CheckedChanged="ToggleTileView" ThumbIconColor="Color.Dark" ThumbIcon="@(ShowTileView() ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
 </MudToolBar>
 
 @if (ShowTileView())
