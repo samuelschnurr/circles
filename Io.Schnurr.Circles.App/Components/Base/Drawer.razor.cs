@@ -6,8 +6,7 @@ public partial class Drawer
 {
     private void ToggleDarkMode()
     {
-        Dispatcher.Dispatch(new SetState(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
-        Dispatcher.Dispatch(new PersistState());
+        Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
     }
 
     private void HandleOverlayClick(bool newValue)
@@ -18,7 +17,7 @@ public partial class Drawer
 
         if (newValue != currentValue)
         {
-            Dispatcher.Dispatch(new SetState(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
+            Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
         }
     }
 }

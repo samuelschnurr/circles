@@ -6,6 +6,6 @@ public partial class AppBar
 {
     private void ToggleDrawer()
     {
-        Dispatcher.Dispatch(new SetState(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
+        Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
     }
 }

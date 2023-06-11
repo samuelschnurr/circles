@@ -9,7 +9,7 @@ public class InitializationMiddleware : Middleware
 {
     public override Task InitializeAsync(IDispatcher dispatcher, IStore store)
     {
-        dispatcher.Dispatch(new Store.App.InitializeState());
+        dispatcher.Dispatch(new Store.App.InitializeStateAction());
         dispatcher.Dispatch(new Store.Board.InitializeState());
 
         return Task.CompletedTask;

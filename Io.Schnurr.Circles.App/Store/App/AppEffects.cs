@@ -6,38 +6,36 @@ namespace Io.Schnurr.Circles.App.Store.App;
 public class AppEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private readonly IState<AppState> state;
     private const string persistanceName = "circles-app";
 
-    public AppEffects(ILocalStorageService localStorageService, IState<AppState> state)
+    public AppEffects(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
-        this.state = state;
     }
 
-    [EffectMethod(typeof(PersistState))]
-    public async Task PersistState(IDispatcher dispatcher)
+    [EffectMethod]
+    public async Task UpdateState(UpdateStateAction action, IDispatcher dispatcher)
     {
-        await localStorageService.SetItemAsync(persistanceName, state!.Value);
+        var newState = action!.state;
+        await localStorageService.SetItemAsync(persistanceName, newState);
+        dispatcher.Dispatch(new SetStateAction(newState));
     }
 
-    [EffectMethod(typeof(InitializeState))]
+    [EffectMethod(typeof(InitializeStateAction))]
     public async Task InitializeState(IDispatcher dispatcher)
     {
         var storageState = await localStorageService.GetItemAsync<AppState>(persistanceName);
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new SetDefaultState());
-            dispatcher.Dispatch(new PersistState());
+            dispatcher.Dispatch(new UpdateStateAction(new AppState()));
         }
         else
         {
-            dispatcher.Dispatch(new SetState(storageState));
+            dispatcher.Dispatch(new SetStateAction(storageState));
         }
     }
 }
 
-public record SetState(AppState state);
-public record PersistState();
-public record InitializeState();
+public record UpdateStateAction(AppState state);
+public record InitializeStateAction();
