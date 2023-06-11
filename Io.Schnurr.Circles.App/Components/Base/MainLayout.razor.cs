@@ -12,6 +12,6 @@ public partial class MainLayout
     private void LoadStates()
     {
         Dispatcher.Dispatch(new OnInitializeAppStateAction());
-        Dispatcher.Dispatch(new OnLoadBoardStateAction());
+        Dispatcher.Dispatch(new OnInitializeBoardStateAction());
     }
 }

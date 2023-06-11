@@ -10,15 +10,9 @@ public static class BoardReducer
     [ReducerMethod]
     public static BoardState HandleSetBoardState(BoardState state, OnSetBoardStateAction action) => action.BoardState;
 
-    [ReducerMethod(typeof(OnInitializeBoardStateAction))]
-    public static BoardState HandleInitializeBoardStateAction(BoardState state)
-    {
-        return new BoardState()
-        {
-            IsTileView = true
-        };
-    }
+    [ReducerMethod(typeof(OnSetDefaultBoardStateAction))]
+    public static BoardState HandleSetDefaultBoardStateAction(BoardState state) => new BoardState() with { IsTileView = true };
 }
 
 public class OnIsTileViewChangedAction { }
-public class OnInitializeBoardStateAction { }
+public class OnSetDefaultBoardStateAction { }

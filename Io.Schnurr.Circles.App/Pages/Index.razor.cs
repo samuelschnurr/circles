@@ -10,7 +10,7 @@ public partial class Index : ILoadingComponent
     private void OnIsTileViewChanged()
     {
         Dispatcher.Dispatch(new OnIsTileViewChangedAction());
-        Dispatcher.Dispatch(new OnPersistBoardStateAction(BoardState.Value));
+        Dispatcher.Dispatch(new OnPersistBoardStateAction());
     }
 
     private bool ShowTileView() => BoardState.Value.IsTileView == true;
