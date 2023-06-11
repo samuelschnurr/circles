@@ -1,6 +1,4 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Store.App;
-using Io.Schnurr.Circles.App.Store.Board;
 
 namespace Io.Schnurr.Circles.App.Utils;
 
@@ -11,8 +9,8 @@ public class InitializationMiddleware : Middleware
 {
     public override Task InitializeAsync(IDispatcher dispatcher, IStore store)
     {
-        dispatcher.Dispatch(new InitializeAppState());
-        dispatcher.Dispatch(new InitializeBoardState());
+        dispatcher.Dispatch(new Store.App.InitializeState());
+        dispatcher.Dispatch(new Store.Board.InitializeState());
 
         return Task.CompletedTask;
     }

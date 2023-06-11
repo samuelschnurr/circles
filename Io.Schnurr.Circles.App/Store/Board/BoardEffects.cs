@@ -6,38 +6,38 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 public class BoardEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private readonly IState<BoardState> boardState;
+    private readonly IState<BoardState> state;
     private const string persistanceName = "circles-board";
 
-    public BoardEffects(ILocalStorageService localStorageService, IState<BoardState> boardState)
+    public BoardEffects(ILocalStorageService localStorageService, IState<BoardState> state)
     {
         this.localStorageService = localStorageService;
-        this.boardState = boardState;
+        this.state = state;
     }
 
-    [EffectMethod(typeof(PersistBoardState))]
-    public async Task PersistBoardState(IDispatcher dispatcher)
+    [EffectMethod(typeof(PersistState))]
+    public async Task PersistState(IDispatcher dispatcher)
     {
-        await localStorageService.SetItemAsync(persistanceName, boardState!.Value);
+        await localStorageService.SetItemAsync(persistanceName, state!.Value);
     }
 
-    [EffectMethod(typeof(InitializeBoardState))]
-    public async Task InitializeBoardState(IDispatcher dispatcher)
+    [EffectMethod(typeof(InitializeState))]
+    public async Task InitializeState(IDispatcher dispatcher)
     {
         var storageState = await localStorageService.GetItemAsync<BoardState>(persistanceName);
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new SetDefaultBoardState());
-            dispatcher.Dispatch(new PersistBoardState());
+            dispatcher.Dispatch(new SetDefaultState());
+            dispatcher.Dispatch(new PersistState());
         }
         else
         {
-            dispatcher.Dispatch(new SetBoardState(storageState));
+            dispatcher.Dispatch(new SetState(storageState));
         }
     }
 }
 
-public record SetBoardState(BoardState BoardState);
-public record PersistBoardState();
-public record InitializeBoardState();
+public record SetState(BoardState state);
+public record PersistState();
+public record InitializeState();
