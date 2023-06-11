@@ -6,38 +6,36 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 public class BoardEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private readonly IState<BoardState> state;
     private const string persistanceName = "circles-board";
 
-    public BoardEffects(ILocalStorageService localStorageService, IState<BoardState> state)
+    public BoardEffects(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
-        this.state = state;
     }
 
-    [EffectMethod(typeof(PersistState))]
-    public async Task PersistState(IDispatcher dispatcher)
+    [EffectMethod]
+    public async Task UpdateState(UpdateStateAction action, IDispatcher dispatcher)
     {
-        await localStorageService.SetItemAsync(persistanceName, state!.Value);
+        var newState = action!.state;
+        await localStorageService.SetItemAsync(persistanceName, newState);
+        dispatcher.Dispatch(new SetStateAction(newState));
     }
 
-    [EffectMethod(typeof(InitializeState))]
+    [EffectMethod(typeof(InitializeStateAction))]
     public async Task InitializeState(IDispatcher dispatcher)
     {
         var storageState = await localStorageService.GetItemAsync<BoardState>(persistanceName);
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new SetDefaultState());
-            dispatcher.Dispatch(new PersistState());
+            dispatcher.Dispatch(new UpdateStateAction(new BoardState() with { IsTileView = true }));
         }
         else
         {
-            dispatcher.Dispatch(new SetState(storageState));
+            dispatcher.Dispatch(new SetStateAction(storageState));
         }
     }
 }
 
-public record SetState(BoardState state);
-public record PersistState();
-public record InitializeState();
+public record UpdateStateAction(BoardState state);
+public record InitializeStateAction();

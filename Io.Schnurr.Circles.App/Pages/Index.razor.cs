@@ -9,8 +9,7 @@ public partial class Index : ILoadingComponent
 
     private void ToggleTileView()
     {
-        Dispatcher.Dispatch(new SetState(BoardState.Value with { IsTileView = !BoardState.Value.IsTileView }));
-        Dispatcher.Dispatch(new PersistState());
+        Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { IsTileView = !BoardState.Value.IsTileView }));
     }
 
     private bool ShowTileView() => BoardState.Value.IsTileView == true;
