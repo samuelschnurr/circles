@@ -7,7 +7,7 @@ public partial class Drawer
     private void OnIsDarkModeChanged()
     {
         Dispatcher.Dispatch(new OnIsDarkModeChangedAction());
-        Dispatcher.Dispatch(new OnPersistAppStateAction(AppState.Value));
+        Dispatcher.Dispatch(new OnPersistAppStateAction());
     }
 
     private void HandleOverlayClick(bool newValue)

@@ -6,36 +6,38 @@ namespace Io.Schnurr.Circles.App.Store.App;
 public class AppEffects
 {
     private readonly ILocalStorageService localStorageService;
+    private readonly IState<AppState> appState;
     private const string persistanceName = "circles-app";
 
-    public AppEffects(ILocalStorageService localStorageService)
+    public AppEffects(ILocalStorageService localStorageService, IState<AppState> appState)
     {
         this.localStorageService = localStorageService;
+        this.appState = appState;
     }
 
-    [EffectMethod]
-    public async Task PersistState(OnPersistAppStateAction action, IDispatcher dispatcher)
+    [EffectMethod(typeof(OnPersistAppStateAction))]
+    public async Task PersistState(IDispatcher dispatcher)
     {
-        await localStorageService.SetItemAsync(persistanceName, action.AppState);
+        await localStorageService.SetItemAsync(persistanceName, appState!.Value);
     }
 
-    [EffectMethod(typeof(OnLoadAppStateAction))]
-    public async Task LoadState(IDispatcher dispatcher)
+    [EffectMethod(typeof(OnInitializeAppStateAction))]
+    public async Task InitializeAppState(IDispatcher dispatcher)
     {
-        var appState = await localStorageService.GetItemAsync<AppState>(persistanceName);
+        var storageState = await localStorageService.GetItemAsync<AppState>(persistanceName);
 
-        if (appState == null)
+        if (storageState == null)
         {
-            dispatcher.Dispatch(new OnInitializeAppStateAction());
-            // TODO: dispatcher.Dispatch(new OnPersistAppStateAction());
+            dispatcher.Dispatch(new OnSetDefaultAppStateAction());
+            dispatcher.Dispatch(new OnPersistAppStateAction());
         }
         else
         {
-            dispatcher.Dispatch(new OnSetAppStateAction(appState));
+            dispatcher.Dispatch(new OnSetAppStateAction(storageState));
         }
     }
 }
 
 public record OnSetAppStateAction(AppState AppState);
-public record OnPersistAppStateAction(AppState AppState);
-public record OnLoadAppStateAction();
+public record OnPersistAppStateAction();
+public record OnInitializeAppStateAction();

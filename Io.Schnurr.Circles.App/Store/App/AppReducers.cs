@@ -13,17 +13,10 @@ public static class AppReducer
     [ReducerMethod]
     public static AppState HandleSetAppState(AppState state, OnSetAppStateAction action) => action.AppState;
 
-    [ReducerMethod(typeof(OnInitializeAppStateAction))]
-    public static AppState HandleInitializeAppStateAction(AppState state)
-    {
-        return new AppState()
-        {
-            IsDarkMode = false,
-            IsDrawerOpen = true
-        };
-    }
+    [ReducerMethod(typeof(OnSetDefaultAppStateAction))]
+    public static AppState HandleSetDefaultAppStateAction(AppState state) => new AppState();
 }
 
 public class OnIsDrawerOpenChangedAction { }
 public class OnIsDarkModeChangedAction { }
-public class OnInitializeAppStateAction { }
+public class OnSetDefaultAppStateAction { }
