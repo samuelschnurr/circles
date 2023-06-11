@@ -15,29 +15,29 @@ public class AppEffects
         this.appState = appState;
     }
 
-    [EffectMethod(typeof(OnPersistAppStateAction))]
-    public async Task PersistState(IDispatcher dispatcher)
+    [EffectMethod(typeof(PersistAppState))]
+    public async Task PersistAppState(IDispatcher dispatcher)
     {
         await localStorageService.SetItemAsync(persistanceName, appState!.Value);
     }
 
-    [EffectMethod(typeof(OnInitializeAppStateAction))]
+    [EffectMethod(typeof(InitializeAppState))]
     public async Task InitializeAppState(IDispatcher dispatcher)
     {
         var storageState = await localStorageService.GetItemAsync<AppState>(persistanceName);
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new OnSetDefaultAppStateAction());
-            dispatcher.Dispatch(new OnPersistAppStateAction());
+            dispatcher.Dispatch(new SetDefaultAppState());
+            dispatcher.Dispatch(new PersistAppState());
         }
         else
         {
-            dispatcher.Dispatch(new OnSetAppStateAction(storageState));
+            dispatcher.Dispatch(new SetAppState(storageState));
         }
     }
 }
 
-public record OnSetAppStateAction(AppState AppState);
-public record OnPersistAppStateAction();
-public record OnInitializeAppStateAction();
+public record SetAppState(AppState AppState);
+public record PersistAppState();
+public record InitializeAppState();

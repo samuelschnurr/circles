@@ -11,7 +11,7 @@ public class InitializationMiddleware : Middleware
 {
     public override Task InitializeAsync(IDispatcher dispatcher, IStore store)
     {
-        dispatcher.Dispatch(new OnInitializeAppStateAction());
+        dispatcher.Dispatch(new InitializeAppState());
         dispatcher.Dispatch(new InitializeBoardState());
 
         return Task.CompletedTask;

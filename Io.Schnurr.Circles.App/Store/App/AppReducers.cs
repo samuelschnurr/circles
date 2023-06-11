@@ -5,10 +5,10 @@ namespace Io.Schnurr.Circles.App.Store.App;
 public static class AppReducer
 {
     [ReducerMethod]
-    public static AppState HandleSetAppState(AppState state, OnSetAppStateAction action) => action.AppState;
+    public static AppState SetAppState(AppState state, SetAppState action) => action.AppState;
 
-    [ReducerMethod(typeof(OnSetDefaultAppStateAction))]
-    public static AppState HandleSetDefaultAppStateAction(AppState state) => new AppState();
+    [ReducerMethod(typeof(SetDefaultAppState))]
+    public static AppState SetDefaultAppState(AppState state) => new AppState();
 }
 
-public class OnSetDefaultAppStateAction { }
+public class SetDefaultAppState { }
