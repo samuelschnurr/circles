@@ -20,6 +20,7 @@ internal static class StartupHelper
         builder.Services.AddFluxor(options =>
         {
             options.ScanAssemblies(typeof(Program).Assembly);
+            options.AddMiddleware<InitializationMiddleware>();
 #if DEBUG
             options.UseReduxDevTools(rdt =>
             {
