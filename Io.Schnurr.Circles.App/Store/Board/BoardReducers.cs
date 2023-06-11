@@ -5,10 +5,10 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 public static class BoardReducer
 {
     [ReducerMethod]
-    public static BoardState HandleSetBoardState(BoardState state, OnSetBoardStateAction action) => action.BoardState;
+    public static BoardState SetBoardState(BoardState state, SetBoardState action) => action.BoardState;
 
-    [ReducerMethod(typeof(OnSetDefaultBoardStateAction))]
-    public static BoardState HandleSetDefaultBoardStateAction(BoardState state) => new BoardState() with { IsTileView = true };
+    [ReducerMethod(typeof(SetDefaultBoardState))]
+    public static BoardState SetDefaultBoardState(BoardState state) => new BoardState() with { IsTileView = true };
 }
 
-public class OnSetDefaultBoardStateAction { }
+public class SetDefaultBoardState { }

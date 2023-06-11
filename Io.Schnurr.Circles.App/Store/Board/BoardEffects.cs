@@ -15,29 +15,29 @@ public class BoardEffects
         this.boardState = boardState;
     }
 
-    [EffectMethod(typeof(OnPersistBoardStateAction))]
-    public async Task PersistState(IDispatcher dispatcher)
+    [EffectMethod(typeof(PersistBoardState))]
+    public async Task PersistBoardState(IDispatcher dispatcher)
     {
         await localStorageService.SetItemAsync(persistanceName, boardState!.Value);
     }
 
-    [EffectMethod(typeof(OnInitializeBoardStateAction))]
-    public async Task InitializeBoardStateAction(IDispatcher dispatcher)
+    [EffectMethod(typeof(InitializeBoardState))]
+    public async Task InitializeBoardState(IDispatcher dispatcher)
     {
         var storageState = await localStorageService.GetItemAsync<BoardState>(persistanceName);
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new OnSetDefaultBoardStateAction());
-            dispatcher.Dispatch(new OnPersistBoardStateAction());
+            dispatcher.Dispatch(new SetDefaultBoardState());
+            dispatcher.Dispatch(new PersistBoardState());
         }
         else
         {
-            dispatcher.Dispatch(new OnSetBoardStateAction(storageState));
+            dispatcher.Dispatch(new SetBoardState(storageState));
         }
     }
 }
 
-public record OnSetBoardStateAction(BoardState BoardState);
-public record OnPersistBoardStateAction();
-public record OnInitializeBoardStateAction();
+public record SetBoardState(BoardState BoardState);
+public record PersistBoardState();
+public record InitializeBoardState();
