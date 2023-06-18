@@ -31,7 +31,7 @@ else
                     <td>@offer.Id</td>
                     <td>@offer.Title</td>
                     <td>@offer.Description</td>
-                    <td>@offer.Price</td>
+                    <td>@offer.Price.ToCurrency()</td>
                     <td>@offer.CreatedAt</td>
                     <td>@offer.DeletedAt</td>
                 </tr>

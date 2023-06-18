@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using System.Text.Json;
+using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
@@ -38,7 +39,7 @@ public partial class BoardTable
                 || element.Id.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase)
                 || element.Title.Contains(searchString, StringComparison.OrdinalIgnoreCase)
                 || element.Description.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                || element.Price.ToString("N2").Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                || element.Price.ToCurrency().Contains(searchString, StringComparison.OrdinalIgnoreCase)
                 || element.CreatedAt.ToShortDateString().Contains(searchString, StringComparison.OrdinalIgnoreCase);
 
                 return result;
