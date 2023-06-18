@@ -24,12 +24,12 @@ internal static class OfferService
 
     internal static IResult GetAll()
     {
-        return TypedResults.Ok(offers.ToList());
+        return TypedResults.Ok(offers.Where(o => o.DeletedAt == null));
     }
 
     internal static IResult GetById(int id)
     {
-        return offers.SingleOrDefault(w => w.Id == id)
+        return offers.SingleOrDefault(o => o.Id == id && o.DeletedAt == null)
             is Offer offer
             ? TypedResults.Ok(offer)
             : TypedResults.NotFound();
