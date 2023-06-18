@@ -19,7 +19,7 @@
         <MudTd DataLabel="Id">@context.Id</MudTd>
         <MudTd DataLabel="Title">@context.Title</MudTd>
         <MudTd DataLabel="Description">@context.Description</MudTd>
-        <MudTd DataLabel="Price">@context.Price</MudTd>
+        <MudTd DataLabel="Price">@context.Price.ToString("N2") $</MudTd>
         <MudTd DataLabel="CreatedAt">@context.CreatedAt</MudTd>
         <MudTd DataLabel="DeletedAt">@context.DeletedAt</MudTd>
     </RowTemplate>
