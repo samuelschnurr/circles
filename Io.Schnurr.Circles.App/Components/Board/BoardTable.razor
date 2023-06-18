@@ -13,7 +13,6 @@
         <MudTh><MudTableSortLabel SortLabel="description_field" T="Offer">Description</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="price_field" T="Offer">Price</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="createdAt_field" T="Offer">Created</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortLabel="deletedAt_field" T="Offer">DeletedAt</MudTableSortLabel></MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Id">@context.Id</MudTd>
@@ -21,7 +20,6 @@
         <MudTd DataLabel="Description">@context.Description</MudTd>
         <MudTd DataLabel="Price">@context.Price.ToCurrency()</MudTd>
         <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
-        <MudTd DataLabel="DeletedAt">@context.DeletedAt</MudTd>
     </RowTemplate>
     <NoRecordsContent>
         <MudText>No matching records found</MudText>
