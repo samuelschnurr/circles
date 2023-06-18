@@ -6,7 +6,7 @@ namespace Io.Schnurr.Circles.Api
     {
         internal static void MapRoutes(this WebApplication app)
         {
-            WeatherForecastService.MapRoutes(app);
+            OfferService.MapRoutes(app);
         }
     }
 }
