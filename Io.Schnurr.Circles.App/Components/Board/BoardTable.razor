@@ -12,7 +12,7 @@
         <MudTh><MudTableSortLabel SortLabel="title_field" T="Offer">Title</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="description_field" T="Offer">Description</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="price_field" T="Offer">Price</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortLabel="createdAt_field" T="Offer">CreatedAt</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortLabel="createdAt_field" T="Offer">Created</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="deletedAt_field" T="Offer">DeletedAt</MudTableSortLabel></MudTh>
     </HeaderContent>
     <RowTemplate>
@@ -20,7 +20,7 @@
         <MudTd DataLabel="Title">@context.Title</MudTd>
         <MudTd DataLabel="Description">@context.Description</MudTd>
         <MudTd DataLabel="Price">@context.Price.ToString("N2") $</MudTd>
-        <MudTd DataLabel="CreatedAt">@context.CreatedAt</MudTd>
+        <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
         <MudTd DataLabel="DeletedAt">@context.DeletedAt</MudTd>
     </RowTemplate>
     <NoRecordsContent>
