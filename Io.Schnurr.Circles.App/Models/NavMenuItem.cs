@@ -13,7 +13,7 @@ public class NavMenuItem
     }
 
     internal readonly string label;
-    internal string href;
-    internal string icon;
-    internal NavLinkMatch match;
+    internal readonly string href;
+    internal readonly string icon;
+    internal readonly NavLinkMatch match;
 }

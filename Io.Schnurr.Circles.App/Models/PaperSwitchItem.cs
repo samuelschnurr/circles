@@ -10,6 +10,6 @@ public class PaperSwitchItem
     }
 
     internal readonly string label;
-    internal bool isChecked;
-    internal bool isDisabled;
+    internal readonly bool isChecked;
+    internal readonly bool isDisabled;
 }
