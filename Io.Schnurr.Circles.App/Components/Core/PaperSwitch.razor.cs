@@ -8,8 +8,8 @@ public partial class PaperSwitch
     public string Label { get; set; }
 
     [Parameter]
-    public bool IsDisabled { get; set; }
+    public bool Disabled { get; set; }
 
     [Parameter]
-    public bool IsChecked { get; set; }
+    public bool Checked { get; set; }
 }

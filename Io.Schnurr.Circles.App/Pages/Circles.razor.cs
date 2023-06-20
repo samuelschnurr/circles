@@ -1,17 +1,13 @@
-﻿using System.Net.Http.Json;
-using Io.Schnurr.Circles.Shared.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Io.Schnurr.Circles.App.Models;
 
 namespace Io.Schnurr.Circles.App.Pages;
 
 public partial class Circles
 {
-    [Inject]
-    private HttpClient HttpClient { get; set; } = default!;
-
-    protected Offer[]? offers;
-    protected override async Task OnInitializedAsync()
+    internal PaperSwitchItem[] circles = new PaperSwitchItem[]
     {
-        offers = await HttpClient.GetFromJsonAsync<Offer[]>("offer");
-    }
+        new PaperSwitchItem("Work", true, true),
+        new PaperSwitchItem("Family", false, true),
+        new PaperSwitchItem("Friends", false, true),
+    };
 }

@@ -3,37 +3,11 @@
 
 <PageTitle>Circles</PageTitle>
 
-<h1>Configure your circles</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-@if (offers == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>CreatedAt</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var offer in offers)
-            {
-                <tr>
-                    <td>@offer.Id</td>
-                    <td>@offer.Title</td>
-                    <td>@offer.Description</td>
-                    <td>@offer.Price.ToCurrency()</td>
-                    <td>@offer.CreatedAt</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<MudGrid>
+    @foreach (var circle in circles)
+    {
+        <MudItem xs="12" lg="6">
+            <PaperSwitch Label="@circle.label" Checked="circle.isChecked" Disabled="circle.isDisabled" />
+        </MudItem>
+    }
+</MudGrid>
