@@ -6,8 +6,8 @@ public partial class Circles
 {
     internal PaperSwitchItem[] circles = new PaperSwitchItem[]
     {
-        new PaperSwitchItem("Work", true, true),
-        new PaperSwitchItem("Family", false, true),
-        new PaperSwitchItem("Friends", false, true),
+        new PaperSwitchItem("Work", true, false, true),
+        new PaperSwitchItem("Family", false, true, true),
+        new PaperSwitchItem("Friends", false, true, true),
     };
 }
