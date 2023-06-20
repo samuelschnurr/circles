@@ -7,7 +7,7 @@
     @foreach (var circle in circles)
     {
         <MudItem xs="12" lg="6">
-            <PaperSwitch Label="@circle.label" Checked="circle.isChecked" Disabled="circle.isDisabled" />
+            <PaperSwitch Label="@circle.label" Checked="circle.isChecked" ReadOnly="circle.isReadOnly" />
         </MudItem>
     }
 </MudGrid>
