@@ -15,11 +15,11 @@
         <MudTh><MudTableSortLabel SortLabel="createdAt_field" T="Offer">Created</MudTableSortLabel></MudTh>
     </HeaderContent>
     <RowTemplate>
-        <MudTd DataLabel="Id">@context.Id</MudTd>
-        <MudTd DataLabel="Title">@context.Title</MudTd>
-        <MudTd DataLabel="Description">@context.Description</MudTd>
-        <MudTd DataLabel="Price">@context.Price.ToCurrency()</MudTd>
-        <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
+        <MudTd Class="cursor-pointer" DataLabel="Id">@context.Id</MudTd>
+        <MudTd Class="cursor-pointer" DataLabel="Title">@context.Title</MudTd>
+        <MudTd Class="cursor-pointer" DataLabel="Description">@context.Description</MudTd>
+        <MudTd Class="cursor-pointer" DataLabel="Price">@context.Price.ToCurrency()</MudTd>
+        <MudTd Class="cursor-pointer" DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
     </RowTemplate>
     <NoRecordsContent>
         <MudText>No matching records found</MudText>
