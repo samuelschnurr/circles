@@ -1,0 +1,20 @@
+﻿<MudGrid Spacing="6">
+    @{
+        foreach (var d in data)
+        {
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudCard Elevation="6" Class="cursor-pointer">
+                    <MudCardMedia Image="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" Height="200" />
+                    <MudCardContent>
+                        <MudText Typo="Typo.h5">@d.Title</MudText>
+                        <MudText Typo="Typo.body2">@d.Description</MudText>
+                    </MudCardContent>
+                    <MudCardActions Class="p-4">
+                    <MudSpacer />
+                        <MudText Class="align-self-center" Typo="Typo.body2">@d.Price.ToCurrency()</MudText>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
+    }
+</MudGrid>
