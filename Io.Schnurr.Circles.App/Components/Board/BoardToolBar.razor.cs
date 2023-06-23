@@ -7,7 +7,8 @@ public partial class BoardToolBar
     [Parameter]
     public EventCallback<string> OnSearch { get; set; }
 
-    private bool ShowTileView() => BoardState.Value.IsTileView == true;
+    [Parameter]
+    public bool ShowTileView { get; set; }
 
     private void ToggleTileView()
     {

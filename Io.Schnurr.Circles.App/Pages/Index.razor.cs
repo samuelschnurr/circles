@@ -4,7 +4,7 @@ namespace Io.Schnurr.Circles.App.Pages;
 
 public partial class Index : ILoadingComponent
 {
-    public bool IsLoading() => BoardState.Value.IsTileView == null;
+    public bool IsLoading => BoardState.Value.IsTileView == null;
 
-    private bool ShowTileView() => BoardState.Value.IsTileView == true;
+    private bool ShowTileView => BoardState.Value.IsTileView == true;
 }

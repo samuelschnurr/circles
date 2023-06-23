@@ -6,15 +6,15 @@
 
 <PageTitle>Board</PageTitle>
 
-@if (IsLoading())
+@if (IsLoading)
 {
     <ProgressBar/>
     return;
 }
 
-<BoardToolBar OnSearch="HandleSearch" />
+<BoardToolBar ShowTileView="ShowTileView" OnSearch="HandleSearch" />
 
-@if (ShowTileView())
+@if (ShowTileView)
 {
     <BoardTile />
 }
