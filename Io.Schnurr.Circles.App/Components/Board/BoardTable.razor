@@ -3,10 +3,6 @@
 @using Io.Schnurr.Circles.Shared.Models;
 
 <MudTable ServerData="new Func<TableState, Task<TableData<Offer>>>(async state => await ServerReload(state, true))" Hover="true" Striped="true" @ref="table" OnRowClick="@((TableRowClickEventArgs<Offer> r) => Console.WriteLine(r.Item.Id))">
-    <ToolBarContent>
-        <MudSpacer />
-        <MudTextField T="string" ValueChanged="(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
-    </ToolBarContent>
     <HeaderContent>
         <MudTh><MudTableSortLabel SortLabel="id_field" T="Offer">Id</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="title_field" T="Offer">Title</MudTableSortLabel></MudTh>
