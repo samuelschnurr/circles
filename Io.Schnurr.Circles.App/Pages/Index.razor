@@ -12,7 +12,7 @@
     return;
 }
 
-<BoardToolBar />
+<BoardToolBar OnSearch="HandleSearch" />
 
 @if (ShowTileView())
 {
@@ -21,4 +21,14 @@
 else
 {
     <BoardTable />
+}
+
+
+@code{
+    public async Task HandleSearch(string s)
+    {
+        // TODO Codebehind
+        Console.WriteLine("You searched: " + s);
+        await Task.FromResult(0);
+    }
 }
