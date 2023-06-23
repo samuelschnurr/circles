@@ -9,9 +9,10 @@
                         <MudText Typo="Typo.h5">@d.Title</MudText>
                         <MudText Typo="Typo.body2">@d.Description</MudText>
                     </MudCardContent>
-                    <MudCardActions Class="p-4">
-                    <MudSpacer />
-                        <MudText Class="align-self-center" Typo="Typo.body2">@d.Price.ToCurrency()</MudText>
+                    <MudCardActions Class="pa-4">
+                        <MudText Class="mud-text-secondary" Typo="Typo.body2">@d.CreatedAt.ToShortDateString()</MudText>
+                        <MudSpacer />
+                        <MudText Typo="Typo.body2">@d.Price.ToCurrency()</MudText>
                     </MudCardActions>
                 </MudCard>
             </MudItem>
