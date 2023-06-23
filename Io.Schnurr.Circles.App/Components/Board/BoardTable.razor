@@ -2,7 +2,7 @@
 @using Io.Schnurr.Circles.App.Store.App;
 @using Io.Schnurr.Circles.Shared.Models;
 
-<MudTable ServerData="new Func<TableState, Task<TableData<Offer>>>(async state => await ServerReload(state, true))" Hover="true" Striped="true" @ref="table">
+<MudTable ServerData="new Func<TableState, Task<TableData<Offer>>>(async state => await ServerReload(state, true))" Hover="true" Striped="true" @ref="table" OnRowClick="@((TableRowClickEventArgs<Offer> r) => Console.WriteLine(r.Item.Id))">
     <ToolBarContent>
         <MudSpacer />
         <MudTextField T="string" ValueChanged="(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
@@ -14,7 +14,7 @@
         <MudTh><MudTableSortLabel SortLabel="price_field" T="Offer">Price</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="createdAt_field" T="Offer">Created</MudTableSortLabel></MudTh>
     </HeaderContent>
-    <RowTemplate>
+    <RowTemplate >
         <MudTd Class="cursor-pointer" DataLabel="Id">@context.Id</MudTd>
         <MudTd Class="cursor-pointer" DataLabel="Title">@context.Title</MudTd>
         <MudTd Class="cursor-pointer" DataLabel="Description">@context.Description</MudTd>
