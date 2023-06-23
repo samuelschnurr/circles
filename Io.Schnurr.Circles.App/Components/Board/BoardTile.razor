@@ -2,20 +2,20 @@
     @{
         foreach (var d in data)
         {
-            <MudItem xs="12" sm="6" md="4" lg="3">
-                <MudCard Elevation="6" Class="cursor-pointer">
-                    <MudCardMedia Image="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" Height="200" />
+            <MudItem xs="12" sm="6" md="4" lg="3" xl="2" onclick='@(() => Console.WriteLine(d.Id))'>
+                <MudCard Elevation="6" Class="cursor-pointer" Style="max-width:350px">
+                    <MudCardMedia Image="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" Height="240" />
                     <MudCardContent>
-                        <MudText Typo="Typo.h5">@d.Title</MudText>
-                        <MudText Typo="Typo.body2">@d.Description</MudText>
-                    </MudCardContent>
-                    <MudCardActions Class="pa-4">
-                        <MudText Class="mud-text-secondary" Typo="Typo.body2">@d.CreatedAt.ToShortDateString()</MudText>
-                        <MudSpacer />
-                        <MudText Typo="Typo.body2">@d.Price.ToCurrency()</MudText>
-                    </MudCardActions>
-                </MudCard>
-            </MudItem>
+                        <MudText Class="line-clamp-1" Typo="Typo.h6">@d.Title</MudText>
+                        <MudText Class="line-clamp-3" Style="Height:60px" Typo="Typo.body2">@d.Description</MudText>
+                        </MudCardContent>
+                        <MudCardActions Class="px-4 pb-4 pt-0">
+                            <MudText Class="mud-text-secondary" Typo="Typo.body2">@d.CreatedAt.ToShortDateString()</MudText>
+                            <MudSpacer />
+                            <MudText Typo="Typo.body2">@d.Price.ToCurrency()</MudText>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
         }
     }
 </MudGrid>
