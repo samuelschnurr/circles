@@ -2,5 +2,5 @@
 
 internal interface ILoadingComponent
 {
-    bool IsLoading();
+    public bool IsLoading { get; }
 }
