@@ -1,4 +1,12 @@
-﻿<MudGrid Spacing="6">
+﻿@{
+    if (IsLoading)
+    {
+        <ProgressBar />
+        return;
+    }
+}
+
+<MudGrid Spacing="6">
     @{
         foreach (var d in Data)
         {

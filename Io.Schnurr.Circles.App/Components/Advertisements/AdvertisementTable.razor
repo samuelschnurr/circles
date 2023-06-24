@@ -2,6 +2,14 @@
 @using Io.Schnurr.Circles.App.Store.App;
 @using Io.Schnurr.Circles.Shared.Models;
 
+@{
+    if (IsLoading)
+    {
+        <ProgressBar />
+        return;
+    }
+}
+
 <span id="advertisementTable">
     <MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
         <HeaderContent>
