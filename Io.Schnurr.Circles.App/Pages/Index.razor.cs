@@ -9,12 +9,12 @@ public partial class Index : ILoadingComponent
 
     private bool ShowTileView => BoardState.Value.IsTileView == true;
 
-    private void HandleToggleTileView()
+    private void ToggleTileView()
     {
         Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { IsTileView = !BoardState.Value.IsTileView }));
     }
 
-    private async Task HandleSearch(string s)
+    private async Task SearchAdvertisements(string s)
     {
         // TODO Codebehind
         Console.WriteLine("You searched: " + s);
