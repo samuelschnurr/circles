@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Components.Advertisement;
+namespace Io.Schnurr.Circles.App.Components.Advertisements;
 public partial class AdvertisementToolBar
 {
     [Parameter]

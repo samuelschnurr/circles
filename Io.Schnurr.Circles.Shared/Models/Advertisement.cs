@@ -1,6 +1,6 @@
 ﻿namespace Io.Schnurr.Circles.Shared.Models;
 
-public class Offer : Base
+public class Advertisement : Base
 {
     public string Title { get; set; }
     public string Description { get; set; }

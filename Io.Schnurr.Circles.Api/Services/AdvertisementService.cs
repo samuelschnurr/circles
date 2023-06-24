@@ -2,12 +2,12 @@
 
 namespace Io.Schnurr.Circles.Api.Services;
 
-internal static class OfferService
+internal static class AdvertisementService
 {
     #region MockDB
 
-    private static readonly IEnumerable<Offer> offers = Enumerable.Range(1, 50).Select(index =>
-              new Offer()
+    private static readonly IEnumerable<Advertisement> advertisements = Enumerable.Range(1, 50).Select(index =>
+              new Advertisement()
               {
 
                   Id = index,
@@ -24,22 +24,22 @@ internal static class OfferService
 
     internal static IResult GetAll()
     {
-        return TypedResults.Ok(offers.Where(o => o.DeletedAt == null));
+        return TypedResults.Ok(advertisements.Where(o => o.DeletedAt == null));
     }
 
     internal static IResult GetById(int id)
     {
-        return offers.SingleOrDefault(o => o.Id == id && o.DeletedAt == null)
-            is Offer offer
-            ? TypedResults.Ok(offer)
+        return advertisements.SingleOrDefault(o => o.Id == id && o.DeletedAt == null)
+            is Advertisement advertisement
+            ? TypedResults.Ok(advertisement)
             : TypedResults.NotFound();
     }
 
     internal static void MapRoutes(WebApplication app)
     {
-        // Using MapGroup to not duplicate "/offer/..." in mappings
-        var offer = app.MapGroup(nameof(Offer));
-        offer.MapGet("/", OfferService.GetAll);
-        offer.MapGet("/{id}", OfferService.GetById);
+        // Using MapGroup to not duplicate "/advertisement/..." in mappings
+        var advertisement = app.MapGroup(nameof(Advertisement));
+        advertisement.MapGet("/", AdvertisementService.GetAll);
+        advertisement.MapGet("/{id}", AdvertisementService.GetById);
     }
 }
