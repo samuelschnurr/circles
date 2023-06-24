@@ -1,8 +1,8 @@
 using System.Text.Json;
 using Io.Schnurr.Circles.Shared.Models;
 
-namespace Io.Schnurr.Circles.App.Components.Board;
-public partial class BoardTile
+namespace Io.Schnurr.Circles.App.Components.Advertisement;
+public partial class AdvertisementTile
 {
     IEnumerable<Offer>? data = null;
 

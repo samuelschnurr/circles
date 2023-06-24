@@ -1,6 +1,6 @@
 ﻿@page "/"
-@using Io.Schnurr.Circles.App.Components.Board
 @using Io.Schnurr.Circles.App.Store.Board;
+@using Io.Schnurr.Circles.App.Components.Advertisement
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
 @inject IState<BoardState> BoardState
 
@@ -8,27 +8,17 @@
 
 @if (IsLoading)
 {
-    <ProgressBar/>
+    <ProgressBar />
     return;
 }
 
-<BoardToolBar ShowTileView="ShowTileView" OnSearch="HandleSearch" />
+<AdvertisementToolBar ShowTileView="ShowTileView" ToggleTileView="HandleToggleTileView" OnSearch="HandleSearch" />
 
 @if (ShowTileView)
 {
-    <BoardTile />
+    <AdvertisementTile />
 }
 else
 {
-    <BoardTable />
-}
-
-
-@code{
-    public async Task HandleSearch(string s)
-    {
-        // TODO Codebehind
-        Console.WriteLine("You searched: " + s);
-        await Task.FromResult(0);
-    }
+    <AdvertisementTable />
 }

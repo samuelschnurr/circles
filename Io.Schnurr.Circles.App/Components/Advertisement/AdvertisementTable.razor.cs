@@ -5,9 +5,9 @@ using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace Io.Schnurr.Circles.App.Components.Board;
+namespace Io.Schnurr.Circles.App.Components.Advertisement;
 
-public partial class BoardTable
+public partial class AdvertisementTable
 {
     [Inject]
     private HttpClient HttpClient { get; set; } = default!;
