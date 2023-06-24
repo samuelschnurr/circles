@@ -26,6 +26,7 @@ public partial class Index : ILoadingComponent
 
     private async Task SearchAdvertisements(string searchString)
     {
+        advertisements = null;
         var data = await AdvertisementService.GetAll(true, searchString);
         advertisements = data;
     }
