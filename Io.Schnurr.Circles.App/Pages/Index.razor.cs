@@ -1,6 +1,7 @@
 ﻿using Io.Schnurr.Circles.App.Interfaces;
 using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Store.Board;
+using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
@@ -27,6 +28,18 @@ public partial class Index : ILoadingComponent
     {
         var data = await AdvertisementService.GetAll(true, searchString);
         advertisements = data;
+    }
+
+    private void SortAdvertisements(SortDirection sortDirection)
+    {
+        if (sortDirection == SortDirection.Ascending)
+        {
+            advertisements = advertisements?.OrderBy(a => a.Title);
+        }
+        else
+        {
+            advertisements = advertisements?.OrderByDescending(a => a.Title);
+        }
     }
 
     private void ToggleTileView()
