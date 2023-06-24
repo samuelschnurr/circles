@@ -8,10 +8,23 @@ public partial class AdvertisementToolBar
     public EventCallback<string> OnSearch { get; set; }
 
     [Parameter]
+    public EventCallback<SortDirection> OnSortDirectionChanged { get; set; }
+
+    [Parameter]
     public EventCallback ToggleTileView { get; set; }
 
     [Parameter]
     public bool ShowTileView { get; set; }
 
-    private SortDirection SortDirection { get; set; } = SortDirection.Ascending;
+    public SortDirection SortDirection
+    {
+        get => sortDirection;
+        set
+        {
+            sortDirection = value;
+            OnSortDirectionChanged.InvokeAsync(value);
+        }
+    }
+
+    private SortDirection sortDirection = SortDirection.Ascending;
 }

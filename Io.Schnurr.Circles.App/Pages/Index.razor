@@ -12,7 +12,10 @@
     return;
 }
 
-<AdvertisementToolBar ShowTileView="ShowTileView" ToggleTileView="ToggleTileView" OnSearch="SearchAdvertisements" />
+<AdvertisementToolBar ShowTileView="ShowTileView"
+                      ToggleTileView="ToggleTileView"
+                      OnSearch="SearchAdvertisements"
+                      OnSortDirectionChanged="SortAdvertisements" />
 
 @if (ShowTileView)
 {
