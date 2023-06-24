@@ -11,6 +11,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.AddApiConfiguration();
 builder.AddFluxorConfiguration();
+builder.AddServiceConfiguration();
 
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddMudServices();

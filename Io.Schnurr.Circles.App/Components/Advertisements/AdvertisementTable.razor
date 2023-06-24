@@ -2,7 +2,7 @@
 @using Io.Schnurr.Circles.App.Store.App;
 @using Io.Schnurr.Circles.Shared.Models;
 
-<MudTable ServerData="new Func<TableState, Task<TableData<Advertisement>>>(async state => await ServerReload(state, true))" Hover="true" Striped="true" @ref="table" OnRowClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
+<MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
     <HeaderContent>
         <MudTh><MudTableSortLabel SortLabel="id_field" T="Advertisement">Id</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortLabel="title_field" T="Advertisement">Title</MudTableSortLabel></MudTh>

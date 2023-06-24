@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using Io.Schnurr.Circles.App.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Io.Schnurr.Circles.App.Utils;
@@ -28,5 +29,10 @@ internal static class StartupHelper
             });
 #endif
         });
+    }
+
+    internal static void AddServiceConfiguration(this WebAssemblyHostBuilder builder)
+    {
+        builder.Services.AddScoped<AdvertisementService>();
     }
 }
