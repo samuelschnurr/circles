@@ -4,6 +4,12 @@
         <ProgressBar />
         return;
     }
+
+    if (!Data.Any())
+    {
+        <MudText Class="d-flex justify-center mt-16" Typo="Typo.body1">No matching records found</MudText>
+        return;
+    }
 }
 
 <MudGrid Spacing="6">
