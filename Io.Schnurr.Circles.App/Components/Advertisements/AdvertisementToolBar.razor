@@ -5,7 +5,7 @@
         <MudTextField Class="mb-2 mr-8" T="string" ValueChanged="@(async (s) => await OnSearch.InvokeAsync(s))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
 
         <MudPaper Elevation="0">
-            <MudSelect Class="mb-2 mr-8" T="string" Label="Order by" AnchorOrigin="Origin.BottomCenter" Value="@("Created at")">
+            <MudSelect Class="mb-2 mr-8" T="string" Label="Sort by" AnchorOrigin="Origin.BottomCenter" Value="@("Created at")">
                 <MudSelectItem Value="@("Created at")" />
                 <MudSelectItem Value="@("Title")" />
                 <MudSelectItem Value="@("Price")" />
@@ -13,9 +13,11 @@
         </MudPaper>
 
         <MudPaper Elevation="0">
-            <MudSelect Class="mb-2 mr-8" T="string" Label="Order direction" AnchorOrigin="Origin.BottomCenter" Value="@("Ascending")">
-                <MudSelectItem Value="@("Ascending")" />
-                <MudSelectItem Value="@("Descending")" />
+            <MudSelect @bind-Value="SortDirection" Class="mb-2 mr-8" Label="Sort direction" AnchorOrigin="Origin.BottomCenter">
+                @foreach (Shared.Enums.SortDirection item in Enum.GetValues(typeof(Shared.Enums.SortDirection)))
+                {
+                    <MudSelectItem Value="@item">@item</MudSelectItem>
+                }
             </MudSelect>
         </MudPaper>
 
