@@ -2,28 +2,30 @@
 @using Io.Schnurr.Circles.App.Store.App;
 @using Io.Schnurr.Circles.Shared.Models;
 
-<MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
-    <HeaderContent>
-        <MudTh><MudTableSortLabel SortLabel="id_field" T="Advertisement">Id</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortLabel="title_field" T="Advertisement">Title</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortLabel="description_field" T="Advertisement">Description</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortLabel="price_field" T="Advertisement">Price</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortLabel="createdAt_field" T="Advertisement">Created</MudTableSortLabel></MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd Class="cursor-pointer" DataLabel="Id">@context.Id</MudTd>
-        <MudTd Class="cursor-pointer" DataLabel="Title">@context.Title</MudTd>
-        <MudTd Class="cursor-pointer" DataLabel="Description">@context.Description</MudTd>
-        <MudTd Class="cursor-pointer" DataLabel="Price">@context.Price.ToCurrency()</MudTd>
-        <MudTd Class="cursor-pointer" DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
-    </RowTemplate>
-    <NoRecordsContent>
-        <MudText>No matching records found</MudText>
-    </NoRecordsContent>
-    <LoadingContent>
-        <MudText>Loading...</MudText>
-    </LoadingContent>
-    <PagerContent>
-        <MudTablePager />
-    </PagerContent>
-</MudTable>
+<span id="advertisementTable">
+    <MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
+        <HeaderContent>
+            <MudTh>Id</MudTh>
+            <MudTh>Title</MudTh>
+            <MudTh>Description</MudTh>
+            <MudTh>Price</MudTh>
+            <MudTh>Created</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Id">@context.Id</MudTd>
+            <MudTd DataLabel="Title">@context.Title</MudTd>
+            <MudTd DataLabel="Description">@context.Description</MudTd>
+            <MudTd DataLabel="Price">@context.Price.ToCurrency()</MudTd>
+            <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText>No matching records found</MudText>
+        </NoRecordsContent>
+        <LoadingContent>
+            <MudText>Loading...</MudText>
+        </LoadingContent>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</span>

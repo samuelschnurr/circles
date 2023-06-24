@@ -1,0 +1,3 @@
+#advertisementTable ::deep tr {
+    cursor: pointer;
+}
