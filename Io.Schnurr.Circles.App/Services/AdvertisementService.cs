@@ -34,6 +34,13 @@ internal class AdvertisementService
         return data ?? new List<Advertisement>();
     }
 
+    internal static IEnumerable<Advertisement>? SortAdvertisements(IEnumerable<Advertisement>? advertisements, bool sortAscending)
+    {
+        var sortedAdvertisements = advertisements?.Order(a => a.Price, sortAscending);
+
+        return sortedAdvertisements;
+    }
+
     private static IEnumerable<Advertisement> FilterAdvertisements(IEnumerable<Advertisement> advertisements, string searchString)
     {
         var filteredData = advertisements.Where(d =>
