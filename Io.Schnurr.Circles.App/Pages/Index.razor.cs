@@ -29,6 +29,7 @@ public partial class Index : ILoadingComponent
         advertisements = null;
         var data = await AdvertisementService.GetAll(true, searchString);
         advertisements = data;
+        SortAdvertisements();
     }
 
     private void SortAdvertisements()
