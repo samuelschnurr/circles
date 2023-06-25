@@ -6,7 +6,7 @@ namespace Io.Schnurr.Circles.App.Components.Advertisements;
 public partial class AdvertisementToolBar
 {
     [Parameter]
-    public EventCallback<string> OnSearch { get; set; }
+    public EventCallback OnSearch { get; set; }
 
     [Parameter]
     public EventCallback OnSort { get; set; }
@@ -21,5 +21,11 @@ public partial class AdvertisementToolBar
     {
         get => BoardState.Value.SortDirection;
         set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = value }, OnSort));
+    }
+
+    public string SearchString
+    {
+        get => BoardState.Value.SearchString;
+        set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SearchString = value }, OnSearch));
     }
 }

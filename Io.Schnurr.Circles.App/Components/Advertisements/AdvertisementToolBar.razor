@@ -4,7 +4,7 @@
 
 <MudPaper Elevation="6">
     <MudToolBar>
-        <MudTextField Class="mb-2 mr-8" T="string" ValueChanged="@(async (v) => await OnSearch.InvokeAsync(v))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
+        <MudTextField @bind-Value="SearchString" Class="mb-2 mr-8" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
 
         <MudPaper Elevation="0" MinWidth="150px">
             <MudSelect Class="mb-2 mr-8" T="string" Label="Sort by" AnchorOrigin="Origin.BottomCenter" Value="@("Created at")">

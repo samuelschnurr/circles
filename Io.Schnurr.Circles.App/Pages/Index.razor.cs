@@ -19,17 +19,16 @@ public partial class Index : ILoadingComponent
 
     protected override async Task OnInitializedAsync()
     {
-        var data = await AdvertisementService.GetAll(true);
-        advertisements = data;
-        SortAdvertisements();
+        await LoadAdvertisements();
     }
 
-    private async Task SearchAdvertisements(string searchString)
+    private async Task LoadAdvertisements()
     {
         advertisements = null;
+        var searchString = BoardState.Value.SearchString;
         var data = await AdvertisementService.GetAll(true, searchString);
-        advertisements = data;
-        SortAdvertisements();
+        var sortAscending = BoardState.Value.SortDirection == SortDirection.Ascending;
+        advertisements = AdvertisementService.SortAdvertisements(data, sortAscending);
     }
 
     private void SortAdvertisements()

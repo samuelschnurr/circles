@@ -8,6 +8,8 @@ public record BoardState
 {
     public bool? IsTileView { get; init; }
 
+    internal string SearchString { get; init; }
+
     internal SortDirection SortDirection { get; init; }
 
     public BoardState() { }
