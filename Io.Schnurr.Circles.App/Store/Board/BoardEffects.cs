@@ -1,5 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using Fluxor;
+using Microsoft.AspNetCore.Components;
 
 namespace Io.Schnurr.Circles.App.Store.Board;
 
@@ -17,8 +18,13 @@ public class BoardEffects
     public async Task UpdateState(UpdateStateAction action, IDispatcher dispatcher)
     {
         var newState = action!.state;
-        await localStorageService.SetItemAsync(persistanceName, newState);
         dispatcher.Dispatch(new SetStateAction(newState));
+        await localStorageService.SetItemAsync(persistanceName, newState);
+
+        if (action.callbackAfterUpdate != null)
+        {
+            await action.callbackAfterUpdate.Value.InvokeAsync();
+        }
     }
 
     [EffectMethod(typeof(InitializeStateAction))]
@@ -28,7 +34,7 @@ public class BoardEffects
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new UpdateStateAction(new BoardState() with { IsTileView = true }));
+            dispatcher.Dispatch(new UpdateStateAction(new BoardState() with { IsTileView = true, SortDirection = Shared.Enums.SortDirection.Ascending }));
         }
         else
         {
@@ -37,5 +43,5 @@ public class BoardEffects
     }
 }
 
-public record UpdateStateAction(BoardState state);
+public record UpdateStateAction(BoardState state, EventCallback? callbackAfterUpdate = null);
 public record InitializeStateAction();
