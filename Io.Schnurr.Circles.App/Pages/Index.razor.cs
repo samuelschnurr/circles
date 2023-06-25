@@ -24,6 +24,11 @@ public partial class Index : ILoadingComponent
         advertisements = data;
     }
 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        SortAdvertisements();
+    }
+
     private async Task SearchAdvertisements(string searchString)
     {
         advertisements = null;
