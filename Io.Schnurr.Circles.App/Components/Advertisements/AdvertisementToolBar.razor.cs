@@ -19,7 +19,7 @@ public partial class AdvertisementToolBar
 
     public SortDirection SortDirection
     {
-        get => BoardState.Value.SortDirection!.Value;
+        get => BoardState.Value.SortDirection;
         set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = value }, OnSort));
     }
 }

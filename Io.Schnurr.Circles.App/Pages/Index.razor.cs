@@ -14,7 +14,7 @@ public partial class Index : ILoadingComponent
 
     private IEnumerable<Advertisement>? advertisements;
 
-    public bool IsLoading => BoardState.Value.IsTileView == null || BoardState.Value.SortDirection == null;
+    public bool IsLoading => BoardState.Value.IsTileView == null;
 
     private bool ShowTileView => BoardState.Value.IsTileView == true;
 

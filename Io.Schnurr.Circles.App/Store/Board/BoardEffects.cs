@@ -34,7 +34,7 @@ public class BoardEffects
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new UpdateStateAction(new BoardState() with { IsTileView = true, SortDirection = Shared.Enums.SortDirection.Ascending }));
+            dispatcher.Dispatch(new UpdateStateAction(new BoardState() with { IsTileView = true }));
         }
         else
         {
