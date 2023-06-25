@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using Io.Schnurr.Circles.Shared.Enums;
 
 namespace Io.Schnurr.Circles.App.Store.Board;
 
@@ -6,6 +7,8 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 public record BoardState
 {
     public bool? IsTileView { get; init; }
+
+    public SortDirection SortDirection { get; init; } = SortDirection.Ascending;
 
     public BoardState() { }
 }

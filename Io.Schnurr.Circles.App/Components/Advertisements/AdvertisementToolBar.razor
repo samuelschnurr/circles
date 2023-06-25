@@ -1,8 +1,10 @@
-﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+﻿@using Io.Schnurr.Circles.App.Store.Board;
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@inject IState<BoardState> BoardState
 
 <MudPaper Elevation="6">
     <MudToolBar>
-        <MudTextField Class="mb-2 mr-8" T="string" ValueChanged="@(async (s) => await OnSearch.InvokeAsync(s))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
+        <MudTextField Class="mb-2 mr-8" T="string" ValueChanged="@(async (v) => await OnSearch.InvokeAsync(v))" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
 
         <MudPaper Elevation="0" MinWidth="150px">
             <MudSelect Class="mb-2 mr-8" T="string" Label="Sort by" AnchorOrigin="Origin.BottomCenter" Value="@("Created at")">

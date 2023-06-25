@@ -31,15 +31,15 @@ public partial class Index : ILoadingComponent
         advertisements = data;
     }
 
-    private void SortAdvertisements(SortDirection sortDirection)
+    private void SortAdvertisements()
     {
-        if (sortDirection == SortDirection.Ascending)
+        if (BoardState.Value.SortDirection == SortDirection.Ascending)
         {
-            advertisements = advertisements?.OrderBy(a => a.Title);
+            advertisements = advertisements?.OrderBy(a => a.Price);
         }
         else
         {
-            advertisements = advertisements?.OrderByDescending(a => a.Title);
+            advertisements = advertisements?.OrderByDescending(a => a.Price);
         }
     }
 

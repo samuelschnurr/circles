@@ -1,3 +1,4 @@
+using Io.Schnurr.Circles.App.Store.Board;
 using Io.Schnurr.Circles.Shared.Enums;
 using Microsoft.AspNetCore.Components;
 
@@ -8,7 +9,7 @@ public partial class AdvertisementToolBar
     public EventCallback<string> OnSearch { get; set; }
 
     [Parameter]
-    public EventCallback<SortDirection> OnSortDirectionChanged { get; set; }
+    public Action OnSort { get; set; }
 
     [Parameter]
     public EventCallback ToggleTileView { get; set; }
@@ -18,13 +19,11 @@ public partial class AdvertisementToolBar
 
     public SortDirection SortDirection
     {
-        get => sortDirection;
+        get => BoardState.Value.SortDirection;
         set
         {
-            sortDirection = value;
-            OnSortDirectionChanged.InvokeAsync(value);
+            Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = value }));
+            OnSort.Invoke();
         }
     }
-
-    private SortDirection sortDirection = SortDirection.Ascending;
 }
