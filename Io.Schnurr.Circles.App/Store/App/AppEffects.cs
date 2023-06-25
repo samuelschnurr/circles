@@ -17,8 +17,8 @@ public class AppEffects
     public async Task UpdateState(UpdateStateAction action, IDispatcher dispatcher)
     {
         var newState = action!.state;
-        await localStorageService.SetItemAsync(persistanceName, newState);
         dispatcher.Dispatch(new SetStateAction(newState));
+        await localStorageService.SetItemAsync(persistanceName, newState);
     }
 
     [EffectMethod(typeof(InitializeStateAction))]

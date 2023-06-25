@@ -8,7 +8,7 @@ public record BoardState
 {
     public bool? IsTileView { get; init; }
 
-    public SortDirection SortDirection { get; init; } = SortDirection.Ascending;
+    public SortDirection? SortDirection { get; init; }
 
     public BoardState() { }
 }

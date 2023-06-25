@@ -9,6 +9,9 @@ public partial class AdvertisementToolBar
     public EventCallback<string> OnSearch { get; set; }
 
     [Parameter]
+    public EventCallback OnSort { get; set; }
+
+    [Parameter]
     public EventCallback ToggleTileView { get; set; }
 
     [Parameter]
@@ -16,7 +19,7 @@ public partial class AdvertisementToolBar
 
     public SortDirection SortDirection
     {
-        get => BoardState.Value.SortDirection;
-        set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = value }));
+        get => BoardState.Value.SortDirection!.Value;
+        set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = value }, OnSort));
     }
 }

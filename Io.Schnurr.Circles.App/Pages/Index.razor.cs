@@ -14,7 +14,7 @@ public partial class Index : ILoadingComponent
 
     private IEnumerable<Advertisement>? advertisements;
 
-    public bool IsLoading => BoardState.Value.IsTileView == null;
+    public bool IsLoading => BoardState.Value.IsTileView == null || BoardState.Value.SortDirection == null;
 
     private bool ShowTileView => BoardState.Value.IsTileView == true;
 
@@ -22,10 +22,6 @@ public partial class Index : ILoadingComponent
     {
         var data = await AdvertisementService.GetAll(true);
         advertisements = data;
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
         SortAdvertisements();
     }
 
