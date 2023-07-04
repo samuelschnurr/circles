@@ -1,0 +1,14 @@
+﻿<MudItem xs="12" sm="6" md="4" lg="3" xl="2" onclick="@HandleClick">
+    <MudCard Elevation="6" Class="cursor-pointer" Style="max-width:350px">
+        <MudCardMedia Image="@Image" Height="240" />
+        <MudCardContent>
+            <MudText Class="line-clamp-1" Typo="Typo.h6">@Title</MudText>
+            <MudText Class="line-clamp-3" Style="Height:60px" Typo="Typo.body2">@Description</MudText>
+        </MudCardContent>
+        <MudCardActions Class="px-4 pb-4 pt-0">
+            <MudText Class="mud-text-secondary" Typo="Typo.body2">@SubTitleLeft</MudText>
+            <MudSpacer />
+            <MudText Typo="Typo.body2">@SubTitleRight</MudText>
+        </MudCardActions>
+    </MudCard>
+</MudItem>
