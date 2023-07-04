@@ -1,13 +1,11 @@
-﻿using Io.Schnurr.Circles.App.Models;
-
-namespace Io.Schnurr.Circles.App.Pages;
+﻿namespace Io.Schnurr.Circles.App.Pages;
 
 public partial class Circles
 {
-    internal PaperSwitchItem[] circles = new PaperSwitchItem[]
+    internal (string label, bool isChecked, bool isDisabled, bool isReadOnly)[] circles =
     {
-        new PaperSwitchItem("Work", true, false, true),
-        new PaperSwitchItem("Family", false, true, true),
-        new PaperSwitchItem("Friends", false, true, true),
+        ("Work", true, false, true),
+        ("Family", false, true, true),
+        ("Friends", false, true, true)
     };
 }
