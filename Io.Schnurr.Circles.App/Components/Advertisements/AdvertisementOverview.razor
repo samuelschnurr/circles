@@ -12,7 +12,7 @@
     if (!ShowTileView)
     {
         <span id="advertisementTable">
-            <Table T="Advertisement" Data="Data" TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })">
+            <Table Data="Data" TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })">
                 <TableRowTemplate>
                     <MudTd DataLabel="Id">@context.Id</MudTd>
                     <MudTd DataLabel="Title">@context.Title</MudTd>
