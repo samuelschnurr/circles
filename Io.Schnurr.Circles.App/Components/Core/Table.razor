@@ -1,7 +1,7 @@
 ﻿@typeparam T
 @inherits MudTable<T>
 
-<MudTable Items="Data" Hover="true" Striped="true">
+<span id="coreTable">
     <HeaderContent>
         @foreach (var th in TableHeaders)
         {
@@ -21,3 +21,4 @@
         <MudTablePager />
     </PagerContent>
 </MudTable>
+</span>
