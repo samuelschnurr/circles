@@ -2,7 +2,7 @@
 @inherits MudTable<T>
 
 <span id="coreTable">
-    <MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@(async (TableRowClickEventArgs<T> r) => await HandleClick.InvokeAsync(r))">
+    <MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@(async (TableRowClickEventArgs<T> r) => await OnClick.InvokeAsync(r))">
         <HeaderContent>
             @foreach (var th in TableHeaders)
             {

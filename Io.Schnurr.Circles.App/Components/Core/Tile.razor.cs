@@ -5,7 +5,7 @@ namespace Io.Schnurr.Circles.App.Components.Core;
 public partial class Tile
 {
     [Parameter]
-    public EventCallback HandleClick { get; set; }
+    public EventCallback OnClick { get; set; }
 
     [Parameter]
     public string Title { get; set; }

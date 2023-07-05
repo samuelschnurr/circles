@@ -9,7 +9,7 @@ public partial class Drawer
         Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
     }
 
-    private void HandleOverlayClick(bool newValue)
+    private void ToggleDrawer(bool newValue)
     {
         // Handle toggling drawer correctly in mobile view
         // Close Overlay when a click outside is recognized

@@ -13,7 +13,7 @@
     {
         <Table Data="Data"
                TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })"
-               HandleClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
+               OnClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
             <TableRowTemplate>
                 <MudTd DataLabel="Id">@context.Id</MudTd>
                 <MudTd DataLabel="Title">@context.Title</MudTd>
@@ -40,7 +40,7 @@
                       Description="@d.Description"
                       SubTitleLeft="@d.CreatedAt.ToShortDateString()"
                       SubTitleRight="@d.Price.ToCurrency()"
-                      HandleClick="@(() => Console.WriteLine(d.Id))"
+                      OnClick="@(() => Console.WriteLine(d.Id))"
                       Image="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" />
             }
         }

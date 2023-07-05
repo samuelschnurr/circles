@@ -6,7 +6,7 @@ namespace Io.Schnurr.Circles.App.Components.Core;
 public partial class Table<T>
 {
     [Parameter]
-    public EventCallback<TableRowClickEventArgs<T>> HandleClick { get; set; }
+    public EventCallback<TableRowClickEventArgs<T>> OnClick { get; set; }
 
     [Parameter]
     public IEnumerable<T> Data { get; set; }
