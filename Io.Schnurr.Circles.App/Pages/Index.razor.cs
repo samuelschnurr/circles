@@ -1,12 +1,11 @@
-﻿using Io.Schnurr.Circles.App.Interfaces;
-using Io.Schnurr.Circles.App.Services;
+﻿using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Store.Board;
 using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 namespace Io.Schnurr.Circles.App.Pages;
 
-public partial class Index : ILoadingComponent
+public partial class Index
 {
     [Inject]
     private AdvertisementService AdvertisementService { get; init; }
