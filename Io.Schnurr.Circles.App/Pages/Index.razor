@@ -17,11 +17,6 @@
                       OnSearch="LoadAdvertisements"
                       OnSort="SortAdvertisements" />
 
-@if (ShowTileView)
-{
-    <AdvertisementTile Data="advertisements" />
-}
-else
-{
-    <AdvertisementTable Data="advertisements" />
-}
+
+<AdvertisementOverview Data="advertisements"
+                       ShowTileView="ShowTileView" />

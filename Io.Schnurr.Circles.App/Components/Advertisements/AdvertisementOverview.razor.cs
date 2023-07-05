@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Components;
 
 namespace Io.Schnurr.Circles.App.Components.Advertisements;
 
-public partial class AdvertisementTable
+public partial class AdvertisementOverview
 {
     [Parameter]
     public IEnumerable<Advertisement> Data { get; init; }
+
+    [Parameter]
+    public bool ShowTileView { get; set; }
 
     public bool IsLoading => Data == null;
 }
