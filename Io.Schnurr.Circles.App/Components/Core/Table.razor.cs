@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace Io.Schnurr.Circles.App.Components.Core;
 
 public partial class Table<T>
 {
+    [Parameter]
+    public EventCallback<TableRowClickEventArgs<T>> HandleClick { get; set; }
+
     [Parameter]
     public IEnumerable<T> Data { get; set; }
 

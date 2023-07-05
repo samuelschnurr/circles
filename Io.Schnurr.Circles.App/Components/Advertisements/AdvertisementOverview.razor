@@ -11,17 +11,17 @@
 
     if (!ShowTileView)
     {
-        <span id="advertisementTable">
-            <Table Data="Data" TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })">
-                <TableRowTemplate>
-                    <MudTd DataLabel="Id">@context.Id</MudTd>
-                    <MudTd DataLabel="Title">@context.Title</MudTd>
-                    <MudTd DataLabel="Description">@context.Description</MudTd>
-                    <MudTd DataLabel="Price">@context.Price.ToCurrency()</MudTd>
-                    <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
-                </TableRowTemplate>
-            </Table>
-        </span>
+        <Table Data="Data"
+               TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })"
+               HandleClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
+            <TableRowTemplate>
+                <MudTd DataLabel="Id">@context.Id</MudTd>
+                <MudTd DataLabel="Title">@context.Title</MudTd>
+                <MudTd DataLabel="Description">@context.Description</MudTd>
+                <MudTd DataLabel="Price">@context.Price.ToCurrency()</MudTd>
+                <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
+            </TableRowTemplate>
+        </Table>
         return;
     }
 

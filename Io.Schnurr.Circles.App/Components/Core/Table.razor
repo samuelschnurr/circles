@@ -2,23 +2,24 @@
 @inherits MudTable<T>
 
 <span id="coreTable">
-    <HeaderContent>
-        @foreach (var th in TableHeaders)
-        {
-            <MudTh>@th</MudTh>
-        }
-    </HeaderContent>
-    <RowTemplate>
-        @TableRowTemplate(context)
-    </RowTemplate>
-    <NoRecordsContent>
-        <MudText>No matching records found</MudText>
-    </NoRecordsContent>
-    <LoadingContent>
-        <MudText>Loading...</MudText>
-    </LoadingContent>
-    <PagerContent>
-        <MudTablePager />
-    </PagerContent>
-</MudTable>
+    <MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@(async (TableRowClickEventArgs<T> r) => await HandleClick.InvokeAsync(r))">
+        <HeaderContent>
+            @foreach (var th in TableHeaders)
+            {
+                <MudTh>@th</MudTh>
+            }
+        </HeaderContent>
+        <RowTemplate>
+            @TableRowTemplate(context)
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText>No matching records found</MudText>
+        </NoRecordsContent>
+        <LoadingContent>
+            <MudText>Loading...</MudText>
+        </LoadingContent>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
 </span>
