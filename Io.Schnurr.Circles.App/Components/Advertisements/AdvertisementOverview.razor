@@ -12,37 +12,22 @@
     if (!ShowTileView)
     {
         <span id="advertisementTable">
-            <MudTable Items="Data" Hover="true" Striped="true" OnRowClick="@((TableRowClickEventArgs<Advertisement> r) => Console.WriteLine(r.Item.Id))">
-                <HeaderContent>
-                    <MudTh>Id</MudTh>
-                    <MudTh>Title</MudTh>
-                    <MudTh>Description</MudTh>
-                    <MudTh>Price</MudTh>
-                    <MudTh>Created</MudTh>
-                </HeaderContent>
-                <RowTemplate>
+            <Table T="Advertisement" Data="Data" TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })">
+                <TableRowTemplate>
                     <MudTd DataLabel="Id">@context.Id</MudTd>
                     <MudTd DataLabel="Title">@context.Title</MudTd>
                     <MudTd DataLabel="Description">@context.Description</MudTd>
                     <MudTd DataLabel="Price">@context.Price.ToCurrency()</MudTd>
                     <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
-                </RowTemplate>
-                <NoRecordsContent>
-                    <MudText>No matching records found</MudText>
-                </NoRecordsContent>
-                <LoadingContent>
-                    <MudText>Loading...</MudText>
-                </LoadingContent>
-                <PagerContent>
-                    <MudTablePager />
-                </PagerContent>
-            </MudTable>
+                </TableRowTemplate>
+            </Table>
         </span>
         return;
     }
 
     if (!Data.Any())
     {
+        // Show information, when no Tiles are rendered because of missing data
         <MudText Class="d-flex justify-center mt-16" Typo="Typo.body1">No matching records found</MudText>
         return;
     }

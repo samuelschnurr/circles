@@ -1,0 +1,23 @@
+﻿@typeparam T
+@inherits MudTable<T>
+
+<MudTable Items="Data" Hover="true" Striped="true">
+    <HeaderContent>
+        @foreach (var th in TableHeaders)
+        {
+            <MudTh>@th</MudTh>
+        }
+    </HeaderContent>
+    <RowTemplate>
+        @TableRowTemplate(context)
+    </RowTemplate>
+    <NoRecordsContent>
+        <MudText>No matching records found</MudText>
+    </NoRecordsContent>
+    <LoadingContent>
+        <MudText>Loading...</MudText>
+    </LoadingContent>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>
