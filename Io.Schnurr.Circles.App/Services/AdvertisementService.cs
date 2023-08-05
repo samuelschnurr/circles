@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using System.Text.Json;
 using Io.Schnurr.Circles.App.Utils;
+using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
 
 namespace Io.Schnurr.Circles.App.Services;
@@ -37,9 +38,23 @@ internal class AdvertisementService // TODO: Cleanup
         return data ?? new List<Advertisement>();
     }
 
-    internal static IEnumerable<Advertisement>? SortAdvertisements(IEnumerable<Advertisement>? advertisements, bool sortAscending)
+    internal static IEnumerable<Advertisement>? SortAdvertisements(IEnumerable<Advertisement>? advertisements, SortColumn sortColumn, SortDirection sortDirection)
     {
-        var sortedAdvertisements = advertisements?.Order(a => a.Price, sortAscending);
+        var sortAscending = sortDirection == SortDirection.Ascending;
+        IEnumerable<Advertisement>? sortedAdvertisements = null;
+
+        switch (sortColumn)
+        {
+            case SortColumn.CreatedAt:
+                sortedAdvertisements = advertisements?.Order(a => a.CreatedAt, sortAscending);
+                break;
+            case SortColumn.Title:
+                sortedAdvertisements = advertisements?.Order(a => a.Title, sortAscending);
+                break;
+            case SortColumn.Price:
+                sortedAdvertisements = advertisements?.Order(a => a.Price, sortAscending);
+                break;
+        }
 
         return sortedAdvertisements;
     }

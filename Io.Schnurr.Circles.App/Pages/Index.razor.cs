@@ -12,6 +12,10 @@ public partial class Index
 
     private IEnumerable<Advertisement>? advertisements;
 
+    private SortColumn SortColumn => BoardState.Value.SortColumn;
+
+    private SortDirection SortDirection => BoardState.Value.SortDirection;
+
     public bool IsLoading => BoardState.Value.IsTileView == null;
 
     private bool ShowTileView => BoardState.Value.IsTileView == true;
@@ -26,14 +30,12 @@ public partial class Index
         advertisements = null;
         var searchString = BoardState.Value.SearchString;
         var data = await AdvertisementService.GetAll(true, searchString);
-        var sortAscending = BoardState.Value.SortDirection == SortDirection.Ascending;
-        advertisements = AdvertisementService.SortAdvertisements(data, sortAscending);
+        advertisements = AdvertisementService.SortAdvertisements(data, SortColumn, SortDirection);
     }
 
     private void SortAdvertisements()
     {
-        var sortAscending = BoardState.Value.SortDirection == SortDirection.Ascending;
-        advertisements = AdvertisementService.SortAdvertisements(advertisements, sortAscending);
+        advertisements = AdvertisementService.SortAdvertisements(advertisements, SortColumn, SortDirection);
     }
 
     private void ToggleTileView()

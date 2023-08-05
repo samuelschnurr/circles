@@ -17,6 +17,12 @@ public partial class AdvertisementToolBar
     [Parameter]
     public bool ShowTileView { get; set; }
 
+    public SortColumn SortColumn
+    {
+        get => BoardState.Value.SortColumn;
+        set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortColumn = value }, OnSort));
+    }
+
     public SortDirection SortDirection
     {
         get => BoardState.Value.SortDirection;

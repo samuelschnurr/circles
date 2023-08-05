@@ -7,10 +7,11 @@
         <MudTextField @bind-Value="SearchString" Class="mb-2 mr-8" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
 
         <MudPaper Elevation="0" MinWidth="150px">
-            <MudSelect Class="mb-2 mr-8" T="string" Label="Sort by" AnchorOrigin="Origin.BottomCenter" Value="@("Created at")">
-                <MudSelectItem Value="@("Created at")" />
-                <MudSelectItem Value="@("Title")" />
-                <MudSelectItem Value="@("Price")" />
+            <MudSelect @bind-Value="SortColumn" Class="mb-2 mr-8" Label="Sort by" AnchorOrigin="Origin.BottomCenter">
+                @foreach (Shared.Enums.SortColumn item in Enum.GetValues(typeof(Shared.Enums.SortColumn)))
+                {
+                    <MudSelectItem Value="@item">@item</MudSelectItem>
+                }
             </MudSelect>
         </MudPaper>
 
