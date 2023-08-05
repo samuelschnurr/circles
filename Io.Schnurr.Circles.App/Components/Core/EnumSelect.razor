@@ -1,8 +1,10 @@
 ﻿@typeparam T where T : Enum
 
-<MudSelect Value="SelectedValue" ValueChanged="OnSelectedValueChanged" Class="mb-2 mr-8" Label="@Label" AnchorOrigin="Origin.BottomCenter">
-    @foreach (T item in Enum.GetValues(typeof(T)))
-    {
-        <MudSelectItem Value="@item">@item.GetDisplayName()</MudSelectItem>
-    }
-</MudSelect>
+<MudPaper Elevation="0" MinWidth="@(MinWidth.ToString() + "px")">
+    <MudSelect Value="SelectedValue" ValueChanged="OnSelectedValueChanged" Class="mb-2 mr-8" Label="@Label" AnchorOrigin="Origin.BottomCenter">
+        @foreach (T item in Enum.GetValues(typeof(T)))
+        {
+            <MudSelectItem Value="@item">@item.GetDisplayName()</MudSelectItem>
+        }
+    </MudSelect>
+</MudPaper>

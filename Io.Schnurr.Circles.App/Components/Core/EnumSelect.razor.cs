@@ -12,4 +12,7 @@ public partial class EnumSelect<T> where T : Enum
 
     [Parameter]
     public string Label { get; set; }
+
+    [Parameter]
+    public int MinWidth { get; set; } = 150;
 }
