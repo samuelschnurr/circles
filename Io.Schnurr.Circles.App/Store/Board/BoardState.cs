@@ -10,7 +10,7 @@ public record BoardState
 
     internal string SearchString { get; init; }
 
-    internal SortDirection SortDirection { get; init; }
+    internal SortDirection SortDirection { get; init; } = SortDirection.Descending;
 
     public BoardState() { }
 }
