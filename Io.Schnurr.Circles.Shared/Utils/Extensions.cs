@@ -1,4 +1,6 @@
-﻿namespace Io.Schnurr.Circles.App.Utils;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Io.Schnurr.Circles.App.Utils;
 
 public static class Extensions
 {
@@ -14,5 +16,14 @@ public static class Extensions
         {
             return source.OrderByDescending(selector);
         }
+    }
+
+    public static string GetDisplayName(this Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+        var displayAttribute = field?.GetCustomAttributes(typeof(DisplayAttribute), false)
+                                     .OfType<DisplayAttribute>()
+                                     .FirstOrDefault();
+        return displayAttribute?.Name ?? value.ToString();
     }
 }
