@@ -1,9 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
-<Provider />
+<Provider IsDarkMode="AppState.Value.IsDarkMode" />
 <MudLayout>
-    <AppBar />
-    <Drawer />
+    <AppBar OnToggleDrawer="ToggleDrawerViaAppBar" />
+    <Drawer OnToggleDrawer="ToggleDrawerViaDrawer" OnToggleDarkMode="ToggleDarkMode" IsDrawerOpen="AppState.Value.IsDrawerOpen" IsDarkMode="AppState.Value.IsDarkMode" />
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="py-8">
             <span id="mainContent-mainContainer">

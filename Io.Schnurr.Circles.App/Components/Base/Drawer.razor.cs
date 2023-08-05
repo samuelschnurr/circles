@@ -1,23 +1,18 @@
-﻿using Io.Schnurr.Circles.App.Store.App;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class Drawer
 {
-    private void ToggleDarkMode()
-    {
-        Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
-    }
+    [Parameter]
+    public EventCallback OnToggleDarkMode { get; set; }
 
-    private void ToggleDrawer(bool newValue)
-    {
-        // Handle toggling drawer correctly in mobile view
-        // Close Overlay when a click outside is recognized
-        var currentValue = AppState.Value.IsDrawerOpen;
+    [Parameter]
+    public EventCallback<bool> OnToggleDrawer { get; set; }
 
-        if (newValue != currentValue)
-        {
-            Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
-        }
-    }
+    [Parameter]
+    public bool IsDrawerOpen { get; set; }
+
+    [Parameter]
+    public bool IsDarkMode { get; set; }
 }

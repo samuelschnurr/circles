@@ -1,11 +1,9 @@
-﻿using Io.Schnurr.Circles.App.Store.App;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace Io.Schnurr.Circles.App.Components.Base;
 
 public partial class AppBar
 {
-    private void ToggleDrawer()
-    {
-        Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
-    }
+    [Parameter]
+    public EventCallback OnToggleDrawer { get; set; }
 }
