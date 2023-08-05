@@ -1,11 +1,9 @@
-﻿@using System.Net.Http.Json
-@using Io.Schnurr.Circles.App.Store.App;
-@using Io.Schnurr.Circles.Shared.Models;
+﻿@using Io.Schnurr.Circles.Shared.Models;
 
 @{
     if (IsLoading)
     {
-        <ProgressCircular IsDrawerOpen="AppState.Value.IsDrawerOpen" />
+        <ProgressCircular IsDrawerOpen="IsDrawerOpen" />
         return;
     }
 

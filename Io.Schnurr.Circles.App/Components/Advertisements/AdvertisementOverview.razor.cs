@@ -9,6 +9,9 @@ public partial class AdvertisementOverview
     public IEnumerable<Advertisement> Data { get; init; }
 
     [Parameter]
+    public bool IsDrawerOpen { get; set; }
+
+    [Parameter]
     public bool ShowTileView { get; set; }
 
     public bool IsLoading => Data == null;
