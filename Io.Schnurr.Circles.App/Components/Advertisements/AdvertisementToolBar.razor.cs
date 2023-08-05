@@ -17,21 +17,19 @@ public partial class AdvertisementToolBar
     [Parameter]
     public bool ShowTileView { get; set; }
 
-    public SortColumn SortColumn
-    {
-        get => BoardState.Value.SortColumn;
-        set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortColumn = value }, OnSort));
-    }
-
-    public SortDirection SortDirection
-    {
-        get => BoardState.Value.SortDirection;
-        set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = value }, OnSort));
-    }
-
     public string SearchString
     {
         get => BoardState.Value.SearchString;
         set => Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SearchString = value }, OnSearch));
+    }
+
+    private void OnSortColumnChanged(SortColumn column)
+    {
+        Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortColumn = column }, OnSort));
+    }
+
+    private void OnSortDirectionChanged(SortDirection direction)
+    {
+        Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = direction }, OnSort));
     }
 }

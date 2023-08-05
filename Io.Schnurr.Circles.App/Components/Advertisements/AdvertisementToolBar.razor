@@ -6,22 +6,12 @@
     <MudToolBar>
         <MudTextField @bind-Value="SearchString" Class="mb-2 mr-8" Placeholder="Search" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" />
 
-        <MudPaper Elevation="0" MinWidth="150px">
-            <MudSelect @bind-Value="SortColumn" Class="mb-2 mr-8" Label="Sort by" AnchorOrigin="Origin.BottomCenter">
-                @foreach (Shared.Enums.SortColumn item in Enum.GetValues(typeof(Shared.Enums.SortColumn)))
-                {
-                    <MudSelectItem Value="@item">@item</MudSelectItem>
-                }
-            </MudSelect>
+        <MudPaper Elevation="0" MinWidth="175px">
+            <EnumSelect Label="Sort by" T="Shared.Enums.SortColumn" SelectedValue="BoardState.Value.SortColumn" OnSelectedValueChanged="OnSortColumnChanged" />
         </MudPaper>
 
         <MudPaper Elevation="0" MinWidth="150px">
-            <MudSelect @bind-Value="SortDirection" Class="mb-2 mr-8" Label="Sort direction" AnchorOrigin="Origin.BottomCenter">
-                @foreach (Shared.Enums.SortDirection item in Enum.GetValues(typeof(Shared.Enums.SortDirection)))
-                {
-                    <MudSelectItem Value="@item">@item</MudSelectItem>
-                }
-            </MudSelect>
+            <EnumSelect Label="Sort direction" T="Shared.Enums.SortDirection" SelectedValue="BoardState.Value.SortDirection" OnSelectedValueChanged="OnSortDirectionChanged" />
         </MudPaper>
 
         <MudSwitch T="bool" Checked="ShowTileView" CheckedChanged="ToggleTileView" ThumbIconColor="Color.Dark" ThumbIcon="@(ShowTileView ? Icons.Material.Filled.GridView: Icons.Material.Filled.List)" />
