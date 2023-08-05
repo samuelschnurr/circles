@@ -3,6 +3,7 @@ using Io.Schnurr.Circles.App.Store.Board;
 using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
+
 namespace Io.Schnurr.Circles.App.Pages;
 
 public partial class Index
@@ -15,6 +16,8 @@ public partial class Index
     private SortColumn SortColumn => BoardState.Value.SortColumn;
 
     private SortDirection SortDirection => BoardState.Value.SortDirection;
+
+    public string SearchString => BoardState.Value.SearchString;
 
     public bool IsLoading => BoardState.Value.IsTileView == null;
 
@@ -41,5 +44,20 @@ public partial class Index
     private void ToggleTileView()
     {
         Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { IsTileView = !BoardState.Value.IsTileView }));
+    }
+
+    private void OrderBySortColumn(SortColumn column)
+    {
+        Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortColumn = column }, EventCallback.Factory.Create(this, SortAdvertisements)));
+    }
+
+    private void OrderBySortDirection(SortDirection direction)
+    {
+        Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SortDirection = direction }, EventCallback.Factory.Create(this, SortAdvertisements)));
+    }
+
+    private void SearchByString(string search)
+    {
+        Dispatcher.Dispatch(new UpdateStateAction(BoardState.Value with { SearchString = search }, EventCallback.Factory.Create(this, LoadAdvertisements)));
     }
 }

@@ -15,8 +15,12 @@
 
 <AdvertisementToolBar ShowTileView="ShowTileView"
                       ToggleTileView="ToggleTileView"
-                      OnSearch="LoadAdvertisements"
-                      OnSort="SortAdvertisements" />
+                      SearchString="@SearchString"
+                      SortColumn="SortColumn"
+                      SortDirection="SortDirection"
+                      OnSearchChanged="SearchByString"
+                      OnSortColumnChanged="OrderBySortColumn"
+                      OnSortDirectionChanged="OrderBySortDirection" />
 
 
 <AdvertisementOverview Data="advertisements"
