@@ -1,9 +1,9 @@
 using Io.Schnurr.Circles.Shared.Enums;
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Components.Advertisements;
+namespace Io.Schnurr.Circles.App.Components.Core;
 
-public partial class AdvertisementToolBar
+public partial class ToolBar
 {
     [Parameter]
     public SortColumn SortColumn { get; set; }
