@@ -6,7 +6,7 @@ using Io.Schnurr.Circles.Shared.Models;
 
 namespace Io.Schnurr.Circles.App.Services;
 
-internal class AdvertisementService // TODO: Cleanup
+public class AdvertisementService // TODO: Cleanup
 {
     private HttpClient HttpClient { get; set; }
 
