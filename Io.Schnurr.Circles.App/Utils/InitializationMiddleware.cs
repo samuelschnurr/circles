@@ -11,6 +11,7 @@ public class InitializationMiddleware : Middleware
     {
         dispatcher.Dispatch(new Store.App.InitializeStateAction());
         dispatcher.Dispatch(new Store.Board.InitializeStateAction());
+        dispatcher.Dispatch(new Store.Advertisement.InitializeStateAction());
 
         return Task.CompletedTask;
     }
