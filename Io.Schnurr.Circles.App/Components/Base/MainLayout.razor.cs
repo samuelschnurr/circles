@@ -33,7 +33,7 @@ public sealed partial class MainLayout : IDisposable
         Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
     }
 
-    private void HandleStateHasChanged(object? sender, EventArgs e) => StateHasChanged();
+    private void HandleStateHasChanged(object? sender, EventArgs e) => InvokeAsync(StateHasChanged);
 
     public void Dispose()
     {
