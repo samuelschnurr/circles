@@ -1,7 +1,7 @@
 ﻿using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Components.Advertisements;
+namespace Io.Schnurr.Circles.App.Components.Views.Advertisements;
 
 public partial class AdvertisementOverview
 {

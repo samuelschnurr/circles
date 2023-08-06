@@ -1,4 +1,4 @@
-﻿namespace Io.Schnurr.Circles.App.Pages;
+﻿namespace Io.Schnurr.Circles.App.Components.Pages;
 
 public partial class Pins
 {

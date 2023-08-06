@@ -4,7 +4,7 @@ using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Pages;
+namespace Io.Schnurr.Circles.App.Components.Pages;
 
 public partial class Index
 {
