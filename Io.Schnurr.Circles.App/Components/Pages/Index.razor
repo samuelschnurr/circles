@@ -1,28 +1,15 @@
 ﻿@page "/"
-@using Io.Schnurr.Circles.App.Store.Board;
-@using Io.Schnurr.Circles.App.Components.Views.Advertisements
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
-@inject IState<AppState> AppState
-@inject IState<BoardState> BoardState
+@using Io.Schnurr.Circles.App.Components.Views.Advertisements
 
 <PageTitle>Board</PageTitle>
 
 @if (IsLoading)
 {
-    <ProgressCircular IsDrawerOpen="AppState.Value.IsDrawerOpen" />
+    <ProgressCircular IsDrawerOpen="IsDrawerOpen" />
     return;
 }
 
-<ToolBar ShowTileView="ShowTileView"
-                      ToggleTileView="ToggleTileView"
-                      SearchString="@SearchString"
-                      SortColumn="SortColumn"
-                      SortDirection="SortDirection"
-                      OnSearchChanged="SearchByString"
-                      OnSortColumnChanged="OrderBySortColumn"
-                      OnSortDirectionChanged="OrderBySortDirection" />
+<AdvertisementToolBar />
 
-
-<AdvertisementOverview Data="advertisements"
-                       ShowTileView="ShowTileView"
-                       IsDrawerOpen="AppState.Value.IsDrawerOpen"/>
+<AdvertisementOverview />
