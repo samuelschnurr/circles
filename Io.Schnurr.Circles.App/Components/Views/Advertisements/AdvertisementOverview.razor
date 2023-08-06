@@ -1,4 +1,6 @@
-﻿@using Io.Schnurr.Circles.Shared.Models;
+﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using Io.Schnurr.Circles.App.Store.Advertisement;
+@using Io.Schnurr.Circles.Shared.Models;
 
 @{
     if (IsLoading)
@@ -7,7 +9,7 @@
         return;
     }
 
-    if (!ShowTileView)
+    if (!ShowTileView!.Value)
     {
         <Table Data="Data"
                TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })"
@@ -23,7 +25,7 @@
         return;
     }
 
-    if (!Data.Any())
+    if (!Data!.Any())
     {
         // Show information, when no Tiles are rendered because of missing data
         <MudText Class="d-flex justify-center mt-16" Typo="Typo.body1">No matching records found</MudText>
@@ -32,7 +34,7 @@
 
     <MudGrid Spacing="6">
         @{
-            foreach (var d in Data)
+            foreach (var d in Data!)
             {
                 <Tile Title="@d.Title"
                       Description="@d.Description"
