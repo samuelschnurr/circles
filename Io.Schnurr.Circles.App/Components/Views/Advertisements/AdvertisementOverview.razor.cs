@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Store.Advertisement;
 using Io.Schnurr.Circles.App.Store.App;
 using Io.Schnurr.Circles.App.Store.Board;
@@ -19,7 +20,7 @@ public partial class AdvertisementOverview
     [Inject]
     private IState<BoardState> BoardState { get; set; }
 
-    private IEnumerable<Advertisement>? Data => AdvertisementState.Value.Items;
+    private IEnumerable<Advertisement>? Data => GetAdvertisements();
 
     public bool IsDrawerOpen => AppState.Value.IsDrawerOpen;
 
@@ -33,4 +34,11 @@ public partial class AdvertisementOverview
         Dispatcher.Dispatch(new LoadAdvertisementsAction(AdvertisementState.Value with { }));
     }
 
+    private IEnumerable<Advertisement>? GetAdvertisements()
+    {
+        var advertisements = AdvertisementState.Value.Items;
+        var filteredAdvertisements = AdvertisementService.FilterAdvertisements(advertisements, BoardState.Value.SearchString);
+        var filteredAndSortedAdvertisements = AdvertisementService.SortAdvertisements(filteredAdvertisements, BoardState.Value.SortColumn, BoardState.Value.SortDirection);
+        return filteredAndSortedAdvertisements;
+    }
 }
