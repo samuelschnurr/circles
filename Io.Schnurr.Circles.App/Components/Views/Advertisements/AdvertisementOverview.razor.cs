@@ -20,6 +20,9 @@ public partial class AdvertisementOverview
     [Inject]
     private IState<BoardState> BoardState { get; set; }
 
+    [Inject]
+    private AdvertisementService AdvertisementService { get; set; }
+
     private IEnumerable<Advertisement>? Data => GetAdvertisements();
 
     public bool IsDrawerOpen => AppState.Value.IsDrawerOpen;
@@ -28,10 +31,10 @@ public partial class AdvertisementOverview
 
     public bool IsLoading => Helpers.HasNull(Data, ShowTileView);
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
-        Dispatcher.Dispatch(new LoadAdvertisementsAction(AdvertisementState.Value with { }));
+        var data = await AdvertisementService.GetAll();
+        Dispatcher.Dispatch(new Store.Advertisement.UpdateStateAction(AdvertisementState.Value with { Items = data }));
     }
 
     private IEnumerable<Advertisement>? GetAdvertisements()
