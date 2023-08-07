@@ -8,7 +8,7 @@ public class AdvertisementEffects
     private readonly ILocalStorageService localStorageService;
     private const string persistanceName = "circles-advertisement";
 
-    public AdvertisementEffects(ILocalStorageService localStorageService, AdvertisementService advertisementService)
+    public AdvertisementEffects(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
     }
