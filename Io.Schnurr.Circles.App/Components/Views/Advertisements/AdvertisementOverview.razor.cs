@@ -26,4 +26,11 @@ public partial class AdvertisementOverview
     public bool? ShowTileView => BoardState.Value.IsTileView;
 
     public bool IsLoading => Helpers.HasNull(Data, ShowTileView);
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Dispatcher.Dispatch(new LoadAdvertisementsAction(AdvertisementState.Value with { }));
+    }
+
 }
