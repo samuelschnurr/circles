@@ -59,9 +59,9 @@ public class AdvertisementService // TODO: Cleanup
         return sortedAdvertisements;
     }
 
-    private static IEnumerable<Advertisement> FilterAdvertisements(IEnumerable<Advertisement> advertisements, string searchString)
+    internal static IEnumerable<Advertisement>? FilterAdvertisements(IEnumerable<Advertisement>? advertisements, string searchString)
     {
-        var filteredData = advertisements.Where(d =>
+        var filteredData = advertisements?.Where(d =>
         {
             bool result;
 
