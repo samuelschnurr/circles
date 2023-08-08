@@ -13,14 +13,6 @@ public class AdvertisementEffects
         this.localStorageService = localStorageService;
     }
 
-    [EffectMethod]
-    public async Task UpdateState(UpdateStateAction action, IDispatcher dispatcher)
-    {
-        var newState = action!.state;
-        dispatcher.Dispatch(new SetStateAction(newState));
-        await localStorageService.SetItemAsync(persistanceName, newState);
-    }
-
     [EffectMethod(typeof(InitializeStateAction))]
     public async Task InitializeState(IDispatcher dispatcher)
     {
@@ -28,7 +20,7 @@ public class AdvertisementEffects
 
         if (storageState == null)
         {
-            dispatcher.Dispatch(new UpdateStateAction(new AdvertisementState()));
+            dispatcher.Dispatch(new SetStateAction(new AdvertisementState()));
         }
         else
         {
@@ -37,5 +29,4 @@ public class AdvertisementEffects
     }
 }
 
-public record UpdateStateAction(AdvertisementState state);
 public record InitializeStateAction();

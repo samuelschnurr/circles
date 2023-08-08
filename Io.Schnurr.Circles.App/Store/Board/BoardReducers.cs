@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.Board;
 
@@ -11,4 +12,4 @@ public static class BoardReducer
     public static BoardState SetState(BoardState state, SetStateAction action) => action.state;
 }
 
-public record SetStateAction(BoardState state) { }
+public record SetStateAction(BoardState state) : PersistAfterDispatchAction<BoardState>(state);

@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.App;
 
@@ -11,4 +12,4 @@ public static class AppReducer
     public static AppState SetState(AppState state, SetStateAction action) => action.state;
 }
 
-public record SetStateAction(AppState state) { }
+public record SetStateAction(AppState state) : PersistAfterDispatchAction<AppState>(state);
