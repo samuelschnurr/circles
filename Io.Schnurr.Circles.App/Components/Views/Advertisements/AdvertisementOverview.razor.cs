@@ -34,7 +34,7 @@ public partial class AdvertisementOverview
     protected override async Task OnInitializedAsync()
     {
         var data = await AdvertisementService.GetAll();
-        Dispatcher.Dispatch(new Store.Advertisement.UpdateStateAction(AdvertisementState.Value with { Items = data }));
+        Dispatcher.Dispatch(new Store.Advertisement.SetStateAction(AdvertisementState.Value with { Items = data }));
     }
 
     private IEnumerable<Advertisement>? GetAdvertisements()

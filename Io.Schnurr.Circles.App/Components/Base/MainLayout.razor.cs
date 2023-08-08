@@ -13,7 +13,7 @@ public sealed partial class MainLayout : IDisposable
 
     private void ToggleDrawerViaAppBar()
     {
-        Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
+        Dispatcher.Dispatch(new SetStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
     }
 
     private void ToggleDrawerViaDrawer(bool newValue)
@@ -24,13 +24,13 @@ public sealed partial class MainLayout : IDisposable
 
         if (newValue != currentValue)
         {
-            Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
+            Dispatcher.Dispatch(new SetStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
         }
     }
 
     private void ToggleDarkMode()
     {
-        Dispatcher.Dispatch(new UpdateStateAction(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
+        Dispatcher.Dispatch(new SetStateAction(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
     }
 
     private void HandleStateHasChanged(object? sender, EventArgs e) => InvokeAsync(StateHasChanged);
