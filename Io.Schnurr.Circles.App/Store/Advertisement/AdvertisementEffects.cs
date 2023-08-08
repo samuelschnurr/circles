@@ -1,12 +1,12 @@
 ﻿using Blazored.LocalStorage;
 using Fluxor;
+using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.Advertisement;
 
 public class AdvertisementEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private const string persistanceName = "circles-advertisement";
 
     public AdvertisementEffects(ILocalStorageService localStorageService)
     {
@@ -16,6 +16,7 @@ public class AdvertisementEffects
     [EffectMethod(typeof(InitializeStateAction))]
     public async Task InitializeState(IDispatcher dispatcher)
     {
+        var persistanceName = PersistableState.GetPersistanceName<AdvertisementState>();
         var storageState = await localStorageService.GetItemAsync<AdvertisementState>(persistanceName);
 
         if (storageState == null)

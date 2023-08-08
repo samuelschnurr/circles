@@ -1,12 +1,12 @@
 ﻿using Blazored.LocalStorage;
 using Fluxor;
+using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.App;
 
 public class AppEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private const string persistanceName = "circles-app";
 
     public AppEffects(ILocalStorageService localStorageService)
     {
@@ -16,6 +16,7 @@ public class AppEffects
     [EffectMethod(typeof(InitializeStateAction))]
     public async Task InitializeState(IDispatcher dispatcher)
     {
+        var persistanceName = PersistableState.GetPersistanceName<AppState>();
         var storageState = await localStorageService.GetItemAsync<AppState>(persistanceName);
 
         if (storageState == null)
