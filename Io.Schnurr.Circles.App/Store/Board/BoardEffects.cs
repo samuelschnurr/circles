@@ -30,4 +30,5 @@ public class BoardEffects
     }
 }
 
+[InitializeOnStartup]
 public record InitializeStateAction();

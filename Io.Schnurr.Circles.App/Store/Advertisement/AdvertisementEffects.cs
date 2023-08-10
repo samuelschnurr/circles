@@ -30,4 +30,5 @@ public class AdvertisementEffects
     }
 }
 
+[InitializeOnStartup]
 public record InitializeStateAction();

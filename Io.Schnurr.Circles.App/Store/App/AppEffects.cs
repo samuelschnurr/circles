@@ -30,4 +30,5 @@ public class AppEffects
     }
 }
 
+[InitializeOnStartup]
 public record InitializeStateAction();
