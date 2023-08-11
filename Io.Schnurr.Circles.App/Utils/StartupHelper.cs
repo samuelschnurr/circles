@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using Fluxor.DependencyInjection;
 using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Store.Advertisement;
 using Io.Schnurr.Circles.App.Store.App;
@@ -26,9 +27,7 @@ internal static class StartupHelper
         {
             options.ScanAssemblies(typeof(Program).Assembly);
             options.AddMiddleware<StateInitialization>();
-            options.AddMiddleware<StatePersistance<AppState>>();
-            options.AddMiddleware<StatePersistance<BoardState>>();
-            options.AddMiddleware<StatePersistance<AdvertisementState>>();
+            options.AddPersistanceMiddleware();
 #if DEBUG
             options.UseReduxDevTools(rdt =>
             {
@@ -41,5 +40,12 @@ internal static class StartupHelper
     internal static void AddServiceConfiguration(this WebAssemblyHostBuilder builder)
     {
         builder.Services.AddScoped<AdvertisementService>();
+    }
+
+    internal static void AddPersistanceMiddleware(this FluxorOptions options)
+    {
+        options.AddMiddleware<StatePersistance<AppState>>();
+        options.AddMiddleware<StatePersistance<BoardState>>();
+        options.AddMiddleware<StatePersistance<AdvertisementState>>();
     }
 }
