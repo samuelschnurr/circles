@@ -9,7 +9,7 @@ public static class AdvertisementReducer
     // This would improve state tracing in DevTools, clean accessing of state transformation methods instead of access in components and more
     // But for simplification reasons in this prototype I use a single SetState reducer
     [ReducerMethod]
-    public static AdvertisementState SetState(AdvertisementState state, SetStateAction action) => action.state;
+    public static AdvertisementState SetState(AdvertisementState state, SetStateAction action) => action.State;
 }
 
-public record SetStateAction(AdvertisementState state) : PersistAfterDispatchAction<AdvertisementState>(state);
+public record SetStateAction(AdvertisementState State) : PersistAfterDispatchAction<AdvertisementState>(State);

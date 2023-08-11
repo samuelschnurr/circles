@@ -9,7 +9,7 @@ public static class BoardReducer
     // This would improve state tracing in DevTools, clean accessing of state transformation methods instead of access in components and more
     // But for simplification reasons in this prototype I use a single SetState reducer
     [ReducerMethod]
-    public static BoardState SetState(BoardState state, SetStateAction action) => action.state;
+    public static BoardState SetState(BoardState state, SetStateAction action) => action.State;
 }
 
-public record SetStateAction(BoardState state) : PersistAfterDispatchAction<BoardState>(state);
+public record SetStateAction(BoardState State) : PersistAfterDispatchAction<BoardState>(State);

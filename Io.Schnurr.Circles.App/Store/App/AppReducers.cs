@@ -9,7 +9,7 @@ public static class AppReducer
     // This would improve state tracing in DevTools, clean accessing of state transformation methods instead of access in components and more
     // But for simplification reasons in this prototype I use a single SetState reducer
     [ReducerMethod]
-    public static AppState SetState(AppState state, SetStateAction action) => action.state;
+    public static AppState SetState(AppState state, SetStateAction action) => action.State;
 }
 
-public record SetStateAction(AppState state) : PersistAfterDispatchAction<AppState>(state);
+public record SetStateAction(AppState State) : PersistAfterDispatchAction<AppState>(State);

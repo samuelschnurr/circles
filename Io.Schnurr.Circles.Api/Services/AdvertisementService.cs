@@ -7,7 +7,7 @@ internal static class AdvertisementService // TODO: Cleanup
 {
     #region MockDB
 
-    private static Random rnd = new Random();
+    private static readonly Random rnd = new();
 
     private static readonly IEnumerable<Advertisement> advertisements = Enumerable.Range(1, 50).Select(index =>
               new Advertisement()

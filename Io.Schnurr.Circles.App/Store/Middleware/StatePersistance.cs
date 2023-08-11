@@ -23,7 +23,7 @@ public class StatePersistance<T> : Fluxor.Middleware
         if (persistAction != null)
         {
             var persistanceName = PersistStateAttribute.GetPersistanceName<T>();
-            await localStorageService.SetItemAsync(persistanceName, persistAction.state);
+            await localStorageService.SetItemAsync(persistanceName, persistAction.State);
         }
     }
 }
