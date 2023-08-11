@@ -1,5 +1,8 @@
 ﻿using Fluxor;
 using Io.Schnurr.Circles.App.Services;
+using Io.Schnurr.Circles.App.Store.Advertisement;
+using Io.Schnurr.Circles.App.Store.App;
+using Io.Schnurr.Circles.App.Store.Board;
 using Io.Schnurr.Circles.App.Store.Middleware;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -23,7 +26,9 @@ internal static class StartupHelper
         {
             options.ScanAssemblies(typeof(Program).Assembly);
             options.AddMiddleware<StateInitialization>();
-            options.AddMiddleware<StatePersistance>();
+            options.AddMiddleware<StatePersistance<AppState>>();
+            options.AddMiddleware<StatePersistance<BoardState>>();
+            options.AddMiddleware<StatePersistance<AdvertisementState>>();
 #if DEBUG
             options.UseReduxDevTools(rdt =>
             {

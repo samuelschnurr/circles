@@ -4,9 +4,10 @@ using Io.Schnurr.Circles.App.Utils;
 namespace Io.Schnurr.Circles.App.Store.Middleware;
 
 /// <summary>
-/// Saves the state to localStorage after dispatching an action, if the state is tagged with <see cref="PersistStateAttribute"/>.
+/// Saves the state to localStorage after dispatching an action.
+/// To be persisted the state needs to obtain the <see cref="PersistStateAttribute"/> and the action needs to derive from <see cref="PersistAfterDispatchAction{T}"/>.
 /// </summary>
-public class StatePersistance : Fluxor.Middleware
+public class StatePersistance<T> : Fluxor.Middleware
 {
     private readonly ILocalStorageService localStorageService;
 
@@ -17,11 +18,12 @@ public class StatePersistance : Fluxor.Middleware
 
     public override async void AfterDispatch(object action)
     {
-        //PersistAfterDispatchAction<T>? persistAction = action as PersistAfterDispatchAction<T>;
+        PersistAfterDispatchAction<T>? persistAction = action as PersistAfterDispatchAction<T>;
 
-        //if (persistAction != null)
-        //{
-        //    await localStorageService.SetItemAsync(persistAction.state.PersistanceName, persistAction.state);
-        //}
+        if (persistAction != null)
+        {
+            var persistanceName = PersistStateAttribute.GetPersistanceName<T>();
+            await localStorageService.SetItemAsync(persistanceName, persistAction.state);
+        }
     }
 }

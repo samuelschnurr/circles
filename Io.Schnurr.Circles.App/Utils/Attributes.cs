@@ -8,7 +8,7 @@ internal class InitializeOnStartupAttribute : Attribute { }
 
 /// <summary>
 /// When a state is tagged with this attribute, it will be persisted to the localStorage after dispatching an action.
-/// To be persisted the executing action needs to obtain the <see cref="PersistAfterDispatchAttribute{T}"/>
+/// To be persisted the executing action needs to derive from <see cref="PersistAfterDispatchAction{T}"/>
 /// </summary>
 [AttributeUsage(AttributeTargets.Class)]
 internal class PersistStateAttribute : Attribute
@@ -26,15 +26,4 @@ internal class PersistStateAttribute : Attribute
 
         return attribute.PersistanceName;
     }
-}
-
-/// <summary>
-/// If a action tagged with this attribute, the corresponding state will be persisted to localStorage after dispatching the action.
-/// To be persisted the state itself needs to obtain the <see cref="PersistStateAttribute"/>
-/// </summary>
-/// <typeparam name="T">The type of the state which will be persisted.</typeparam>
-[AttributeUsage(AttributeTargets.Class)]
-internal class PersistAfterDispatchAttribute<T> : Attribute
-{
-    public T State { get; init; }
 }
