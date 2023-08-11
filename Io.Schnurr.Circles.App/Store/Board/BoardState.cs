@@ -5,9 +5,9 @@ using Io.Schnurr.Circles.Shared.Enums;
 namespace Io.Schnurr.Circles.App.Store.Board;
 
 [FeatureState]
-public record BoardState : PersistableState
+[PersistState(PersistanceName = "circles-board")]
+public record BoardState
 {
-    internal override string PersistanceName => "circles-board";
     public bool? IsTileView { get; init; }
     internal string SearchString { get; init; }
     internal SortDirection SortDirection { get; init; } = SortDirection.Descending;

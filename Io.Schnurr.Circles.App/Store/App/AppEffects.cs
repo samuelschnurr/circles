@@ -16,7 +16,7 @@ public class AppEffects
     [EffectMethod(typeof(InitializeStateAction))]
     public async Task InitializeState(IDispatcher dispatcher)
     {
-        var persistanceName = PersistableState.GetPersistanceName<AppState>();
+        var persistanceName = PersistStateAttribute.GetPersistanceName<AppState>();
         var storageState = await localStorageService.GetItemAsync<AppState>(persistanceName);
 
         if (storageState == null)

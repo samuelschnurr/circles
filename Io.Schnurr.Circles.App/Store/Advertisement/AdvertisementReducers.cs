@@ -1,5 +1,4 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.Advertisement;
 
@@ -12,4 +11,4 @@ public static class AdvertisementReducer
     public static AdvertisementState SetState(AdvertisementState state, SetStateAction action) => action.state;
 }
 
-public record SetStateAction(AdvertisementState state) : PersistAfterDispatchAction<AdvertisementState>(state);
+public record SetStateAction(AdvertisementState state);
