@@ -34,4 +34,7 @@ internal class PersistStateAttribute : Attribute
 /// </summary>
 /// <typeparam name="T">The type of the state which will be persisted.</typeparam>
 [AttributeUsage(AttributeTargets.Class)]
-internal class PersistAfterDispatchAttribute<T> : Attribute { }
+internal class PersistAfterDispatchAttribute<T> : Attribute
+{
+    public T State { get; init; }
+}
