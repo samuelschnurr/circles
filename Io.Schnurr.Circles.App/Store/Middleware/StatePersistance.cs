@@ -1,29 +1,30 @@
-﻿using Blazored.LocalStorage;
+﻿using System.Reflection;
+using Fluxor;
 using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.Middleware;
 
 /// <summary>
 /// Saves the state to localStorage after dispatching an action.
-/// To be persisted the state needs to obtain the <see cref="PersistStateAttribute"/> and the action needs to derive from <see cref="PersistAfterDispatchAction{T}"/>.
+/// To be persisted the state needs to obtain the <see cref="PersistStateAttribute"/> and the action the <see cref="PersistAfterDispatchAttribute"/>.
 /// </summary>
 public class StatePersistance<T> : Fluxor.Middleware
 {
-    private readonly ILocalStorageService localStorageService;
+    private readonly IDispatcher dispatcher;
 
-    public StatePersistance(ILocalStorageService localStorageService)
+    public StatePersistance(IDispatcher dispatcher)
     {
-        this.localStorageService = localStorageService;
+        this.dispatcher = dispatcher;
     }
 
-    public override async void AfterDispatch(object action)
+    public override void AfterDispatch(object action)
     {
-        PersistAfterDispatchAction<T>? persistAction = action as PersistAfterDispatchAction<T>;
+        var actionType = action.GetType();
+        var persistAction = actionType.GetCustomAttribute<PersistAfterDispatchAttribute>();
 
         if (persistAction != null)
         {
-            var persistanceName = PersistStateAttribute.GetPersistanceName<T>();
-            await localStorageService.SetItemAsync(persistanceName, persistAction.State);
+            dispatcher.Dispatch(new PersistStateAction<T>());
         }
     }
 }

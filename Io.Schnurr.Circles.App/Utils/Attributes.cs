@@ -34,3 +34,5 @@ internal class PersistStateAttribute : Attribute
 /// </summary>
 [AttributeUsage(AttributeTargets.Class)]
 internal class PersistAfterDispatchAttribute : Attribute { }
+
+public record PersistStateAction<T>();
