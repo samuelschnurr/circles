@@ -50,6 +50,11 @@ public sealed class StatePersistance : Fluxor.Middleware, IDisposable
         var serializedState = JsonSerializer.Serialize(state);
         var statePersistAttribute = stateType.GetCustomAttribute<PersistStateAttribute>();
 
+        if (string.IsNullOrWhiteSpace(statePersistAttribute!.PersistanceName))
+        {
+            throw new NotImplementedException(nameof(statePersistAttribute.PersistanceName));
+        }
+
         await localStorageService.SetItemAsync(statePersistAttribute!.PersistanceName, serializedState);
     }
 
