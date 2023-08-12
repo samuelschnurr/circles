@@ -19,7 +19,7 @@ public class AdvertisementEffects
     }
 
     [EffectMethod(typeof(PersistStateAction<AdvertisementState>))]
-    public async Task PersistState()
+    public async Task PersistState(IDispatcher dispatcher)
     {
         var persistanceName = PersistStateAttribute.GetPersistanceName<AdvertisementState>();
         await localStorageService.SetItemAsync(persistanceName, advertisementState.Value);

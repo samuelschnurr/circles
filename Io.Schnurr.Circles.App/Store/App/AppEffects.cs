@@ -16,7 +16,7 @@ public class AppEffects
     }
 
     [EffectMethod(typeof(PersistStateAction<AppState>))]
-    public async Task PersistState()
+    public async Task PersistState(IDispatcher dispatcher)
     {
         var persistanceName = PersistStateAttribute.GetPersistanceName<AppState>();
         await localStorageService.SetItemAsync(persistanceName, appState.Value);

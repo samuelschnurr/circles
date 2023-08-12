@@ -16,7 +16,7 @@ public class BoardEffects
     }
 
     [EffectMethod(typeof(PersistStateAction<BoardState>))]
-    public async Task PersistState()
+    public async Task PersistState(IDispatcher dispatcher)
     {
         var persistanceName = PersistStateAttribute.GetPersistanceName<BoardState>();
         await localStorageService.SetItemAsync(persistanceName, boardState.Value);
