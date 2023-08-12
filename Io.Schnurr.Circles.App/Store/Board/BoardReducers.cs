@@ -7,16 +7,16 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 public static class BoardReducer
 {
     [ReducerMethod(typeof(ToggleTileViewAction))]
-    public static BoardState ToggleTileViewAction(BoardState state) => state with { IsTileView = !state.IsTileView };
+    public static BoardState ToggleTileView(BoardState state) => state with { IsTileView = !state.IsTileView };
 
     [ReducerMethod]
-    public static BoardState OrderBySortColumnAction(BoardState state, OrderBySortColumnAction action) => state with { SortColumn = action.SortColumn };
+    public static BoardState OrderBySortColumn(BoardState state, OrderBySortColumnAction action) => state with { SortColumn = action.SortColumn };
 
     [ReducerMethod]
-    public static BoardState OrderBySortDirectionAction(BoardState state, OrderBySortDirectionAction action) => state with { SortDirection = action.SortDirection };
+    public static BoardState OrderBySortDirection(BoardState state, OrderBySortDirectionAction action) => state with { SortDirection = action.SortDirection };
 
     [ReducerMethod]
-    public static BoardState SearchByStringAction(BoardState state, SearchByStringAction action) => state with { SearchString = action.Search };
+    public static BoardState SearchByString(BoardState state, SearchByStringAction action) => state with { SearchString = action.Search };
 
     [ReducerMethod(typeof(SetDefaultStateAction))]
     public static BoardState SetDefaultState(BoardState state) => new() { IsTileView = true };
