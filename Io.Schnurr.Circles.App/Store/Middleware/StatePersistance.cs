@@ -20,9 +20,9 @@ public class StatePersistance<T> : Fluxor.Middleware
     public override void AfterDispatch(object action)
     {
         var actionType = action.GetType();
-        var persistAction = actionType.GetCustomAttribute<PersistAfterDispatchAttribute>();
+        var persistAttribute = actionType.GetCustomAttribute<PersistAfterDispatchAttribute>();
 
-        if (persistAction != null)
+        if (persistAttribute != null)
         {
             dispatcher.Dispatch(new PersistStateAction<T>());
         }
