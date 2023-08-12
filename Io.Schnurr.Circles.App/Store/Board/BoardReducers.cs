@@ -1,15 +1,40 @@
 ﻿using Fluxor;
 using Io.Schnurr.Circles.App.Utils;
+using Io.Schnurr.Circles.Shared.Enums;
 
 namespace Io.Schnurr.Circles.App.Store.Board;
 
 public static class BoardReducer
 {
-    // Better would be to create separate reducers or effects for each action
-    // This would improve state tracing in DevTools, clean accessing of state transformation methods instead of access in components and more
-    // But for simplification reasons in this prototype I use a single SetState reducer
+    [ReducerMethod(typeof(ToggleTileViewAction))]
+    public static BoardState ToggleTileViewAction(BoardState state) => state with { IsTileView = !state.IsTileView };
+
     [ReducerMethod]
-    public static BoardState SetState(BoardState state, SetStateAction action) => action.State;
+    public static BoardState OrderBySortColumnAction(BoardState state, OrderBySortColumnAction action) => state with { SortColumn = action.SortColumn };
+
+    [ReducerMethod]
+    public static BoardState OrderBySortDirectionAction(BoardState state, OrderBySortDirectionAction action) => state with { SortDirection = action.SortDirection };
+
+    [ReducerMethod]
+    public static BoardState SearchByStringAction(BoardState state, SearchByStringAction action) => state with { SearchString = action.Search };
+
+    [ReducerMethod(typeof(SetDefaultStateAction))]
+    public static BoardState SetDefaultState(BoardState state) => new();
+
+    [ReducerMethod]
+    public static BoardState SetStateFromLocalStorage(BoardState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
-public record SetStateAction(BoardState State) : PersistAfterDispatchAction<BoardState>(State);
+[PersistAfterDispatch]
+public record ToggleTileViewAction();
+
+public record OrderBySortColumnAction(SortColumn SortColumn);
+
+public record OrderBySortDirectionAction(SortDirection SortDirection);
+
+public record SearchByStringAction(string Search);
+
+[PersistAfterDispatch]
+public record SetDefaultStateAction();
+
+public record SetStateFromLocalStorageAction(BoardState State);

@@ -5,11 +5,20 @@ namespace Io.Schnurr.Circles.App.Store.Advertisement;
 
 public static class AdvertisementReducer
 {
-    // Better would be to create separate reducers or effects for each action
-    // This would improve state tracing in DevTools, clean accessing of state transformation methods instead of access in components and more
-    // But for simplification reasons in this prototype I use a single SetState reducer
     [ReducerMethod]
-    public static AdvertisementState SetState(AdvertisementState state, SetStateAction action) => action.State;
+    public static AdvertisementState SetAdvertisements(AdvertisementState state, SetAdvertisementsAction action) => state with { Items = action.Advertisements };
+
+    [ReducerMethod(typeof(SetDefaultStateAction))]
+    public static AdvertisementState SetDefaultState(AdvertisementState state) => new();
+
+    [ReducerMethod]
+    public static AdvertisementState SetStateFromLocalStorage(AdvertisementState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
-public record SetStateAction(AdvertisementState State) : PersistAfterDispatchAction<AdvertisementState>(State);
+[PersistAfterDispatch]
+public record SetAdvertisementsAction(IEnumerable<Shared.Models.Advertisement> Advertisements);
+
+[PersistAfterDispatch]
+public record SetDefaultStateAction();
+
+public record SetStateFromLocalStorageAction(AdvertisementState State);

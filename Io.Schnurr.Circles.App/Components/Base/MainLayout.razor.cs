@@ -11,27 +11,11 @@ public sealed partial class MainLayout : IDisposable
         AppState.StateChanged += HandleStateHasChanged;
     }
 
-    private void ToggleDrawerViaAppBar()
-    {
-        Dispatcher.Dispatch(new SetStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
-    }
+    private void ToggleDrawerViaAppBar() => Dispatcher.Dispatch(new ToggleDrawerViaAppBarAction());
 
-    private void ToggleDrawerViaDrawer(bool newValue)
-    {
-        // Handle toggling drawer correctly in mobile view
-        // Close Overlay when a click outside is recognized
-        var currentValue = AppState.Value.IsDrawerOpen;
+    private void ToggleDrawerViaDrawer(bool newValue) => Dispatcher.Dispatch(new ToggleDrawerViaDrawerAction(newValue));
 
-        if (newValue != currentValue)
-        {
-            Dispatcher.Dispatch(new SetStateAction(AppState.Value with { IsDrawerOpen = !AppState.Value.IsDrawerOpen }));
-        }
-    }
-
-    private void ToggleDarkMode()
-    {
-        Dispatcher.Dispatch(new SetStateAction(AppState.Value with { IsDarkMode = !AppState.Value.IsDarkMode }));
-    }
+    private void ToggleDarkMode() => Dispatcher.Dispatch(new ToggleDarkModeAction());
 
     private void HandleStateHasChanged(object? sender, EventArgs e) => InvokeAsync(StateHasChanged);
 

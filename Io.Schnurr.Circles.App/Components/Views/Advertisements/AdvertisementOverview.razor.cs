@@ -20,9 +20,6 @@ public partial class AdvertisementOverview
     [Inject]
     private IState<BoardState> BoardState { get; set; }
 
-    [Inject]
-    private AdvertisementService AdvertisementService { get; set; }
-
     private IEnumerable<Advertisement>? Data => GetAdvertisements();
 
     public bool IsDrawerOpen => AppState.Value.IsDrawerOpen;
@@ -33,8 +30,8 @@ public partial class AdvertisementOverview
 
     protected override async Task OnInitializedAsync()
     {
-        var data = await AdvertisementService.GetAll();
-        Dispatcher.Dispatch(new Store.Advertisement.SetStateAction(AdvertisementState.Value with { Items = data }));
+        Dispatcher.Dispatch(new LoadAdvertisementsAction());
+        await Task.CompletedTask;
     }
 
     private IEnumerable<Advertisement>? GetAdvertisements()

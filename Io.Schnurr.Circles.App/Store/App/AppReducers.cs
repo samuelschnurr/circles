@@ -5,11 +5,42 @@ namespace Io.Schnurr.Circles.App.Store.App;
 
 public static class AppReducer
 {
-    // Better would be to create separate reducers or effects for each action
-    // This would improve state tracing in DevTools, clean accessing of state transformation methods instead of access in components and more
-    // But for simplification reasons in this prototype I use a single SetState reducer
+    [ReducerMethod(typeof(ToggleDarkModeAction))]
+    public static AppState ToggleDarkMode(AppState state) => state with { IsDarkMode = !state.IsDarkMode };
+
+    [ReducerMethod(typeof(ToggleDrawerViaAppBarAction))]
+    public static AppState ToggleDrawerViaAppBar(AppState state) => state with { IsDrawerOpen = !state.IsDrawerOpen };
+
     [ReducerMethod]
-    public static AppState SetState(AppState state, SetStateAction action) => action.State;
+    public static AppState ToggleDrawerViaDrawer(AppState state, ToggleDrawerViaDrawerAction action)
+    {
+        // Handle toggling drawer correctly in mobile view
+        // Close Overlay when a click outside is recognized
+        var currentValue = state.IsDrawerOpen;
+
+        if (action.NewValue != currentValue)
+        {
+            return state with { IsDrawerOpen = !state.IsDrawerOpen };
+        }
+
+        return state;
+    }
+
+    [ReducerMethod(typeof(SetDefaultStateAction))]
+    public static AppState SetDefaultState(AppState state) => new();
+
+    [ReducerMethod]
+    public static AppState SetStateFromLocalStorage(AppState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
-public record SetStateAction(AppState State) : PersistAfterDispatchAction<AppState>(State);
+[PersistAfterDispatch]
+public record ToggleDarkModeAction();
+
+public record ToggleDrawerViaAppBarAction();
+
+public record ToggleDrawerViaDrawerAction(bool NewValue);
+
+[PersistAfterDispatch]
+public record SetDefaultStateAction();
+
+public record SetStateFromLocalStorageAction(AppState State);

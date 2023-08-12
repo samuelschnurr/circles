@@ -18,11 +18,11 @@ public partial class AdvertisementToolBar
 
     private bool ShowTileView => BoardState.Value.IsTileView == true;
 
-    private void ToggleTileView() => Dispatcher.Dispatch(new SetStateAction(BoardState.Value with { IsTileView = !BoardState.Value.IsTileView }));
+    private void ToggleTileView() => Dispatcher.Dispatch(new ToggleTileViewAction());
 
-    private void OrderBySortColumn(SortColumn column) => Dispatcher.Dispatch(new SetStateAction(BoardState.Value with { SortColumn = column }));
+    private void OrderBySortColumn(SortColumn column) => Dispatcher.Dispatch(new OrderBySortColumnAction(column));
 
-    private void OrderBySortDirection(SortDirection direction) => Dispatcher.Dispatch(new SetStateAction(BoardState.Value with { SortDirection = direction }));
+    private void OrderBySortDirection(SortDirection direction) => Dispatcher.Dispatch(new OrderBySortDirectionAction(direction));
 
-    private void SearchByString(string search) => Dispatcher.Dispatch(new SetStateAction(BoardState.Value with { SearchString = search }));
+    private void SearchByString(string search) => Dispatcher.Dispatch(new SearchByStringAction(search));
 }
