@@ -13,7 +13,7 @@ namespace Io.Schnurr.Circles.App.Store.Middleware;
 public sealed class StatePersistance : Fluxor.Middleware, IDisposable
 {
     private readonly ILocalStorageService localStorageService;
-    private readonly List<IFeature> persistableFeatures = new List<IFeature>();
+    private readonly List<IFeature> persistableFeatures = new();
 
     public StatePersistance(ILocalStorageService localStorageService)
     {
@@ -22,14 +22,14 @@ public sealed class StatePersistance : Fluxor.Middleware, IDisposable
 
     public override Task InitializeAsync(IDispatcher dispatcher, IStore store)
     {
-        foreach (var feature in store.Features)
+        foreach (var feature in store.Features.Select(feature => feature.Value))
         {
-            var persistAttribute = feature.Value.GetStateType().GetCustomAttribute<PersistStateAttribute>();
+            var persistAttribute = feature.GetStateType().GetCustomAttribute<PersistStateAttribute>();
 
             if (persistAttribute != null)
             {
-                feature.Value.StateChanged += PersistState;
-                persistableFeatures.Add(feature.Value);
+                feature.StateChanged += PersistState;
+                persistableFeatures.Add(feature);
             }
         }
 
