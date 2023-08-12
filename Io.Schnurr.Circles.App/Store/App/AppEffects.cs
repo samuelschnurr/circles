@@ -7,19 +7,10 @@ namespace Io.Schnurr.Circles.App.Store.App;
 public class AppEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private readonly IState<AppState> appState;
 
-    public AppEffects(ILocalStorageService localStorageService, IState<AppState> appState)
+    public AppEffects(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
-        this.appState = appState;
-    }
-
-    [EffectMethod(typeof(PersistStateAction<AppState>))]
-    public async Task PersistState(IDispatcher dispatcher)
-    {
-        var persistanceName = PersistStateAttribute.GetPersistanceName<AppState>();
-        await localStorageService.SetItemAsync(persistanceName, appState.Value);
     }
 
     [EffectMethod(typeof(InitializeStateAction))]

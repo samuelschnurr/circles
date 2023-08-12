@@ -7,19 +7,10 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 public class BoardEffects
 {
     private readonly ILocalStorageService localStorageService;
-    private readonly IState<BoardState> boardState;
 
-    public BoardEffects(ILocalStorageService localStorageService, IState<BoardState> boardState)
+    public BoardEffects(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
-        this.boardState = boardState;
-    }
-
-    [EffectMethod(typeof(PersistStateAction<BoardState>))]
-    public async Task PersistState(IDispatcher dispatcher)
-    {
-        var persistanceName = PersistStateAttribute.GetPersistanceName<BoardState>();
-        await localStorageService.SetItemAsync(persistanceName, boardState.Value);
     }
 
     [EffectMethod(typeof(InitializeStateAction))]

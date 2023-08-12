@@ -9,20 +9,11 @@ public class AdvertisementEffects
 {
     private readonly ILocalStorageService localStorageService;
     private readonly AdvertisementService advertisementService;
-    private readonly IState<AdvertisementState> advertisementState;
 
-    public AdvertisementEffects(ILocalStorageService localStorageService, AdvertisementService advertisementService, IState<AdvertisementState> advertisementState)
+    public AdvertisementEffects(ILocalStorageService localStorageService, AdvertisementService advertisementService)
     {
         this.localStorageService = localStorageService;
         this.advertisementService = advertisementService;
-        this.advertisementState = advertisementState;
-    }
-
-    [EffectMethod(typeof(PersistStateAction<AdvertisementState>))]
-    public async Task PersistState(IDispatcher dispatcher)
-    {
-        var persistanceName = PersistStateAttribute.GetPersistanceName<AdvertisementState>();
-        await localStorageService.SetItemAsync(persistanceName, advertisementState.Value);
     }
 
     [EffectMethod(typeof(LoadAdvertisementsAction))]

@@ -1,5 +1,4 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.App;
 
@@ -33,14 +32,8 @@ public static class AppReducer
     public static AppState SetStateFromLocalStorage(AppState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
-[PersistAfterDispatch]
 public record ToggleDarkModeAction();
-
 public record ToggleDrawerViaAppBarAction();
-
 public record ToggleDrawerViaDrawerAction(bool NewValue);
-
-[PersistAfterDispatch]
 public record SetDefaultStateAction();
-
 public record SetStateFromLocalStorageAction(AppState State);

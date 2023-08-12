@@ -1,5 +1,4 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.Advertisement;
 
@@ -15,10 +14,6 @@ public static class AdvertisementReducer
     public static AdvertisementState SetStateFromLocalStorage(AdvertisementState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
-[PersistAfterDispatch]
 public record SetAdvertisementsAction(IEnumerable<Shared.Models.Advertisement> Advertisements);
-
-[PersistAfterDispatch]
 public record SetDefaultStateAction();
-
 public record SetStateFromLocalStorageAction(AdvertisementState State);

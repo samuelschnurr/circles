@@ -1,5 +1,4 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Enums;
 
 namespace Io.Schnurr.Circles.App.Store.Board;
@@ -25,16 +24,9 @@ public static class BoardReducer
     public static BoardState SetStateFromLocalStorage(BoardState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
-[PersistAfterDispatch]
 public record ToggleTileViewAction();
-
 public record OrderBySortColumnAction(SortColumn SortColumn);
-
 public record OrderBySortDirectionAction(SortDirection SortDirection);
-
 public record SearchByStringAction(string Search);
-
-[PersistAfterDispatch]
 public record SetDefaultStateAction();
-
 public record SetStateFromLocalStorageAction(BoardState State);
