@@ -13,16 +13,4 @@ internal class PersistStateAttribute : Attribute
     {
         this.PersistanceName = persistanceName;
     }
-
-    internal static string GetPersistanceName<T>()
-    {
-        var attribute = GetCustomAttribute(typeof(T), typeof(PersistStateAttribute)) as PersistStateAttribute;
-
-        if (attribute == null || string.IsNullOrWhiteSpace(attribute.PersistanceName))
-        {
-            throw new NotImplementedException(nameof(PersistanceName));
-        }
-
-        return attribute.PersistanceName;
-    }
 }
