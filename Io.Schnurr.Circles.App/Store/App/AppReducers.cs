@@ -24,16 +24,8 @@ public static class AppReducer
 
         return state;
     }
-
-    [ReducerMethod(typeof(SetDefaultStateAction))]
-    public static AppState SetDefaultState(AppState state) => new();
-
-    [ReducerMethod]
-    public static AppState SetStateFromLocalStorage(AppState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
 public record ToggleDarkModeAction();
 public record ToggleDrawerViaAppBarAction();
 public record ToggleDrawerViaDrawerAction(bool NewValue);
-public record SetDefaultStateAction();
-public record SetStateFromLocalStorageAction(AppState State);

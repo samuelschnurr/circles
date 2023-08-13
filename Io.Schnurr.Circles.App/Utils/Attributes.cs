@@ -1,13 +1,8 @@
 ﻿namespace Io.Schnurr.Circles.App.Utils;
 
 /// <summary>
-/// When a action is tagged with this attribute, it will be executed on the startup initialization of Fluxor.
-/// </summary>
-[AttributeUsage(AttributeTargets.Class)]
-internal class InitializeOnStartupAttribute : Attribute { }
-
-/// <summary>
 /// When a state is tagged with this attribute, it will be persisted to the localStorage after state has changed.
+/// Also the state will be loaded from localStorage on initialization.
 /// </summary>
 [AttributeUsage(AttributeTargets.Class)]
 internal class PersistStateAttribute : Attribute

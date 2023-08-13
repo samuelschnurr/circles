@@ -16,17 +16,9 @@ public static class BoardReducer
 
     [ReducerMethod]
     public static BoardState SearchByString(BoardState state, SearchByStringAction action) => state with { SearchString = action.Search };
-
-    [ReducerMethod(typeof(SetDefaultStateAction))]
-    public static BoardState SetDefaultState(BoardState state) => new() { IsTileView = true };
-
-    [ReducerMethod]
-    public static BoardState SetStateFromLocalStorage(BoardState state, SetStateFromLocalStorageAction action) => action.State;
 }
 
 public record ToggleTileViewAction();
 public record OrderBySortColumnAction(SortColumn SortColumn);
 public record OrderBySortDirectionAction(SortDirection SortDirection);
 public record SearchByStringAction(string Search);
-public record SetDefaultStateAction();
-public record SetStateFromLocalStorageAction(BoardState State);
