@@ -1,25 +1,48 @@
 ﻿using System.Reflection;
+using System.Text.Json;
+using Blazored.LocalStorage;
 using Fluxor;
 using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.Middleware;
 
 /// <summary>
-/// Executes all FluxorStateActions which contain the <see cref="InitializeOnStartupAttribute"/>.
+/// Initializes the state with values from localStorage.
+/// To be initialized from localStorage the state needs to obtain the <see cref="PersistStateAttribute"/>.
 /// </summary>
 public class StateInitialization : Fluxor.Middleware
 {
-    public override Task InitializeAsync(IDispatcher dispatcher, IStore store)
+    private readonly ILocalStorageService localStorageService;
+
+    public StateInitialization(ILocalStorageService localStorageService)
     {
-        var assembly = Assembly.GetExecutingAssembly();
-        var methodsWithAttribute = assembly.GetTypes().Where(t => t.GetCustomAttribute<InitializeOnStartupAttribute>() != null);
+        this.localStorageService = localStorageService;
+    }
 
-        foreach (var method in methodsWithAttribute)
+    public override async Task InitializeAsync(IDispatcher dispatcher, IStore store)
+    {
+        foreach (var feature in store.Features.Select(feature => feature.Value))
         {
-            var initializationMethod = Activator.CreateInstance(method);
-            dispatcher.Dispatch(initializationMethod);
-        }
+            var persistAttribute = feature.GetStateType().GetCustomAttribute<PersistStateAttribute>();
 
-        return Task.CompletedTask;
+            if (persistAttribute == null)
+            {
+                continue;
+            }
+
+            var storageState = await localStorageService.GetItemAsStringAsync(persistAttribute.PersistanceName);
+
+            if (storageState == null)
+            {
+                var featureState = feature.GetStateType();
+                var defaultState = Activator.CreateInstance(featureState);
+                var defaultJsonState = JsonSerializer.Serialize(defaultState);
+                await localStorageService.SetItemAsStringAsync(persistAttribute.PersistanceName, defaultJsonState);
+            }
+            else
+            {
+                feature.RestoreState(storageState);
+            }
+        }
     }
 }
