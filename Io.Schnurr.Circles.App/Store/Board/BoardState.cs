@@ -5,7 +5,7 @@ using Io.Schnurr.Circles.Shared.Enums;
 namespace Io.Schnurr.Circles.App.Store.Board;
 
 [FeatureState]
-[PersistState(PersistanceName = "circles-board")]
+[PersistState("circles-board")]
 public record BoardState
 {
     public bool? IsTileView { get; init; }

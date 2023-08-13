@@ -12,7 +12,12 @@ internal class InitializeOnStartupAttribute : Attribute { }
 [AttributeUsage(AttributeTargets.Class)]
 internal class PersistStateAttribute : Attribute
 {
-    public string PersistanceName { get; init; }
+    internal string PersistanceName { get; }
+
+    public PersistStateAttribute(string persistanceName)
+    {
+        this.PersistanceName = persistanceName;
+    }
 
     internal static string GetPersistanceName<T>()
     {

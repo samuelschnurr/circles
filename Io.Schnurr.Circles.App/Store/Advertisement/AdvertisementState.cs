@@ -4,7 +4,7 @@ using Io.Schnurr.Circles.App.Utils;
 namespace Io.Schnurr.Circles.App.Store.Advertisement;
 
 [FeatureState]
-[PersistState(PersistanceName = "circles-advertisement")]
+[PersistState("circles-advertisement")]
 public record AdvertisementState
 {
     internal IEnumerable<Shared.Models.Advertisement>? Items { get; init; } = null;

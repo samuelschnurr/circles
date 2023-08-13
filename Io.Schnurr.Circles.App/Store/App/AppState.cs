@@ -4,7 +4,7 @@ using Io.Schnurr.Circles.App.Utils;
 namespace Io.Schnurr.Circles.App.Store.App;
 
 [FeatureState]
-[PersistState(PersistanceName = "circles-app")]
+[PersistState("circles-app")]
 public record AppState
 {
     internal bool IsDrawerOpen { get; init; } = true;
