@@ -30,17 +30,18 @@ public class StateInitialization : Fluxor.Middleware
                 continue;
             }
 
-            var storageState = await localStorageService.GetItemAsStringAsync(persistAttribute.PersistanceName);
+            var storageStateJson = await localStorageService.GetItemAsStringAsync(persistAttribute.PersistanceName);
+            var featureState = feature.GetStateType();
 
-            if (storageState == null)
+            if (string.IsNullOrWhiteSpace(storageStateJson))
             {
-                var featureState = feature.GetStateType();
                 var defaultState = Activator.CreateInstance(featureState);
                 var defaultJsonState = JsonSerializer.Serialize(defaultState);
                 await localStorageService.SetItemAsStringAsync(persistAttribute.PersistanceName, defaultJsonState);
             }
             else
             {
+                var storageState = JsonSerializer.Deserialize(storageStateJson, featureState);
                 feature.RestoreState(storageState);
             }
         }
