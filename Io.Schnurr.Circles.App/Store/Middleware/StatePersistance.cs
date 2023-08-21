@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Text.Json;
 using Blazored.LocalStorage;
 using Fluxor;
 using Io.Schnurr.Circles.App.Utils;
@@ -47,7 +46,6 @@ public sealed class StatePersistance : Fluxor.Middleware, IDisposable
         var state = feature.GetState();
         var stateType = feature.GetStateType();
 
-        var serializedState = JsonSerializer.Serialize(state);
         var statePersistAttribute = stateType.GetCustomAttribute<PersistStateAttribute>();
 
         if (string.IsNullOrWhiteSpace(statePersistAttribute!.PersistanceName))
@@ -55,7 +53,7 @@ public sealed class StatePersistance : Fluxor.Middleware, IDisposable
             throw new NotImplementedException(nameof(statePersistAttribute.PersistanceName));
         }
 
-        await localStorageService.SetItemAsync(statePersistAttribute!.PersistanceName, serializedState);
+        await localStorageService.SetItemAsync(statePersistAttribute!.PersistanceName, state);
     }
 
     public void Dispose()
