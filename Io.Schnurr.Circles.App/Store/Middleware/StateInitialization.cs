@@ -2,6 +2,7 @@
 using System.Text.Json;
 using Blazored.LocalStorage;
 using Fluxor;
+using Io.Schnurr.Circles.App.Store.Base;
 using Io.Schnurr.Circles.App.Utils;
 
 namespace Io.Schnurr.Circles.App.Store.Middleware;
@@ -36,12 +37,16 @@ public class StateInitialization : Fluxor.Middleware
             if (string.IsNullOrWhiteSpace(storageStateJson))
             {
                 var defaultState = Activator.CreateInstance(featureState);
+                SetIsInitializedTrue(defaultState);
                 var defaultJsonState = JsonSerializer.Serialize(defaultState);
+                // Restore state, because initial state has IsInitialized = false
+                feature.RestoreState(defaultState);
                 await localStorageService.SetItemAsStringAsync(persistAttribute.PersistanceName, defaultJsonState);
             }
             else
             {
                 var storageState = JsonSerializer.Deserialize(storageStateJson, featureState);
+                SetIsInitializedTrue(storageState);
                 feature.RestoreState(storageState);
             }
         }
@@ -52,7 +57,7 @@ public class StateInitialization : Fluxor.Middleware
         if (state == null)
         {
             throw new ArgumentNullException(nameof(state));
-}
+        }
 
         var stateType = state.GetType();
 
