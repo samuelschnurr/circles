@@ -16,7 +16,7 @@ public partial class AdvertisementToolBar
 
     private string SearchString => BoardState.Value.SearchString;
 
-    private bool ShowTileView => BoardState.Value.IsTileView == true;
+    private bool ShowTileView => BoardState.Value.IsTileView;
 
     private void ToggleTileView() => Dispatcher.Dispatch(new ToggleTileViewAction());
 

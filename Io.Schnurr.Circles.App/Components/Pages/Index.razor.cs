@@ -15,5 +15,5 @@ public partial class Index
 
     public bool IsDrawerOpen => AppState.Value.IsDrawerOpen;
 
-    public bool IsLoading => BoardState.Value.IsTileView == null;
+    public bool ShowLoadingSpinner => !BoardState.Value.IsInitialized;
 }

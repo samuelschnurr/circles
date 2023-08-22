@@ -15,8 +15,10 @@ public class AdvertisementEffects
     [EffectMethod(typeof(LoadAdvertisementsAction))]
     public async Task LoadAdvertisements(IDispatcher dispatcher)
     {
+        dispatcher.Dispatch(new SetAdvertisementStateIsLoadingAction(true));
         var data = await advertisementService.GetAll();
         dispatcher.Dispatch(new SetAdvertisementsAction(data));
+        dispatcher.Dispatch(new SetAdvertisementStateIsLoadingAction(false));
     }
 }
 

@@ -3,7 +3,6 @@ using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Store.Advertisement;
 using Io.Schnurr.Circles.App.Store.App;
 using Io.Schnurr.Circles.App.Store.Board;
-using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
@@ -20,13 +19,13 @@ public partial class AdvertisementOverview
     [Inject]
     private IState<BoardState> BoardState { get; set; }
 
-    private IEnumerable<Advertisement>? Data => GetAdvertisements();
+    private IEnumerable<Advertisement> Data => GetAdvertisements();
 
     public bool IsDrawerOpen => AppState.Value.IsDrawerOpen;
 
-    public bool? ShowTileView => BoardState.Value.IsTileView;
+    public bool ShowTileView => BoardState.Value.IsTileView;
 
-    public bool IsLoading => Helpers.HasNull(Data, ShowTileView);
+    public bool ShowLoadingSpinner => !AdvertisementState.Value.IsInitialized || AdvertisementState.Value.IsLoading;
 
     protected override async Task OnInitializedAsync()
     {
@@ -34,7 +33,7 @@ public partial class AdvertisementOverview
         await Task.CompletedTask;
     }
 
-    private IEnumerable<Advertisement>? GetAdvertisements()
+    private IEnumerable<Advertisement> GetAdvertisements()
     {
         var advertisements = AdvertisementState.Value.Items;
         var filteredAdvertisements = AdvertisementService.FilterAdvertisements(advertisements, BoardState.Value.SearchString);
