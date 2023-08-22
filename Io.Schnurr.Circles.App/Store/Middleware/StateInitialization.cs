@@ -56,7 +56,7 @@ public class StateInitialization : Fluxor.Middleware
 
         var stateType = state.GetType();
 
-        if (stateType == null || !stateType.IsAssignableFrom(typeof(BaseState)))
+        if (stateType == null || !stateType.IsSubclassOf(typeof(BaseState)))
         {
             return;
         }
