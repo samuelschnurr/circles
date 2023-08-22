@@ -9,7 +9,7 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 [PersistState("circles-board")]
 public record BoardState : BaseState
 {
-    public bool IsTileView { get; init; }
+    public bool IsTileView { get; init; } = true;
     internal string SearchString { get; init; }
     internal SortDirection SortDirection { get; init; } = SortDirection.Descending;
     internal SortColumn SortColumn { get; init; } = SortColumn.CreatedAt;
