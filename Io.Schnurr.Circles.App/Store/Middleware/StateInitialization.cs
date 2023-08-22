@@ -46,4 +46,28 @@ public class StateInitialization : Fluxor.Middleware
             }
         }
     }
+
+    private static void SetIsInitializedTrue(object? state)
+    {
+        if (state == null)
+        {
+            throw new ArgumentNullException(nameof(state));
+}
+
+        var stateType = state.GetType();
+
+        if (stateType == null || !stateType.IsAssignableFrom(typeof(BaseState)))
+        {
+            return;
+        }
+
+        var isInitializedProperty = stateType.GetProperty(nameof(BaseState.IsInitialized));
+
+        if (isInitializedProperty == null)
+        {
+            return;
+        }
+
+        isInitializedProperty.SetValue(state, true);
+    }
 }
