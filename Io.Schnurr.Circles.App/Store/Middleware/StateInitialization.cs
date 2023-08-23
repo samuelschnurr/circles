@@ -32,24 +32,38 @@ public class StateInitialization : Fluxor.Middleware
             }
 
             var storageStateJson = await localStorageService.GetItemAsStringAsync(persistAttribute.PersistanceName);
-            var featureState = feature.GetStateType();
+            var storageStateExists = !string.IsNullOrWhiteSpace(storageStateJson);
 
-            if (string.IsNullOrWhiteSpace(storageStateJson))
+            if (storageStateExists)
             {
-                var defaultState = Activator.CreateInstance(featureState);
-                SetIsInitializedTrue(defaultState);
-                var defaultJsonState = JsonSerializer.Serialize(defaultState);
-                // Restore state, because initial state has IsInitialized = false
-                feature.RestoreState(defaultState);
-                await localStorageService.SetItemAsStringAsync(persistAttribute.PersistanceName, defaultJsonState);
+                RestoreStateFromStorage(feature, storageStateJson);
             }
             else
             {
-                var storageState = JsonSerializer.Deserialize(storageStateJson, featureState);
-                SetIsInitializedTrue(storageState);
-                feature.RestoreState(storageState);
+                await RestoreStateFromDefault(feature, persistAttribute.PersistanceName);
             }
         }
+    }
+
+    private async Task RestoreStateFromDefault(IFeature feature, string persistanceName)
+    {
+        var featureState = feature.GetStateType();
+        var defaultState = Activator.CreateInstance(featureState);
+        SetIsInitializedTrue(defaultState);
+        var defaultJsonState = JsonSerializer.Serialize(defaultState);
+
+        // Restore state, because initial state has IsInitialized = false
+        feature.RestoreState(defaultState);
+
+        await localStorageService.SetItemAsStringAsync(persistanceName, defaultJsonState);
+    }
+
+    private static void RestoreStateFromStorage(IFeature feature, string state)
+    {
+        var featureState = feature.GetStateType();
+        var storageState = JsonSerializer.Deserialize(state, featureState);
+        SetIsInitializedTrue(storageState);
+        feature.RestoreState(storageState);
     }
 
     private static void SetIsInitializedTrue(object? state)
