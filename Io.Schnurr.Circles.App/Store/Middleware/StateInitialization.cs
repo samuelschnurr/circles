@@ -80,7 +80,11 @@ public class StateInitialization : Fluxor.Middleware
             return;
         }
 
-        var isInitializedProperty = stateType.GetProperty(nameof(BaseState.IsInitialized));
+#pragma warning disable S3011
+        // Reflection should not be used to increase accessibility of classes, methods, or fields
+        // Anyway its used here, because the properties should be internal to not be recognized by fluxor library, but must be seen in initialization step
+        var isInitializedProperty = stateType.GetProperty(nameof(BaseState.IsInitialized), BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+#pragma warning restore S3011
 
         if (isInitializedProperty == null)
         {
