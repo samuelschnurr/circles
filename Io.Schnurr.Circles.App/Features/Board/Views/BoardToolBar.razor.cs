@@ -2,6 +2,7 @@
 using Io.Schnurr.Circles.App.Features.Board.Store;
 using Io.Schnurr.Circles.Shared.Enums;
 using Microsoft.AspNetCore.Components;
+using static Io.Schnurr.Circles.App.Features.Board.Store.BoardActions;
 
 namespace Io.Schnurr.Circles.App.Features.Board.Views;
 

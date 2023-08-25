@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using static Io.Schnurr.Circles.App.Features.App.Store.AppActions;
 
 namespace Io.Schnurr.Circles.App.Features.App.Store;
 
@@ -25,7 +26,3 @@ public static class AppReducer
         return state;
     }
 }
-
-public record ToggleDarkModeAction();
-public record ToggleDrawerViaAppBarAction();
-public record ToggleDrawerViaDrawerAction(bool NewValue);

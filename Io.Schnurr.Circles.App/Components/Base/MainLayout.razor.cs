@@ -1,4 +1,4 @@
-using Io.Schnurr.Circles.App.Features.App.Store;
+using static Io.Schnurr.Circles.App.Features.App.Store.AppActions;
 
 namespace Io.Schnurr.Circles.App.Components.Base;
 

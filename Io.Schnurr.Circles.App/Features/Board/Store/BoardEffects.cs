@@ -1,5 +1,6 @@
 ﻿using Fluxor;
 using Io.Schnurr.Circles.App.Services;
+using static Io.Schnurr.Circles.App.Features.Board.Store.BoardActions;
 
 namespace Io.Schnurr.Circles.App.Features.Board.Store;
 
@@ -25,5 +26,3 @@ public class BoardEffects
         dispatcher.Dispatch(new SetBoardStateIsLoadingAction(false));
     }
 }
-
-public record LoadAdvertisementsAction();

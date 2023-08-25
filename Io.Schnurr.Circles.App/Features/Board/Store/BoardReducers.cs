@@ -1,5 +1,5 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.Shared.Enums;
+using static Io.Schnurr.Circles.App.Features.Board.Store.BoardActions;
 
 namespace Io.Schnurr.Circles.App.Features.Board.Store;
 
@@ -23,10 +23,3 @@ public static class BoardReducer
     [ReducerMethod]
     public static BoardState SetBoardStateIsLoading(BoardState state, SetBoardStateIsLoadingAction action) => state with { IsLoading = action.IsLoading };
 }
-
-public record ToggleTileViewAction();
-public record OrderBySortColumnAction(SortColumn SortColumn);
-public record OrderBySortDirectionAction(SortDirection SortDirection);
-public record SearchByStringAction(string Search);
-public record SetAdvertisementsAction(IEnumerable<Shared.Models.Advertisement> Advertisements);
-public record SetBoardStateIsLoadingAction(bool IsLoading);
