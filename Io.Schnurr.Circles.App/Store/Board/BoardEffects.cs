@@ -1,13 +1,13 @@
 ﻿using Fluxor;
 using Io.Schnurr.Circles.App.Services;
 
-namespace Io.Schnurr.Circles.App.Store.Advertisement;
+namespace Io.Schnurr.Circles.App.Store.Board;
 
-public class AdvertisementEffects
+public class BoardEffects
 {
     private readonly AdvertisementService advertisementService;
 
-    public AdvertisementEffects(AdvertisementService advertisementService)
+    public BoardEffects(AdvertisementService advertisementService)
     {
         this.advertisementService = advertisementService;
     }
@@ -17,12 +17,12 @@ public class AdvertisementEffects
     {
         var dataTask = advertisementService.GetAll();
 
-        dispatcher.Dispatch(new SetAdvertisementStateIsLoadingAction(true));
+        dispatcher.Dispatch(new SetBoardStateIsLoadingAction(true));
 
         var data = await dataTask;
         dispatcher.Dispatch(new SetAdvertisementsAction(data));
 
-        dispatcher.Dispatch(new SetAdvertisementStateIsLoadingAction(false));
+        dispatcher.Dispatch(new SetBoardStateIsLoadingAction(false));
     }
 }
 

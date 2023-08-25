@@ -16,9 +16,17 @@ public static class BoardReducer
 
     [ReducerMethod]
     public static BoardState SearchByString(BoardState state, SearchByStringAction action) => state with { SearchString = action.Search };
+
+    [ReducerMethod]
+    public static BoardState SetAdvertisements(BoardState state, SetAdvertisementsAction action) => state with { Items = action.Advertisements };
+
+    [ReducerMethod]
+    public static BoardState SetBoardStateIsLoading(BoardState state, SetBoardStateIsLoadingAction action) => state with { IsLoading = action.IsLoading };
 }
 
 public record ToggleTileViewAction();
 public record OrderBySortColumnAction(SortColumn SortColumn);
 public record OrderBySortDirectionAction(SortDirection SortDirection);
 public record SearchByStringAction(string Search);
+public record SetAdvertisementsAction(IEnumerable<Shared.Models.Advertisement> Advertisements);
+public record SetBoardStateIsLoadingAction(bool IsLoading);

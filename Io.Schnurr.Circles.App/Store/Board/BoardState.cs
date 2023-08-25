@@ -10,6 +10,7 @@ namespace Io.Schnurr.Circles.App.Store.Board;
 public record BoardState : BaseState
 {
     public bool IsTileView { get; init; } = true;
+    internal IEnumerable<Shared.Models.Advertisement> Items { get; init; }
     internal string SearchString { get; init; }
     internal SortDirection SortDirection { get; init; } = SortDirection.Descending;
     internal SortColumn SortColumn { get; init; } = SortColumn.CreatedAt;
