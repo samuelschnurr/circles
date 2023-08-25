@@ -3,6 +3,7 @@ using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Store.Advertisement;
 using Io.Schnurr.Circles.App.Store.App;
 using Io.Schnurr.Circles.App.Store.Board;
+using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
@@ -18,6 +19,9 @@ public partial class AdvertisementOverview
 
     [Inject]
     private IState<BoardState> BoardState { get; set; }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
 
     private IEnumerable<Advertisement> Data => GetAdvertisements();
 
@@ -40,4 +44,6 @@ public partial class AdvertisementOverview
         var filteredAndSortedAdvertisements = AdvertisementService.SortAdvertisements(filteredAdvertisements, BoardState.Value.SortColumn, BoardState.Value.SortDirection);
         return filteredAndSortedAdvertisements;
     }
+
+    private void NavigateToAdvertisementDetail(int id) => NavigationManager.NavigateTo(Routes.Advertisement.GetDetailsPath(id));
 }

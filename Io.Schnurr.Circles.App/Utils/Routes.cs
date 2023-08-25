@@ -21,5 +21,6 @@ internal abstract class Routes
     {
         internal const string Base = "/advertisement";
         internal const string Details = $"{Base}/{{Id:int}}";
+        internal static string GetDetailsPath(int id) => string.Format($"{Base}/{{0}}", id);
     }
 }

@@ -1,0 +1,13 @@
+﻿@attribute [Route(Routes.Advertisement.Details)]
+@using Io.Schnurr.Circles.App.Store.Advertisement;
+@using Io.Schnurr.Circles.Shared.Models;
+
+@inject NavigationManager nav;
+
+<MudButton OnClick="@(() => nav.NavigateTo(Routes.Advertisement.Base))">Zurück</MudButton>
+<div>ID: @Id</div>
+
+@code{
+    [Parameter]
+    public int Id { get; set; }
+}
