@@ -3,7 +3,7 @@ using Blazored.LocalStorage;
 using Fluxor;
 using Io.Schnurr.Circles.App.Utils;
 
-namespace Io.Schnurr.Circles.App.Store.Middleware;
+namespace Io.Schnurr.Circles.App.Middlewares;
 
 /// <summary>
 /// Saves the state to localStorage after the state has changed.
@@ -42,7 +42,7 @@ public sealed class StatePersistance : Fluxor.Middleware, IDisposable
             return;
         }
 
-        var feature = ((IFeature)sender);
+        var feature = (IFeature)sender;
         var state = feature.GetState();
         var stateType = feature.GetStateType();
 

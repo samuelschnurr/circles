@@ -1,8 +1,8 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Store.Base;
+using Io.Schnurr.Circles.App.Features.Base.Store;
 using Io.Schnurr.Circles.App.Utils;
 
-namespace Io.Schnurr.Circles.App.Store.App;
+namespace Io.Schnurr.Circles.App.Features.App.Store;
 
 [FeatureState]
 [PersistState("circles-app")]

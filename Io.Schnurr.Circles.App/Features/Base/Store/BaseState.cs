@@ -1,4 +1,4 @@
-﻿namespace Io.Schnurr.Circles.App.Store.Base;
+﻿namespace Io.Schnurr.Circles.App.Features.Base.Store;
 
 /// <summary>
 /// Base State which should be inherited by all other states which are marked with [FeatureState].

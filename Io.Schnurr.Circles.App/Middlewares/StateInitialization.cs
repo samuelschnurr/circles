@@ -2,10 +2,10 @@
 using System.Text.Json;
 using Blazored.LocalStorage;
 using Fluxor;
-using Io.Schnurr.Circles.App.Store.Base;
+using Io.Schnurr.Circles.App.Features.Base.Store;
 using Io.Schnurr.Circles.App.Utils;
 
-namespace Io.Schnurr.Circles.App.Store.Middleware;
+namespace Io.Schnurr.Circles.App.Middlewares;
 
 /// <summary>
 /// Initializes the state with values from localStorage.

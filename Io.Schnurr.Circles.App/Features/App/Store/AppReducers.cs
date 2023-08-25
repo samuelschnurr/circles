@@ -1,6 +1,6 @@
 ﻿using Fluxor;
 
-namespace Io.Schnurr.Circles.App.Store.App;
+namespace Io.Schnurr.Circles.App.Features.App.Store;
 
 public static class AppReducer
 {

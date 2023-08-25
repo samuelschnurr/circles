@@ -2,25 +2,25 @@
 
 internal abstract class Routes
 {
-    internal abstract class Index
+    internal abstract class Base
     {
-        internal const string Base = "/";
+        internal const string Index = "/";
+    }
+
+    internal abstract class Board
+    {
+        internal const string Index = "/board";
+        internal const string Detail = $"{Index}/{{Id:int}}";
+        internal static string GetDetailPath(int id) => string.Format($"{Index}/{{0}}", id);
     }
 
     internal abstract class Circles
     {
-        internal const string Base = "/circles";
+        internal const string Index = "/circles";
     }
 
     internal abstract class Pins
     {
-        internal const string Base = "/pins";
-    }
-
-    internal abstract class Advertisement
-    {
-        internal const string Base = "/advertisement";
-        internal const string Detail = $"{Base}/{{Id:int}}";
-        internal static string GetDetailPath(int id) => string.Format($"{Base}/{{0}}", id);
+        internal const string Index = "/pins";
     }
 }

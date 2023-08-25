@@ -1,7 +1,7 @@
 ﻿using Fluxor;
 using Io.Schnurr.Circles.Shared.Enums;
 
-namespace Io.Schnurr.Circles.App.Store.Board;
+namespace Io.Schnurr.Circles.App.Features.Board.Store;
 
 public static class BoardReducer
 {

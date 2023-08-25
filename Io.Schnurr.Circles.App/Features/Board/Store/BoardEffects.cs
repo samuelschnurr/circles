@@ -1,7 +1,7 @@
 ﻿using Fluxor;
 using Io.Schnurr.Circles.App.Services;
 
-namespace Io.Schnurr.Circles.App.Store.Board;
+namespace Io.Schnurr.Circles.App.Features.Board.Store;
 
 public class BoardEffects
 {

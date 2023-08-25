@@ -1,7 +1,6 @@
-﻿@attribute [Route(Routes.Index.Base)]
-@attribute [Route(Routes.Advertisement.Base)]
+﻿@attribute [Route(Routes.Base.Index)]
+@attribute [Route(Routes.Board.Index)]
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
-@using Io.Schnurr.Circles.App.Components.Views.Advertisements
 
 <PageTitle>Board</PageTitle>
 
@@ -11,4 +10,4 @@
     return;
 }
 
-<AdvertisementIndex />
+<BoardIndex />

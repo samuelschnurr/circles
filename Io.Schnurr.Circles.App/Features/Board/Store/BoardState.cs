@@ -1,9 +1,9 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Store.Base;
+using Io.Schnurr.Circles.App.Features.Base.Store;
 using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Enums;
 
-namespace Io.Schnurr.Circles.App.Store.Board;
+namespace Io.Schnurr.Circles.App.Features.Board.Store;
 
 [FeatureState]
 [PersistState("circles-board")]

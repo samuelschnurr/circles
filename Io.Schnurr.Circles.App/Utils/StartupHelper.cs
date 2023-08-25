@@ -1,6 +1,6 @@
 ﻿using Fluxor;
+using Io.Schnurr.Circles.App.Middlewares;
 using Io.Schnurr.Circles.App.Services;
-using Io.Schnurr.Circles.App.Store.Middleware;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Io.Schnurr.Circles.App.Utils;
