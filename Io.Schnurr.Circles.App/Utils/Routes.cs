@@ -20,7 +20,7 @@ internal abstract class Routes
     internal abstract class Advertisement
     {
         internal const string Base = "/advertisement";
-        internal const string Details = $"{Base}/{{Id:int}}";
-        internal static string GetDetailsPath(int id) => string.Format($"{Base}/{{0}}", id);
+        internal const string Detail = $"{Base}/{{Id:int}}";
+        internal static string GetDetailPath(int id) => string.Format($"{Base}/{{0}}", id);
     }
 }

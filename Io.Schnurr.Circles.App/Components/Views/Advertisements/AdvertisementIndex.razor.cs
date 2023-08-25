@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Io.Schnurr.Circles.App.Components.Views.Advertisements;
 
-public partial class AdvertisementOverview
+public partial class AdvertisementIndex
 {
     [Inject]
     private IState<AdvertisementState> AdvertisementState { get; set; }
@@ -45,5 +45,5 @@ public partial class AdvertisementOverview
         return filteredAndSortedAdvertisements;
     }
 
-    private void NavigateToAdvertisementDetail(int id) => NavigationManager.NavigateTo(Routes.Advertisement.GetDetailsPath(id));
+    private void NavigateToAdvertisementDetail(int id) => NavigationManager.NavigateTo(Routes.Advertisement.GetDetailPath(id));
 }
