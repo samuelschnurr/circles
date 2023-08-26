@@ -1,0 +1,5 @@
+.activeOnRoot ::deep a {
+    color: var(--mud-palette-primary);
+    background-color: var(--mud-palette-action-default-hover);
+    font-weight: 500 !important;
+}

@@ -1,14 +1,33 @@
-﻿using Microsoft.AspNetCore.Components.Routing;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 using MudBlazor;
 
 namespace Io.Schnurr.Circles.App.Components.Base;
 
-public partial class NavMenu
+public sealed partial class NavMenu : IDisposable
 {
-    private readonly (string label, string href, string icon, NavLinkMatch match)[] navMenuItems =
+    [Inject]
+    private NavigationManager NavigationManager { get; init; }
+
+    private readonly (string label, string href, string icon, NavLinkMatch match, bool activeOnRoot)[] navMenuItems =
     {
-        ("Board", "", Icons.Material.Filled.Dashboard, NavLinkMatch.All),
-        ("Pins", "pins", Icons.Material.Filled.PushPin, default(NavLinkMatch)),
-        ("Circles", "circles", Icons.Material.Filled.BubbleChart, default(NavLinkMatch))
+        ("Board", "board", Icons.Material.Filled.Dashboard, default(NavLinkMatch), true),
+        ("Pins", "pins", Icons.Material.Filled.PushPin, default(NavLinkMatch), false),
+        ("Circles", "circles", Icons.Material.Filled.BubbleChart, default(NavLinkMatch), false)
     };
+
+    protected override async Task OnInitializedAsync()
+    {
+        NavigationManager.LocationChanged += HandleStateHasChanged;
+        await Task.CompletedTask;
+    }
+
+    private void HandleStateHasChanged(object? sender, EventArgs e) => InvokeAsync(StateHasChanged);
+
+    private bool IsRootPath() => string.Equals(NavigationManager.Uri, NavigationManager.BaseUri);
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleStateHasChanged;
+    }
 }
