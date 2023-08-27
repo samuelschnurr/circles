@@ -20,7 +20,7 @@ public partial class BoardData
 
     public bool ShowTileView => BoardState.Value.IsTileView;
 
-    public bool ShowLoadingSpinner => !BoardState.Value.IsInitialized || BoardState.Value.IsLoading;
+    public bool ShowLoadingSpinner => !BoardState.Value.IsReady;
 
     protected override async Task OnInitializedAsync()
     {

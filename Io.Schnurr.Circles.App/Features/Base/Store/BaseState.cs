@@ -5,6 +5,7 @@
 /// </summary>
 public abstract record BaseState
 {
+    internal bool IsReady => IsInitialized && !IsLoading;
     internal bool IsInitialized { get; init; }
     internal bool IsLoading { get; init; }
 }
