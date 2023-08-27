@@ -1,5 +1,4 @@
 ﻿using Fluxor;
-using Io.Schnurr.Circles.App.Features.App.Store;
 using Io.Schnurr.Circles.App.Features.Board.Store;
 using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Utils;
@@ -12,17 +11,12 @@ namespace Io.Schnurr.Circles.App.Features.Board.Views;
 public partial class BoardData
 {
     [Inject]
-    private IState<AppState> AppState { get; set; }
-
-    [Inject]
     private IState<BoardState> BoardState { get; set; }
 
     [Inject]
     private NavigationManager NavigationManager { get; set; }
 
     private IEnumerable<Advertisement> Data => GetAdvertisements();
-
-    public bool IsDrawerOpen => AppState.Value.IsDrawerOpen;
 
     public bool ShowTileView => BoardState.Value.IsTileView;
 
