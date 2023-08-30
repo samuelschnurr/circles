@@ -15,16 +15,16 @@
 }
 
 <MudGrid>
-    <MudItem xs="12" sm="7">
-        <MudImage Elevation="6" Src="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" Fluid="true" Class="rounded h-100" />
+    <MudItem xs="12" sm="7" xl="3">
+        <MudImage Elevation="6" Src="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" Fluid="true" ObjectFit="ObjectFit.Fill" Class="rounded h-100" />
     </MudItem>
-    <MudItem xs="12" sm="5" Class="d-flex">
+    <MudItem xs="12" sm="5" xl="3" Class="d-flex">
         <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
             <MudText Typo="Typo.h5">@Advertisement!.Title</MudText>
             <MudDivider Class="flex-grow-0 my-3" />
             <MudText Typo="Typo.h6">@Advertisement!.Price.ToCurrency()</MudText>
             <MudSpacer />
-            <MudButton Class="mx-12 my-6" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary" OnClick="@(() => Console.WriteLine("OpenMailTemplate"))">Send message</MudButton>
+            <MudButton Class="align-self-center my-6" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary" OnClick="@(() => Console.WriteLine("OpenMailTemplate"))">Send message</MudButton>
             <MudDivider Class="flex-grow-0 my-3" />
             <MudContainer Class="d-flex px-0">
                 <MudText Class="mud-text-secondary" Typo="Typo.body2">Advertisement no. @Advertisement!.Id</MudText>
@@ -33,10 +33,10 @@
             </MudContainer>
         </MudPaper>
     </MudItem>
-    <MudItem xs="12">
-        <MudPaper Elevation="6" Class="pa-3">
+    <MudItem xs="12" xl="6" Class="d-flex">
+        <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
             <MudText Typo="Typo.h6">Description</MudText>
-            <MudDivider Class="my-3" />
+            <MudDivider Class="my-3 flex-grow-0" />
             <MudText Typo="Typo.body1">@Advertisement!.Description</MudText>
         </MudPaper>
     </MudItem>
