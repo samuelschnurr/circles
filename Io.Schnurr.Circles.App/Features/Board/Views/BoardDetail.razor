@@ -19,10 +19,17 @@
         <MudImage Elevation="6" Src="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" Fluid="true" Class="rounded h-100" />
     </MudItem>
     <MudItem xs="12" sm="6" Class="d-flex">
-        <MudPaper Elevation="6" Class="flex-grow-1 pa-3">
-            <MudText Typo="Typo.h6">@Advertisement!.Title</MudText>
-            <MudText Class="mud-text-secondary" Typo="Typo.body2">@Advertisement!.CreatedAt.ToShortDateString()</MudText>
-            <MudText Typo="Typo.body2">@Advertisement!.Price.ToCurrency()</MudText>
+        <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
+            <MudText Typo="Typo.h4">@Advertisement!.Title</MudText>
+            <MudDivider Class="flex-grow-0 my-3" />
+            <MudText Typo="Typo.h5">@Advertisement!.Price.ToCurrency()</MudText>
+            <MudSpacer />
+            <MudDivider Class="flex-grow-0 my-3" />
+            <MudContainer Class="d-flex px-0">
+                <MudText Class="mud-text-secondary" Typo="Typo.body2">Advertisement no. @Advertisement!.Id</MudText>
+                <MudSpacer />
+                <MudText Class="mud-text-secondary" Typo="Typo.body2">Created @Advertisement!.CreatedAt.ToShortDateString()</MudText>
+            </MudContainer>
         </MudPaper>
     </MudItem>
     <MudItem xs="12">
