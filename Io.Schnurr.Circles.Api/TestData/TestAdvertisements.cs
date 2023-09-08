@@ -1,14 +1,15 @@
 ﻿using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
-using File = Io.Schnurr.Circles.Shared.Models.File;
 
 namespace Io.Schnurr.Circles.Api.TestData;
 
 internal static class TestAdvertisements
 {
+    private const string FolderPath = "./TestData/Images/";
+    private const string MimeType = "image/jpeg;";
+
     internal static List<Advertisement> GetAdvertisements()
     {
-        // TODO: ADD TEST IMAGES and check content
         List<Advertisement> advertisements = new()
         {
             new Advertisement
@@ -19,7 +20,7 @@ internal static class TestAdvertisements
                 Price = 49.99m,
                 CreatedBy = "jane.doe@schnurrio.invalid",
                 Condition = AdvertisementCondition.VeryGood,
-                Image = new File { Name = "jewelrybox.jpg", Path = "/images/jewelrybox.jpg" },
+                Base64Image = GetImageAsBase64("jewelrybox.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 7, 15),
                 DeletedAt = null
             },
@@ -31,7 +32,7 @@ internal static class TestAdvertisements
                 Price = 199.99m,
                 CreatedBy = "max.due@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "portrait.jpg", Path = "/images/portrait.jpg" },
+                Base64Image = GetImageAsBase64("portrait.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 6, 20),
                 DeletedAt = null
             },
@@ -43,7 +44,7 @@ internal static class TestAdvertisements
                 Price = 14.99m,
                 CreatedBy = "peter.corla@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "honey.jpg", Path = "/images/honey.jpg" },
+                Base64Image = GetImageAsBase64("honey.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 6, 10),
                 DeletedAt = null
             },
@@ -55,7 +56,7 @@ internal static class TestAdvertisements
                 Price = 4.99m,
                 CreatedBy = "tanja.maker@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "greetingcards.jpg", Path = "/images/greetingcards.jpg" },
+                Base64Image = GetImageAsBase64("greetingcards.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 5, 30),
                 DeletedAt = null
             },
@@ -67,7 +68,7 @@ internal static class TestAdvertisements
                 Price = 2.99m,
                 CreatedBy = "franz.lustig@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "vegetables.jpg", Path = "/images/vegetables.jpg" },
+                Base64Image = GetImageAsBase64("vegetables.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 5, 15),
                 DeletedAt = null
             },
@@ -79,7 +80,7 @@ internal static class TestAdvertisements
                 Price = 19.99m,
                 CreatedBy = "matthias.dorp@schnurrio.invalid",
                 Condition = AdvertisementCondition.Good,
-                Image = new File { Name = "waterbottle.jpg", Path = "/images/waterbottle.jpg" },
+                Base64Image = GetImageAsBase64("waterbottle.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 7, 5),
                 DeletedAt = null
             },
@@ -91,7 +92,7 @@ internal static class TestAdvertisements
                 Price = 39.99m,
                 CreatedBy = "jane.doe@schnurrio.invalid",
                 Condition = AdvertisementCondition.VeryGood,
-                Image = new File { Name = "earbuds.jpg", Path = "/images/earbuds.jpg" },
+                Base64Image = GetImageAsBase64("earbuds.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 9, 25),
                 DeletedAt = null
             },
@@ -103,7 +104,7 @@ internal static class TestAdvertisements
                 Price = 29.99m,
                 CreatedBy = "karl.tenter@schnurrio.invalid",
                 Condition = AdvertisementCondition.Acceptable,
-                Image = new File { Name = "wallet.jpg", Path = "/images/wallet.jpg" },
+                Base64Image = GetImageAsBase64("wallet.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 1, 15),
                 DeletedAt = null
             },
@@ -115,7 +116,7 @@ internal static class TestAdvertisements
                 Price = 24.99m,
                 CreatedBy = "nico.baristata@schnurrio.invalid",
                 Condition = AdvertisementCondition.Acceptable,
-                Image = new File { Name = "mugs.jpg", Path = "/images/mugs.jpg" },
+                Base64Image = GetImageAsBase64("mugs.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 12, 5),
                 DeletedAt = null
             },
@@ -127,7 +128,7 @@ internal static class TestAdvertisements
                 Price = 79.99m,
                 CreatedBy = "vald.korsko@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "campingtent.jpg", Path = "/images/campingtent.jpg" },
+                Base64Image = GetImageAsBase64("campingtent.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 5, 20),
                 DeletedAt = null
             },
@@ -139,7 +140,7 @@ internal static class TestAdvertisements
                 Price = 899.99m,
                 CreatedBy = "jane.doe@schnurrio.invalid",
                 Condition = AdvertisementCondition.VeryGood,
-                Image = new File { Name = "sony_tv.jpg", Path = "/images/sony_tv.jpg" },
+                Base64Image = GetImageAsBase64("sony_tv.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 4, 10),
                 DeletedAt = null
             },
@@ -151,7 +152,7 @@ internal static class TestAdvertisements
                 Price = 1899.99m,
                 CreatedBy = "steve.works@schnurrio.invalid",
                 Condition = AdvertisementCondition.VeryGood,
-                Image = new File { Name = "macbook_pro.jpg", Path = "/images/macbook_pro.jpg" },
+                Base64Image = GetImageAsBase64("macbook_pro.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 1, 15),
                 DeletedAt = null
             },
@@ -163,7 +164,7 @@ internal static class TestAdvertisements
                 Price = 799.99m,
                 CreatedBy = "sam.strick@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "mavic_air_2.jpg", Path = "/images/mavic_air_2.jpg" },
+                Base64Image = GetImageAsBase64("mavic_air_2.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 11, 25),
                 DeletedAt = null
             },
@@ -175,7 +176,7 @@ internal static class TestAdvertisements
                 Price = 1099.99m,
                 CreatedBy = "cordula.blue@schnurrio.invalid",
                 Condition = AdvertisementCondition.Good,
-                Image = new File { Name = "samsung_s22.jpg", Path = "/images/samsung_s22.jpg" },
+                Base64Image = GetImageAsBase64("samsung_s22.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 2, 10),
                 DeletedAt = null
             },
@@ -187,7 +188,7 @@ internal static class TestAdvertisements
                 Price = 299.99m,
                 CreatedBy = "tony.strong@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "sony_headphones.jpg", Path = "/images/sony_headphones.jpg" },
+                Base64Image = GetImageAsBase64("sony_headphones.jpg"),
                 CreatedAt = new DateTime(DateTime.Now.Year - 1, 12, 20),
                 DeletedAt = null
             },
@@ -199,7 +200,7 @@ internal static class TestAdvertisements
                 Price = 499.99m,
                 CreatedBy = "aron.sheppert@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "xbox_series_x.jpg", Path = "/images/xbox_series_x.jpg" },
+                Base64Image = GetImageAsBase64("xbox_series_x.jpg"),
                 CreatedAt = new DateTime(2022, 12, 5),
                 DeletedAt = null
             },
@@ -211,7 +212,7 @@ internal static class TestAdvertisements
                 Price = 1199.99m,
                 CreatedBy = "tony.strong@schnurrio.invalid",
                 Condition = AdvertisementCondition.VeryGood,
-                Image = new File { Name = "canon_eos_90d.jpg", Path = "/images/canon_eos_90d.jpg" },
+                Base64Image = GetImageAsBase64("canon_eos_90d.jpg"),
                 CreatedAt = new DateTime(2022, 11, 15),
                 DeletedAt = null
             },
@@ -223,7 +224,7 @@ internal static class TestAdvertisements
                 Price = 1299.99m,
                 CreatedBy = "natsumi.phot@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "lg_oled_tv.jpg", Path = "/images/lg_oled_tv.jpg" },
+                Base64Image = GetImageAsBase64("lg_oled_tv.jpg"),
                 CreatedAt = new DateTime(2022, 10, 25),
                 DeletedAt = null
             },
@@ -235,7 +236,7 @@ internal static class TestAdvertisements
                 Price = 149.99m,
                 CreatedBy = "cornelia.runna@schnurrio.invalid",
                 Condition = AdvertisementCondition.VeryGood,
-                Image = new File { Name = "fitbit_versa.jpg", Path = "/images/fitbit_versa.jpg" },
+                Base64Image = GetImageAsBase64("fitbit_versa.jpg"),
                 CreatedAt = new DateTime(2022, 9, 10),
                 DeletedAt = null
             },
@@ -247,7 +248,7 @@ internal static class TestAdvertisements
                 Price = 299.99m,
                 CreatedBy = "max.petersen@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "kitchenaid_mixer.jpg", Path = "/images/kitchenaid_mixer.jpg" },
+                Base64Image = GetImageAsBase64("kitchenaid_mixer.jpg"),
                 CreatedAt = new DateTime(2022, 8, 20),
                 DeletedAt = new DateTime(2023, 8, 20),
             },
@@ -259,7 +260,7 @@ internal static class TestAdvertisements
                 Price = 129.99m,
                 CreatedBy = "marianne.black@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "kindle_paperwhite.jpg", Path = "/images/kindle_paperwhite.jpg" },
+                Base64Image = GetImageAsBase64("kindle_paperwhite.jpg"),
                 CreatedAt = new DateTime(2022, 7, 5),
                 DeletedAt = new DateTime(2022, 9, 17),
             },
@@ -271,7 +272,7 @@ internal static class TestAdvertisements
                 Price = 349.99m,
                 CreatedBy = "john.ung@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "samsung_monitor.jpg", Path = "/images/samsung_monitor.jpg" },
+                Base64Image = GetImageAsBase64("samsung_monitor.jpg"),
                 CreatedAt = new DateTime(2022, 6, 15),
                 DeletedAt = new DateTime(2023, 1, 1),
             },
@@ -283,7 +284,7 @@ internal static class TestAdvertisements
                 Price = 199.99m,
                 CreatedBy = "kim.phut@schnurrio.invalid",
                 Condition = AdvertisementCondition.Good,
-                Image = new File { Name = "office_chair.jpg", Path = "/images/office_chair.jpg" },
+                Base64Image = GetImageAsBase64("office_chair.jpg"),
                 CreatedAt = new DateTime(2022, 5, 20),
                 DeletedAt = new DateTime(2023, 4, 10),
             },
@@ -295,7 +296,7 @@ internal static class TestAdvertisements
                 Price = 299.99m,
                 CreatedBy = "carla.carlson@schnurrio.invalid",
                 Condition = AdvertisementCondition.VeryGood,
-                Image = new File { Name = "nintendo_switch.jpg", Path = "/images/nintendo_switch.jpg" },
+                Base64Image = GetImageAsBase64("nintendo_switch.jpg"),
                 CreatedAt = new DateTime(2022, 4, 10),
                 DeletedAt = new DateTime(2022, 5, 11),
             },
@@ -307,12 +308,22 @@ internal static class TestAdvertisements
                 Price = 149.99m,
                 CreatedBy = "john.doe@schnurrio.invalid",
                 Condition = AdvertisementCondition.New,
-                Image = new File { Name = "nespresso_machine.jpg", Path = "/images/nespresso_machine.jpg" },
+                Base64Image = GetImageAsBase64("nespresso_machine.jpg"),
                 CreatedAt = new DateTime(2022, 3, 5),
                 DeletedAt = new DateTime(2022, 3, 20),
             }
         };
 
         return advertisements;
+    }
+
+    private static string GetImageAsBase64(string fileName)
+    {
+        var bytes = System.IO.File.ReadAllBytes(FolderPath + fileName);
+        var base64String = Convert.ToBase64String(bytes);
+
+        var result = string.Format("data:{0}base64,{1}", MimeType, base64String);
+
+        return result;
     }
 }
