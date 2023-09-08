@@ -41,7 +41,7 @@
                       SubTitleLeft="@d.CreatedAt.ToShortDateString()"
                       SubTitleRight="@d.Price.ToCurrency()"
                       OnClick="@(() => NavigateToAdvertisementDetail(d.Id))"
-                      Image="@d.Image.Path" />
+                      Image="@d.Base64Image" />
             }
         }
     </MudGrid>
