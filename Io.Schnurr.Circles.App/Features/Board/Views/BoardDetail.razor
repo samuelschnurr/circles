@@ -14,36 +14,39 @@
     }
 }
 
-<MudGrid>
-    <MudItem xs="12" sm="7" xl="3">
-        <MudImage Elevation="6" Src="@Advertisement!.Base64Image" Fluid="true" ObjectFit="ObjectFit.Fill" Class="rounded w-100 h-100" />
-    </MudItem>
-    <MudItem xs="12" sm="5" xl="3" Class="d-flex">
-        <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
-            <MudText Typo="Typo.h5">@Advertisement!.Title</MudText>
-            <MudDivider Class="flex-grow-0 my-3" />
-            <MudText Typo="Typo.h6">@Advertisement!.Price.ToCurrency()</MudText>
-            <MudText Class="my-3" Typo="Typo.body1">Condition: @Advertisement!.Condition</MudText>
-            <MudText Class="my-3" Typo="Typo.body1">Created by: @Advertisement!.CreatedBy</MudText>
-            <MudSpacer />
-            <MudButton Class="align-self-center my-6" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary">
-                <MudLink Href="@MailToLink" Color="Color.Inherit" Underline="Underline.None">
-                    Send message
-                </MudLink>
-            </MudButton>
-            <MudDivider Class="flex-grow-0 my-3" />
-            <MudContainer Class="d-flex px-0">
-                <MudText Class="mud-text-secondary" Typo="Typo.body2">Advertisement no. @Advertisement!.Id</MudText>
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudImage Elevation="6" Src="@Advertisement!.Base64Image" ObjectFit="ObjectFit.Cover" Class="rounded w-100" Height="400" />
+        </MudItem>
+        <MudItem xs="12" md="6" Class="d-flex">
+            <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
+                <MudText Typo="Typo.h5">@Advertisement!.Title</MudText>
+                <MudDivider Class="flex-grow-0 my-3" />
+                <MudText Typo="Typo.h6">@Advertisement!.Price.ToCurrency()</MudText>
+                <MudText Class="my-3" Typo="Typo.body1">Condition: @Advertisement!.Condition</MudText>
+                <MudText Class="my-3" Typo="Typo.body1">Created by: @Advertisement!.CreatedBy</MudText>
                 <MudSpacer />
-                <MudText Class="mud-text-secondary" Typo="Typo.body2">Created @Advertisement!.CreatedAt.ToShortDateString()</MudText>
-            </MudContainer>
-        </MudPaper>
-    </MudItem>
-    <MudItem xs="12" xl="6" Class="d-flex">
-        <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
-            <MudText Typo="Typo.h6">Description</MudText>
-            <MudDivider Class="my-3 flex-grow-0" />
-            <TextArea Text="@Advertisement!.Description" />
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+                <MudButton Class="align-self-center my-6" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary">
+                    <MudLink Href="@MailToLink" Color="Color.Inherit" Underline="Underline.None">
+                        Send message
+                    </MudLink>
+                </MudButton>
+                <MudSpacer />
+                <MudDivider Class="flex-grow-0 my-3" />
+                <MudContainer Class="d-flex px-0">
+                    <MudText Class="mud-text-secondary" Typo="Typo.body2">Advertisement no. @Advertisement!.Id</MudText>
+                    <MudSpacer />
+                    <MudText Class="mud-text-secondary" Typo="Typo.body2">Created @Advertisement!.CreatedAt.ToShortDateString()</MudText>
+                </MudContainer>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" Class="d-flex">
+            <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
+                <MudText Typo="Typo.h6">Description</MudText>
+                <MudDivider Class="my-3 flex-grow-0" />
+                <TextArea Text="@Advertisement!.Description" />
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
