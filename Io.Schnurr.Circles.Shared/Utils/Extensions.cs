@@ -6,6 +6,11 @@ public static class Extensions
 {
     public static string ToCurrency(this decimal price) => $"{price:N2} $";
 
+    public static string[] SplitNewLines(this string text)
+    {
+        return text.Split("\n");
+    }
+
     public static IEnumerable<T> Order<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector, bool ascending)
     {
         if (ascending)
