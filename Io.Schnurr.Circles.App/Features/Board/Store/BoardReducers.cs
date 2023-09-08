@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using Io.Schnurr.Circles.Shared.Models;
 using static Io.Schnurr.Circles.App.Features.Board.Store.BoardActions;
 
 namespace Io.Schnurr.Circles.App.Features.Board.Store;
@@ -18,7 +19,7 @@ public static class BoardReducer
     public static BoardState SearchByString(BoardState state, SearchByStringAction action) => state with { SearchString = action.Search };
 
     [ReducerMethod]
-    public static BoardState SetAdvertisements(BoardState state, SetAdvertisementsAction action) => state with { Items = action.Advertisements };
+    public static BoardState SetAdvertisements(BoardState state, SetAdvertisementsAction action) => state with { Items = action.Advertisements ?? new List<Advertisement>() };
 
     [ReducerMethod]
     public static BoardState SetBoardStateIsLoading(BoardState state, SetBoardStateIsLoadingAction action) => state with { IsLoading = action.IsLoading };

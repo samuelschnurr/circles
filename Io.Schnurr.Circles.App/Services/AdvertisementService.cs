@@ -14,9 +14,9 @@ public class AdvertisementService
         this.HttpClient = HttpClient;
     }
 
-    internal async Task<IEnumerable<Advertisement>> GetAll()
+    internal async Task<IEnumerable<Advertisement>?> GetAll()
     {
-        IEnumerable<Advertisement> data = await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement));
+        IEnumerable<Advertisement>? data = await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement));
         return data;
     }
 
