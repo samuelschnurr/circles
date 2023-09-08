@@ -47,6 +47,7 @@
             @* TODO: Component extract *@
             @for (int i = 0; i < DescriptionParagraphs?.Length - 1; i++)
             {
+                @* TODO: Always same paragraph. If no paragraphs, empty *@
                 <MudText>@DescriptionParagraphs?[i]</MudText>
                 @if (i < DescriptionParagraphs?.Length - 2)
                 {
