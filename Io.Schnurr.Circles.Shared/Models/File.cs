@@ -3,6 +3,5 @@
 public class File
 {
     public string Name { get; init; }
-    public string MimeType { get; init; }
-    public byte[] Content { get; init; }
+    public string Path { get; init; }
 }
