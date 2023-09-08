@@ -8,6 +8,7 @@ internal static class TestAdvertisements
 {
     internal static List<Advertisement> GetAdvertisements()
     {
+        // TODO: ADD TEST IMAGES and check content
         List<Advertisement> advertisements = new()
         {
             new Advertisement
