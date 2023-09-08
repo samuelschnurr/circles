@@ -243,6 +243,18 @@ internal static class TestAdvertisements
             new Advertisement
             {
                 Id = 20,
+                Title = "Leather Office Chair",
+                Description = "Upgrade your workspace with this leather office chair. It has been my trusted companion for long hours of work, providing comfort and support. The genuine leather upholstery adds a touch of sophistication to any office setting. Whether you're working from home or in a professional environment, this chair offers both style and functionality. Elevate your workspace with the leather office chair.",
+                Price = 199.99m,
+                CreatedBy = "kim.phut@schnurrio.invalid",
+                Condition = AdvertisementCondition.Good,
+                Base64Image = GetImageAsBase64("office_chair.jpg"),
+                CreatedAt = new DateTime(2022, 5, 20),
+                DeletedAt = null,
+            },
+            new Advertisement
+            {
+                Id = 21,
                 Title = "KitchenAid Stand Mixer",
                 Description = "If you're a culinary enthusiast, you'll appreciate the KitchenAid Stand Mixer. I've used it to whip up countless delicious recipes, and it has never let me down. With its powerful performance and versatile attachments, it's a must-have for any home chef. Elevate your baking and cooking endeavors with the KitchenAid Stand Mixer.",
                 Price = 299.99m,
@@ -254,7 +266,7 @@ internal static class TestAdvertisements
             },
             new Advertisement
             {
-                Id = 21,
+                Id = 22,
                 Title = "Amazon Kindle Paperwhite E-Reader",
                 Description = "Dive into the world of literature with the Amazon Kindle Paperwhite E-Reader. I've immersed myself in countless books with this device, and it has been a loyal companion. With its glare-free display and weeks-long battery life, it's the perfect device for bookworms. Embark on literary adventures and discover new worlds with the Kindle Paperwhite.",
                 Price = 129.99m,
@@ -266,7 +278,7 @@ internal static class TestAdvertisements
             },
             new Advertisement
             {
-                Id = 22,
+                Id = 23,
                 Title = "Samsung 32-Inch Curved Gaming Monitor",
                 Description = "Experience gaming like never before with the Samsung 32-inch curved gaming monitor. I've had epic gaming sessions on this monitor, and its curved design adds a level of immersion that's hard to beat. With fast refresh rates and vibrant visuals, it's a game-changer for gamers. Dive into your favorite titles with the Samsung curved gaming monitor.",
                 Price = 349.99m,
@@ -276,18 +288,7 @@ internal static class TestAdvertisements
                 CreatedAt = new DateTime(2022, 6, 15),
                 DeletedAt = new DateTime(2023, 1, 1),
             },
-            new Advertisement
-            {
-                Id = 23,
-                Title = "Leather Office Chair",
-                Description = "Upgrade your workspace with this leather office chair. It has been my trusted companion for long hours of work, providing comfort and support. The genuine leather upholstery adds a touch of sophistication to any office setting. Whether you're working from home or in a professional environment, this chair offers both style and functionality. Elevate your workspace with the leather office chair.",
-                Price = 199.99m,
-                CreatedBy = "kim.phut@schnurrio.invalid",
-                Condition = AdvertisementCondition.Good,
-                Base64Image = GetImageAsBase64("office_chair.jpg"),
-                CreatedAt = new DateTime(2022, 5, 20),
-                DeletedAt = new DateTime(2023, 4, 10),
-            },
+
             new Advertisement
             {
                 Id = 24,
