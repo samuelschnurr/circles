@@ -11,14 +11,14 @@
 
     if (!ShowTileView)
     {
-        <Table Data="Data"
+            <Table Data="Data"
                TableHeaders="@(new string[]{ "Id", "Title", "Description", "Price", "Created" })"
-               OnClick="@((TableRowClickEventArgs<Advertisement> r) => NavigateToAdvertisementDetail(r.Item.Id))">
+               OnClick="@((TableRowClickEventArgs<Advertisement> r) => NavigateToAdvertisementDetail(r.Item.Id))" >
             <TableRowTemplate>
                 <MudTd DataLabel="Id">@context.Id</MudTd>
-                <MudTd DataLabel="Title">@context.Title</MudTd>
+                <MudTd DataLabel="Title" Class="whitespace-nowrap">@context.Title</MudTd>
                 <MudTd DataLabel="Description">@context.Description</MudTd>
-                <MudTd DataLabel="Price">@context.Price.ToCurrency()</MudTd>
+                <MudTd DataLabel="Price" Class="whitespace-nowrap">@context.Price.ToCurrency()</MudTd>
                 <MudTd DataLabel="CreatedAt">@context.CreatedAt.ToShortDateString()</MudTd>
             </TableRowTemplate>
         </Table>
