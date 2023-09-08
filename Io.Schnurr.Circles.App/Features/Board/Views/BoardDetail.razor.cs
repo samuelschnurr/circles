@@ -24,8 +24,6 @@ public partial class BoardDetail
 
     private string MailToLink => Advertisement == null ? string.Empty : $"mailto:{Advertisement.CreatedBy}?subject=Request for your product no. {Advertisement.Id}";
 
-    private string[]? DescriptionParagraphs => Advertisement?.Description.SplitNewLines();
-
     protected override Task OnInitializedAsync()
     {
         if (BoardState.Value.Items == null)
