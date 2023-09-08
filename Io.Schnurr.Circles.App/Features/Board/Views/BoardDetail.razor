@@ -16,7 +16,7 @@
 
 <MudGrid>
     <MudItem xs="12" sm="7" xl="3">
-        <MudImage Elevation="6" Src="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" Fluid="true" ObjectFit="ObjectFit.Fill" Class="rounded h-100" />
+        <MudImage Elevation="6" Src="@Advertisement!.Image.Path" Fluid="true" ObjectFit="ObjectFit.Fill" Class="rounded h-100" />
     </MudItem>
     <MudItem xs="12" sm="5" xl="3" Class="d-flex">
         <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
@@ -26,7 +26,6 @@
             <MudText Class="my-3" Typo="Typo.body1">Condition: @Advertisement!.Condition</MudText>
             <MudText Class="my-3" Typo="Typo.body1">Created by: @Advertisement!.CreatedBy</MudText>
             <MudSpacer />
-            @* TODO: Correct color (blue white) *@
             <MudButton Class="align-self-center my-6" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary">
                 <MudLink Href="@MailToLink" Color="Color.Inherit" Underline="Underline.None">
                     Send message

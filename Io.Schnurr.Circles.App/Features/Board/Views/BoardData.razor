@@ -41,7 +41,7 @@
                       SubTitleLeft="@d.CreatedAt.ToShortDateString()"
                       SubTitleRight="@d.Price.ToCurrency()"
                       OnClick="@(() => NavigateToAdvertisementDetail(d.Id))"
-                      Image="https://cache.pressmailing.net/thumbnail/story_hires/64940fdd-8ec9-4854-98f9-e7f7467414b7/image.jpg" />
+                      Image="@d.Image.Path" />
             }
         }
     </MudGrid>
