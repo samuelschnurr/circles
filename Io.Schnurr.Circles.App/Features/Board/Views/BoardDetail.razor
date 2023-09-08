@@ -23,8 +23,8 @@
             <MudText Typo="Typo.h5">@Advertisement!.Title</MudText>
             <MudDivider Class="flex-grow-0 my-3" />
             <MudText Typo="Typo.h6">@Advertisement!.Price.ToCurrency()</MudText>
-            <MudText Class="my-3" Typo="Typo.body1">Condition: New</MudText>
-            <MudText Class="my-3" Typo="Typo.body1">Created by:John Doe</MudText>
+            <MudText Class="my-3" Typo="Typo.body1">Condition: @Advertisement!.Condition</MudText>
+            <MudText Class="my-3" Typo="Typo.body1">Created by: @Advertisement!.CreatedBy</MudText>
             <MudSpacer />
             <MudButton Class="align-self-center my-6" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary" OnClick="@(() => Console.WriteLine("OpenMailTemplate"))">Send message</MudButton>
             <MudDivider Class="flex-grow-0 my-3" />
