@@ -1,0 +1,13 @@
+﻿@for (int i = 0; i < TextParagraphs?.Length; i++)
+{
+    // Iterator 'i' acts here as reference, so pargraph must be stored in a variable to preserve the value (or store i as localIterator)
+    // With direct access of @TextParagraphs[i] in the <MudText> the 'i' would be the final value for all iterations when the html will be evaluated
+    var paragraph = TextParagraphs?[i];
+    <MudText>@paragraph</MudText>
+
+    @if (i < TextParagraphs?.Length - 1)
+    {
+        // Dont append to last iteration
+        <br />
+    }
+}
