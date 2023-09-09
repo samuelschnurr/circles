@@ -7,14 +7,18 @@ internal static class AdvertisementService
 {
     private static readonly IEnumerable<Advertisement> advertisements = TestAdvertisements.GetAdvertisements();
 
-    internal static IResult GetAll()
+    internal static async Task<IResult> GetAll()
     {
+        // Simulate loading
+        await Task.Delay(new Random().Next(500, 2500));
         IEnumerable<Advertisement> result = advertisements.Where(o => o.DeletedAt == null);
         return TypedResults.Ok(result);
     }
 
-    internal static IResult GetById(int id)
+    internal static async Task<IResult> GetById(int id)
     {
+        // Simulate loading
+        await Task.Delay(new Random().Next(500, 2500));
         return advertisements.SingleOrDefault(o => o.Id == id && o.DeletedAt == null)
         is Advertisement advertisement
         ? TypedResults.Ok(advertisement)
