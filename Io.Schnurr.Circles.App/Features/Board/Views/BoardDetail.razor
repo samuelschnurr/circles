@@ -17,7 +17,10 @@
 <MudContainer MaxWidth="MaxWidth.Large">
     <MudGrid>
         <MudItem xs="12" md="6">
-            <MudImage Elevation="6" Src="@Advertisement!.Base64Image" ObjectFit="ObjectFit.Cover" Class="d-block rounded w-100" Height="400" />
+            <MudPaper Elevation="6" Class="relative rounded overflow-hidden background-transparent" >
+                <MudImage Src="@Advertisement!.Base64Image" ObjectFit="ObjectFit.Cover" Class="d-block background-overlay w-100" Height="400" />
+                <MudImage Src="@Advertisement!.Base64Image" ObjectFit="ObjectFit.Contain" Class="d-block mx-auto px-6 w-100" Height="400" />
+            </MudPaper>
         </MudItem>
         <MudItem xs="12" md="6" Class="d-flex">
             <MudPaper Elevation="6" Class="d-flex flex-column flex-grow-1 pa-3">
