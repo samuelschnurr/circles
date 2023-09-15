@@ -19,8 +19,8 @@ internal abstract class Routes
         internal const string Index = "/circles";
     }
 
-    internal abstract class Pins
+    internal abstract class Offer
     {
-        internal const string Index = "/pins";
+        internal const string Index = "/offer";
     }
 }

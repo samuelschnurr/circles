@@ -1,6 +1,6 @@
-﻿namespace Io.Schnurr.Circles.App.Features.Pins.Views;
+﻿namespace Io.Schnurr.Circles.App.Features.Offer.Views;
 
-public partial class PinsIndex
+public partial class OfferIndex
 {
     protected int currentCount = 0;
 

@@ -12,7 +12,7 @@ public sealed partial class NavMenu : IDisposable
     private readonly (string label, string href, string icon, NavLinkMatch match, bool activeOnRoot)[] navMenuItems =
     {
         ("Board", "board", Icons.Material.Filled.Dashboard, default(NavLinkMatch), true),
-        ("Pins", "pins", Icons.Material.Filled.PushPin, default(NavLinkMatch), false),
+        ("Offer", "offer", Icons.Material.Filled.LocalOffer, default(NavLinkMatch), false),
         ("Circles", "circles", Icons.Material.Filled.BubbleChart, default(NavLinkMatch), false)
     };
 
