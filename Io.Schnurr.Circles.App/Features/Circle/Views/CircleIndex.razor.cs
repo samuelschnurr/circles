@@ -1,6 +1,6 @@
-﻿namespace Io.Schnurr.Circles.App.Features.Circles.Views;
+﻿namespace Io.Schnurr.Circles.App.Features.Circle.Views;
 
-public partial class CirclesIndex
+public partial class CircleIndex
 {
     internal (string label, bool isChecked, bool isDisabled, bool isReadOnly)[] circles =
     {

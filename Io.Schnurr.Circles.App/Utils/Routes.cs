@@ -14,9 +14,9 @@ internal abstract class Routes
         internal static string GetDetailPath(int id) => string.Format($"{Index}/{{0}}", id);
     }
 
-    internal abstract class Circles
+    internal abstract class Circle
     {
-        internal const string Index = "/circles";
+        internal const string Index = "/circle";
     }
 
     internal abstract class Offer
