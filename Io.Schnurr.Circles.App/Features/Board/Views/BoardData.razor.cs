@@ -36,5 +36,5 @@ public partial class BoardData
         return filteredAndSortedAdvertisements;
     }
 
-    private void NavigateToAdvertisementDetail(int id) => NavigationManager.NavigateTo(Routes.Board.GetDetailPath(id));
+    private void NavigateToBoardDetail(int id) => NavigationManager.NavigateTo(Routes.Board.GetDetailPath(id));
 }

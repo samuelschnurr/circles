@@ -40,7 +40,7 @@
                       Description="@d.Description"
                       SubTitleLeft="@d.CreatedAt.ToShortDateString()"
                       SubTitleRight="@d.Price.ToCurrency()"
-                      OnClick="@(() => NavigateToAdvertisementDetail(d.Id))"
+                      OnClick="@(() => NavigateToBoardDetail(d.Id))"
                       Image="@d.Base64Image" />
             }
         }
