@@ -22,5 +22,7 @@ internal abstract class Routes
     internal abstract class Offer
     {
         internal const string Index = "/offer";
+        internal const string Detail = $"{Index}/{{Id:int}}";
+        internal static string GetDetailPath(int id) => string.Format($"{Index}/{{0}}", id);
     }
 }

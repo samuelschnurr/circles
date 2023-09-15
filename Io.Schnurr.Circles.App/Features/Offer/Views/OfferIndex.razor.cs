@@ -1,11 +1,13 @@
-﻿namespace Io.Schnurr.Circles.App.Features.Offer.Views;
+﻿using Fluxor;
+using Io.Schnurr.Circles.App.Features.Offer.Store;
+using Microsoft.AspNetCore.Components;
+
+namespace Io.Schnurr.Circles.App.Features.Offer.Views;
 
 public partial class OfferIndex
 {
-    protected int currentCount = 0;
+    [Inject]
+    private IState<OfferState> OfferState { get; set; }
 
-    protected void IncrementCount()
-    {
-        currentCount++;
-    }
+    public bool ShowLoadingSpinner => !OfferState.Value.IsInitialized;
 }
