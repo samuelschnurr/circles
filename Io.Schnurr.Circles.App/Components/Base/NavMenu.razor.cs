@@ -13,7 +13,7 @@ public sealed partial class NavMenu : IDisposable
     {
         ("Board", "board", Icons.Material.Filled.Dashboard, default(NavLinkMatch), true),
         ("Offer", "offer", Icons.Material.Filled.LocalOffer, default(NavLinkMatch), false),
-        ("Circles", "circles", Icons.Material.Filled.BubbleChart, default(NavLinkMatch), false)
+        ("Circles", "circle", Icons.Material.Filled.BubbleChart, default(NavLinkMatch), false)
     };
 
     protected override async Task OnInitializedAsync()
