@@ -32,5 +32,5 @@ public partial class OfferForm
         return Task.CompletedTask;
     }
 
-    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Index);
+    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Page);
 }

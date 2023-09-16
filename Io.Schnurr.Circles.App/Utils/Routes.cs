@@ -2,33 +2,33 @@
 
 internal abstract class Routes
 {
-    private const string detailSegment = $"/{{Id:int}}";
-    private const string formSegment = $"/form/{{Id:int?}}";
+    private const string DetailSegment = $"/{{Id:int}}";
+    private const string FormSegment = $"/form/{{Id:int?}}";
 
     internal abstract class Base
     {
-        internal const string Index = "/";
+        internal const string Page = "/";
     }
 
     internal abstract class Circle
     {
-        internal const string Index = "/circle";
+        internal const string Page = "/circle";
     }
 
     internal abstract class Board
     {
-        internal const string Index = "/board";
-        internal const string Detail = $"{Index}{detailSegment}";
-        internal static string GetDetailPath(int id) => FormatDetailPath(Index, id);
+        internal const string Page = "/board";
+        internal const string Detail = $"{Page}{DetailSegment}";
+        internal static string GetDetailPath(int id) => FormatDetailPath(Page, id);
     }
 
     internal abstract class Offer
     {
-        internal const string Index = "/offer";
-        internal const string Form = $"{Index}{formSegment}";
-        internal static string GetFormPath(int? id = null) => FormatFormPath(Index, id);
+        internal const string Page = "/offer";
+        internal const string Form = $"{Page}{FormSegment}";
+        internal static string GetFormPath(int? id = null) => FormatFormPath(Page, id);
     }
 
-    private static string FormatDetailPath(string index, int id) => string.Format($"{index}/{{0}}", id);
-    private static string FormatFormPath(string index, int? id = null) => id == null ? $"{index}/form" : string.Format($"{index}/form/{{0}}", id);
+    private static string FormatDetailPath(string page, int id) => string.Format($"{page}/{{0}}", id);
+    private static string FormatFormPath(string page, int? id = null) => id == null ? $"{page}/form" : string.Format($"{page}/form/{{0}}", id);
 }

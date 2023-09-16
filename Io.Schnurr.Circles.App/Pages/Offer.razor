@@ -1,0 +1,13 @@
+﻿@using Io.Schnurr.Circles.App.Features.Offer.Views
+@attribute [Route(Routes.Offer.Page)]
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<PageTitle>Offer</PageTitle>
+
+@if (ShowLoadingSpinner)
+{
+    <ProgressCircular />
+    return;
+}
+
+<OfferIndex />
