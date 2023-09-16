@@ -23,7 +23,7 @@
                       Description="@d.Description"
                       SubTitleLeft="@d.CreatedAt.ToShortDateString()"
                       SubTitleRight="@d.Price.ToCurrency()"
-                      OnClick="@(() => NavigateToOfferDetail(d.Id))"
+                      OnClick="@(() => NavigateToOfferForm(d.Id))"
                       Image="@d.Base64Image" />
             }
         }

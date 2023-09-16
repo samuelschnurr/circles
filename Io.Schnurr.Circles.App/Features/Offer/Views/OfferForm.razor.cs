@@ -7,7 +7,7 @@ using static Io.Schnurr.Circles.App.Features.Offer.Store.OfferActions;
 
 namespace Io.Schnurr.Circles.App.Features.Offer.Views;
 
-public partial class OfferDetail
+public partial class OfferForm
 {
     [Parameter]
     public int Id { get; set; }
