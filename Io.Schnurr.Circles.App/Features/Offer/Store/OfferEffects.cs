@@ -16,7 +16,7 @@ public class OfferEffects
     [EffectMethod(typeof(LoadAdvertisementsAction))]
     public async Task LoadAdvertisements(IDispatcher dispatcher)
     {
-        var dataTask = advertisementService.GetAll();
+        var dataTask = advertisementService.GetByUser();
 
         dispatcher.Dispatch(new SetOfferStateIsLoadingAction(true));
 
