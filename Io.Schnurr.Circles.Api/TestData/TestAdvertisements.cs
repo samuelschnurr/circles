@@ -246,7 +246,7 @@ internal static class TestAdvertisements
                 Title = "Leather Office Chair",
                 Description = "Upgrade your workspace with this leather office chair. It has been my trusted companion for long hours of work, providing comfort and support. The genuine leather upholstery adds a touch of sophistication to any office setting. Whether you're working from home or in a professional environment, this chair offers both style and functionality. Elevate your workspace with the leather office chair.",
                 Price = 199.99m,
-                CreatedBy = "kim.phut@schnurrio.invalid",
+                CreatedBy = "test.user@schnurrio.invalid",
                 Condition = AdvertisementCondition.Good,
                 Base64Image = GetImageAsBase64("office_chair.jpg"),
                 CreatedAt = new DateTime(2022, 5, 20),
