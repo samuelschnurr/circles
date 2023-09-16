@@ -11,7 +11,7 @@ internal static class AdvertisementService
     {
         // Simulate loading
         await Task.Delay(new Random().Next(500, 2500));
-        IEnumerable<Advertisement> result = advertisements.Where(o => o.DeletedAt == null);
+        IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null);
         return TypedResults.Ok(result);
     }
 
@@ -19,10 +19,18 @@ internal static class AdvertisementService
     {
         // Simulate loading
         await Task.Delay(new Random().Next(500, 2500));
-        return advertisements.SingleOrDefault(o => o.Id == id && o.DeletedAt == null)
+        return advertisements.SingleOrDefault(a => a.Id == id && a.DeletedAt == null)
         is Advertisement advertisement
         ? TypedResults.Ok(advertisement)
         : TypedResults.NotFound();
+    }
+
+    internal static async Task<IResult> GetByUser()
+    {
+        // Simulate loading
+        await Task.Delay(new Random().Next(500, 2500));
+        IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null && a.CreatedBy.ToLower() == TestUserContext.MailAddress.ToLower());
+        return TypedResults.Ok(result);
     }
 
     internal static void MapRoutes(WebApplication app)
