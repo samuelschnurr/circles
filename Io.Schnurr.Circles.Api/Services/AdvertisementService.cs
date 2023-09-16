@@ -12,25 +12,15 @@ internal static class AdvertisementService
         // Simulate loading
         await Task.Delay(new Random().Next(500, 2500));
         IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null);
-        return TypedResults.Ok(result);
+        return result.Any() ? TypedResults.Ok(result) : TypedResults.NoContent();
     }
 
-    internal static async Task<IResult> GetById(int id)
+    internal static async Task<IResult> GetByUser(string userMailAddress)
     {
         // Simulate loading
         await Task.Delay(new Random().Next(500, 2500));
-        return advertisements.SingleOrDefault(a => a.Id == id && a.DeletedAt == null)
-        is Advertisement advertisement
-        ? TypedResults.Ok(advertisement)
-        : TypedResults.NotFound();
-    }
-
-    internal static async Task<IResult> GetByUser()
-    {
-        // Simulate loading
-        await Task.Delay(new Random().Next(500, 2500));
-        IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null && a.CreatedBy.ToLower() == TestUserContext.MailAddress.ToLower());
-        return TypedResults.Ok(result);
+        IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null && a.CreatedBy.ToLower() == userMailAddress);
+        return result.Any() ? TypedResults.Ok(result) : TypedResults.NoContent();
     }
 
     internal static void MapRoutes(WebApplication app)
@@ -38,6 +28,6 @@ internal static class AdvertisementService
         // Using MapGroup to not duplicate "/advertisement/..." in mappings
         var advertisement = app.MapGroup(nameof(Advertisement));
         advertisement.MapGet("/", AdvertisementService.GetAll);
-        advertisement.MapGet("/{id}", AdvertisementService.GetById);
+        advertisement.MapGet("/{userMailAddress}", AdvertisementService.GetByUser);
     }
 }
