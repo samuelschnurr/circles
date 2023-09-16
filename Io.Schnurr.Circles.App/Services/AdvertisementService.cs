@@ -23,7 +23,7 @@ public class AdvertisementService
 
     internal async Task<IEnumerable<Advertisement>?> GetByUser()
     {
-        IEnumerable<Advertisement>? advertisements = await HttpClient.GetFromJsonAsync<Advertisement[]>($"{nameof(Advertisement)}/{nameof(GetByUser)}/{TestUserContext.MailAddress}");
+        IEnumerable<Advertisement>? advertisements = await HttpClient.GetFromJsonAsync<Advertisement[]>($"{nameof(Advertisement)}/{TestUserContext.MailAddress}");
         return advertisements;
     }
 
