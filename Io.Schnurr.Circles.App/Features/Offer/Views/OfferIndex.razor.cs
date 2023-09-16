@@ -25,5 +25,5 @@ public partial class OfferIndex
         await Task.CompletedTask;
     }
 
-    private void NavigateToOfferForm(int id) => NavigationManager.NavigateTo(Routes.Offer.GetFormPath(id));
+    private void NavigateToOfferForm(int? id = null) => NavigationManager.NavigateTo(Routes.Offer.GetFormPath(id));
 }

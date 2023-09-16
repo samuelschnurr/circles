@@ -20,7 +20,7 @@ public partial class OfferForm
 
     private bool ShowLoadingSpinner => Advertisement == null;
 
-    private Advertisement? Advertisement => OfferState.Value.Items?.Single(i => i.Id == Id);
+    private Advertisement? Advertisement => OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) ?? new Advertisement();
 
     protected override Task OnInitializedAsync()
     {
