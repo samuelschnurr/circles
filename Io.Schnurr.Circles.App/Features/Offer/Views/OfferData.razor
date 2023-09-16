@@ -5,7 +5,14 @@
 @{
     if (ShowLoadingSpinner)
     {
-        <AppProgressCircular />
+        <ProgressCircular />
+        return;
+    }
+
+    
+    if (!Data.Any())
+    {
+        <MudText Class="d-flex justify-center mt-16" Typo="Typo.body1">No records found</MudText>
         return;
     }
 

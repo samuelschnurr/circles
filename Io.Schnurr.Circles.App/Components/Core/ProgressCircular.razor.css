@@ -1,7 +1,3 @@
 ﻿.center-vertical {
     height: calc(100vh - 176px);
 }
-
-.center-horizontal-with-drawer {
-    width: calc(100% - var(--mud-drawer-width,var(--mud-drawer-width-left)));
-}   
