@@ -17,7 +17,7 @@ public partial class OfferData
 
     private IEnumerable<Advertisement> Data => OfferState.Value.Items;
 
-    public bool ShowLoadingSpinner => !OfferState.Value.IsReady;
+    public bool ShowLoadingSpinner => !OfferState.Value.IsReady || Data == null;
 
     protected override async Task OnInitializedAsync()
     {
