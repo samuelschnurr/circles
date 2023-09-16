@@ -2,6 +2,7 @@
 using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
+using Io.Schnurr.Circles.Shared.TestData;
 
 namespace Io.Schnurr.Circles.App.Services;
 
@@ -16,8 +17,14 @@ public class AdvertisementService
 
     internal async Task<IEnumerable<Advertisement>?> GetAll()
     {
-        IEnumerable<Advertisement>? data = await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement));
-        return data;
+        IEnumerable<Advertisement>? advertisements = await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement));
+        return advertisements;
+    }
+
+    internal async Task<IEnumerable<Advertisement>?> GetByUser()
+    {
+        IEnumerable<Advertisement>? advertisements = await HttpClient.GetFromJsonAsync<Advertisement[]>($"{nameof(Advertisement)}/{nameof(GetByUser)}/{TestUserContext.MailAddress}");
+        return advertisements;
     }
 
     internal static IEnumerable<Advertisement> SortAdvertisements(IEnumerable<Advertisement> advertisements, SortColumn sortColumn, SortDirection sortDirection)
@@ -43,20 +50,20 @@ public class AdvertisementService
 
     internal static IEnumerable<Advertisement> FilterAdvertisements(IEnumerable<Advertisement> advertisements, string searchString)
     {
-        var filteredData = advertisements?.Where(d =>
+        var filteredAdvertisements = advertisements?.Where(a =>
         {
             bool result;
 
             result = string.IsNullOrWhiteSpace(searchString)
-                || d.Id.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                || d.Title.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                || d.Description.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                || d.Price.ToCurrency().Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                || d.CreatedAt.ToShortDateString().Contains(searchString, StringComparison.OrdinalIgnoreCase);
+                || a.Id.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                || a.Title.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                || a.Description.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                || a.Price.ToCurrency().Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                || a.CreatedAt.ToShortDateString().Contains(searchString, StringComparison.OrdinalIgnoreCase);
 
             return result;
         });
 
-        return filteredData ?? new List<Advertisement>();
+        return filteredAdvertisements ?? new List<Advertisement>();
     }
 }
