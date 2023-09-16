@@ -12,7 +12,7 @@ internal static class AdvertisementService
         // Simulate loading
         await Task.Delay(new Random().Next(500, 2500));
         IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null);
-        return result.Any() ? TypedResults.Ok(result) : TypedResults.NoContent();
+        return TypedResults.Ok(result);
     }
 
     internal static async Task<IResult> GetByUser(string userMailAddress)
@@ -20,7 +20,7 @@ internal static class AdvertisementService
         // Simulate loading
         await Task.Delay(new Random().Next(500, 2500));
         IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null && a.CreatedBy.ToLower() == userMailAddress);
-        return result.Any() ? TypedResults.Ok(result) : TypedResults.NoContent();
+        return TypedResults.Ok(result);
     }
 
     internal static void MapRoutes(WebApplication app)
