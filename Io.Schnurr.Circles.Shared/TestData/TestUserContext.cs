@@ -1,6 +1,6 @@
-﻿namespace Io.Schnurr.Circles.Shared.Utils;
+﻿namespace Io.Schnurr.Circles.Shared.TestData;
 
-internal abstract class TestUserContext
+public abstract class TestUserContext
 {
-    internal static string MailAddress => "test.user@schnurrio.invalid";
+    public static string MailAddress => "test.user@schnurrio.invalid";
 }
