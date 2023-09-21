@@ -1,4 +1,5 @@
-﻿using Fluxor;
+﻿using FluentValidation;
+using Fluxor;
 using Io.Schnurr.Circles.App.Middlewares;
 using Io.Schnurr.Circles.App.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -36,5 +37,11 @@ internal static class StartupHelper
     internal static void AddServiceConfiguration(this WebAssemblyHostBuilder builder)
     {
         builder.Services.AddScoped<AdvertisementService>();
+    }
+
+    internal static void AddFluentValidationConfiguration()
+    {
+        // Provide only english messages
+        ValidatorOptions.Global.LanguageManager.Enabled = false;
     }
 }

@@ -16,4 +16,6 @@ builder.AddServiceConfiguration();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddMudServices();
 
+StartupHelper.AddFluentValidationConfiguration();
+
 await builder.Build().RunAsync();
