@@ -4,7 +4,7 @@ namespace Io.Schnurr.Circles.App.Utils;
 
 public static class Extensions
 {
-    public static string ToCurrency(this decimal price) => $"{price:N2} $";
+    public static string? ToCurrency(this decimal? price) => price == null ? null : $"{price:N2} $";
 
     public static string[] SplitNewLines(this string text)
     {
