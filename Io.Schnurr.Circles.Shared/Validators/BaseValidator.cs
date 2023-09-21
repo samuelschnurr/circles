@@ -2,7 +2,7 @@
 
 namespace Io.Schnurr.Circles.Shared.Validators;
 
-internal class BaseValidator<T> : AbstractValidator<T>
+public class BaseValidator<T> : AbstractValidator<T>
 {
     public Func<object, string, Task<IEnumerable<string>>> ValidateValue => async (model, propertyName) =>
     {

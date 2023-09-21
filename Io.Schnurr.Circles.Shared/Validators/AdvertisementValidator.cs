@@ -4,7 +4,7 @@ using Io.Schnurr.Circles.Shared.Models;
 namespace Io.Schnurr.Circles.Shared.Validators;
 
 
-internal class AdvertisementValidator : BaseValidator<Advertisement>
+public class AdvertisementValidator : BaseValidator<Advertisement>
 {
     public AdvertisementValidator()
     {
