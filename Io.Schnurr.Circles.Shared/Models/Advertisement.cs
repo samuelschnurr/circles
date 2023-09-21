@@ -6,7 +6,7 @@ public class Advertisement : Base
 {
     public string Title { get; set; }
     public string Description { get; set; }
-    public decimal Price { get; set; }
+    public decimal? Price { get; set; }
     public string CreatedBy { get; set; }
     public AdvertisementCondition Condition { get; set; }
     public string Base64Image { get; set; }
