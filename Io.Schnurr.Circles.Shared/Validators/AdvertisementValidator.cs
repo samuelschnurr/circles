@@ -19,7 +19,7 @@ public class AdvertisementValidator : BaseValidator<Advertisement>
         RuleFor(x => x.Price)
             .NotEmpty()
             .InclusiveBetween(0, 999999.99M)
-            .PrecisionScale(2, 2, true);
+            .PrecisionScale(8, 2, true);
 
         RuleFor(x => x.Condition)
             .IsInEnum();
