@@ -2,7 +2,7 @@
 
 <MudPaper Elevation="0" MinWidth="@(MinWidth.ToString() + "px")">
     <MudSelect Value="SelectedValue" ValueChanged="OnSelectedValueChanged"
-               Class="mb-2 mr-8" Label="@Label" AnchorOrigin="Origin.BottomCenter"
+               Class="@Class" Label="@Label" AnchorOrigin="Origin.BottomCenter"
                For="For" Immediate="Immediate">
         @foreach (T item in Enum.GetValues(typeof(T)))
         {

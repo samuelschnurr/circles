@@ -22,4 +22,7 @@ public partial class EnumSelect<T> where T : Enum
 
     [Parameter]
     public int MinWidth { get; set; } = 150;
+
+    [Parameter]
+    public string? Class { get; set; }
 }
