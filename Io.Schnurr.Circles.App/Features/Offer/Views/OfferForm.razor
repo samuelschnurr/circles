@@ -21,31 +21,41 @@
 @using System.ComponentModel.DataAnnotations
 
 @* TODO: Show edit form with values when model exists *@
-<MudForm Model="model" @ref="form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
-    <MudGrid>
-        <MudItem xs="12" lg="6">
-            <MudPaper Elevation="6" Class="pa-3">
+<MudPaper Elevation="6" Class="pa-3">
+    <MudForm Model="model" @ref="form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
+        <MudGrid>
+            <MudItem xs="12" lg="6">
                 <MudTextField Label="Title" Immediate="true" @bind-Value="model.Title" For="@(() => model.Title)" />
                 <MudTextField Label="Price" Immediate="true" @bind-Value="model.Price" For="@(() => model.Price)" />
                 <EnumSelect Label="Condition" Immediate="true" SelectedValue="model.Condition" OnSelectedValueChanged="@((AdvertisementCondition condition) => model.Condition = condition)" For="@(() => model.Condition)" />
-                <MudTextField Label="Description" Immediate="true" Lines="10" @bind-Value="model.Description" For="@(() => model.Description)" />
-            </MudPaper>
-        </MudItem>
-        <MudItem xs="12" lg="6">
-            <MudPaper Elevation="6" Class="pa-3">
-                @* TODO: Add FileUpload Field *@
-                <MudTextField Label="Image" Immediate="true" @bind-Value="model.Base64Image" For="@(() => model.Base64Image)" />
-            </MudPaper>
-        </MudItem>
-        @* TODO: Correct hight for second block (images) and where to align button? *@
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await Submit())">Submit</MudButton>
-    </MudGrid>
-</MudForm>
+                <FileUpload OnFilesChanged="SetFileProperty" />
+            </MudItem>
+            <MudItem xs="12" lg="6">
+                <MudTextField Label="Description" Immediate="true" Lines="15" @bind-Value="model.Description" For="@(() => model.Description)" />
+            </MudItem>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto ma-4" OnClick="@(async () => await Submit())">Submit</MudButton>
+        </MudGrid>
+    </MudForm>
+</MudPaper>
 
 
 @code {
     // TODO: Extract Code to code behind
     [Inject] ISnackbar Snackbar { get; set; }
+
+    private async Task SetFileProperty(InputFileChangeEventArgs args)
+    {
+        var file = args.File;
+
+        using (var ms = new MemoryStream())
+        {
+            await file.OpenReadStream().CopyToAsync(ms);
+            var bytes = ms.ToArray();
+            var base64Image = Convert.ToBase64String(bytes);
+            model.Base64Image = base64Image;
+        }
+
+    }
 
     MudForm form;
 
