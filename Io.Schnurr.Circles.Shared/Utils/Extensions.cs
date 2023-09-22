@@ -31,4 +31,12 @@ public static class Extensions
                                      .FirstOrDefault();
         return displayAttribute?.Name ?? value.ToString();
     }
+
+    public static double BytesToMegabytes(this long bytes)
+    {
+        const double bytesInMegabyte = 1024 * 1024;
+        var mbResult = Math.Round(bytes / bytesInMegabyte, 3);
+
+        return mbResult;
+    }
 }
