@@ -3,7 +3,7 @@
 <MudFileUpload T="IBrowserFile" OnFilesChanged="OnFilesChanged" @bind-Files="File">
     <ButtonTemplate>
         <MudContainer Class="d-flex pa-0">
-            <MudText Class="mr-auto align-self-center" Typo="Typo.body2">@File.Name (@File.Size.BytesToMegabytes() Mb)</MudText>
+            <MudText Class="mr-auto align-self-center" Typo="Typo.body2">@FileDisplayString</MudText>
             <MudButton Class="ml-auto my-4"
                        HtmlTag="label"
                        Variant="Variant.Filled"
@@ -22,4 +22,6 @@
     public EventCallback<InputFileChangeEventArgs> OnFilesChanged { get; set; }
 
     private IBrowserFile File { get; set; }
+
+    private string FileDisplayString => File == null ? string.Empty : $"{File.Name} ({File.Size.BytesToMegabytes()} Mb)";
 }
