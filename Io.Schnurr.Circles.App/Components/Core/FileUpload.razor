@@ -1,0 +1,25 @@
+﻿@using System.Linq.Expressions;
+
+<MudFileUpload T="IBrowserFile" OnFilesChanged="OnFilesChanged" @bind-Files="File">
+    <ButtonTemplate>
+        <MudContainer Class="d-flex pa-0">
+            <MudText Class="mr-auto align-self-center" Typo="Typo.body2">@File.Name (@File.Size.BytesToMegabytes() Mb)</MudText>
+            <MudButton Class="ml-auto my-4"
+                       HtmlTag="label"
+                       Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.CloudUpload"
+                       for="@context">
+                Upload File
+            </MudButton>
+        </MudContainer>
+        @* TODO: SHOW VALIDATION ERROR *@
+    </ButtonTemplate>
+</MudFileUpload>
+
+@code {
+    [Parameter]
+    public EventCallback<InputFileChangeEventArgs> OnFilesChanged { get; set; }
+
+    private IBrowserFile File { get; set; }
+}
