@@ -9,5 +9,5 @@ public class Advertisement : Base
     public decimal? Price { get; set; }
     public string CreatedBy { get; set; }
     public AdvertisementCondition Condition { get; set; }
-    public string Base64Image { get; set; }
+    public BrowserFile Image { get; set; } = new();
 }
