@@ -1,6 +1,7 @@
 using Fluxor;
 using Io.Schnurr.Circles.App.Features.Offer.Store;
 using Io.Schnurr.Circles.App.Utils;
+using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using static Io.Schnurr.Circles.App.Features.Offer.Store.OfferActions;
@@ -33,4 +34,6 @@ public partial class OfferForm
     }
 
     private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Page);
+
+    private void SetCondition(AdvertisementCondition condition) => model.Condition = condition;
 }

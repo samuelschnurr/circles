@@ -1,4 +1,7 @@
-﻿@attribute [Route(Routes.Offer.Form)]
+﻿@using Io.Schnurr.Circles.Shared.Enums;
+@using Io.Schnurr.Circles.Shared.Models;
+@using Io.Schnurr.Circles.Shared.Validators;
+@attribute [Route(Routes.Offer.Form)]
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
 <PageTitle>Offer</PageTitle>
@@ -13,22 +16,14 @@
     }
 }
 
-@using FluentValidation
-@using Io.Schnurr.Circles.Shared.Enums;
-@using Io.Schnurr.Circles.Shared.Models;
-@using Io.Schnurr.Circles.Shared.Validators;
-
-@using System.ComponentModel.DataAnnotations
-
-@* TODO: Show edit form with values when model exists *@
 <MudPaper Elevation="6" Class="pa-3">
     <MudForm Model="model" @ref="form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
         <MudGrid>
             <MudItem xs="12" lg="6">
                 <MudTextField Label="Title" Immediate="true" @bind-Value="model.Title" For="@(() => model.Title)" />
                 <MudTextField Label="Price" Immediate="true" @bind-Value="model.Price" For="@(() => model.Price)" />
-                <EnumSelect Label="Condition" Immediate="true" SelectedValue="model.Condition" OnSelectedValueChanged="@((AdvertisementCondition condition) => model.Condition = condition)" For="@(() => model.Condition)" />
-                <FileUpload OnFilesChanged="SetFileProperty" />
+                <EnumSelect Label="Condition" Immediate="true" SelectedValue="model.Condition" OnSelectedValueChanged="@((AdvertisementCondition c) => SetCondition(c))" For="@(() => model.Condition)" />
+                <FileUpload BrowserFile="model.Image" For="@(() => model.Image.File)" />
             </MudItem>
             <MudItem xs="12" lg="6">
                 <MudTextField Label="Description" Immediate="true" Lines="15" @bind-Value="model.Description" For="@(() => model.Description)" />
@@ -40,27 +35,15 @@
 
 
 @code {
+    // TODO: Show edit form with values when model exists
     // TODO: Extract Code to code behind
+    // TODO: Submit Form To API
+    // TODO: Receive, Validate and Store Post in API
+    // TODO: Implement Snackbars and use also for error boundary?
     [Inject] ISnackbar Snackbar { get; set; }
 
-    private async Task SetFileProperty(InputFileChangeEventArgs args)
-    {
-        var file = args.File;
-
-        using (var ms = new MemoryStream())
-        {
-            await file.OpenReadStream().CopyToAsync(ms);
-            var bytes = ms.ToArray();
-            var base64Image = Convert.ToBase64String(bytes);
-            model.Base64Image = base64Image;
-        }
-
-    }
-
     MudForm form;
-
     AdvertisementValidator advertisementValidator = new AdvertisementValidator();
-
     Advertisement model = new Advertisement();
 
     private async Task Submit()
@@ -70,9 +53,6 @@
         if (form.IsValid)
         {
             Snackbar.Add("Submited!");
-            // TODO: Submit Form To API
-            // TODO: Receive, Validate and Store Post in API
-            // TODO: Implement Snackbars and use also for error boundary?
         }
     }
 }
