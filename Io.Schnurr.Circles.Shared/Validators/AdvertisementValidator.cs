@@ -24,7 +24,7 @@ public class AdvertisementValidator : BaseValidator<Advertisement>
         RuleFor(x => x.Condition)
             .IsInEnum();
 
-        RuleFor(x => x.Base64Image)
-            .NotEmpty();
+        RuleFor(x => x.Image)
+            .SetValidator(new BrowserFileValidator());
     }
 }
