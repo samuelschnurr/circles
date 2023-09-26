@@ -9,7 +9,14 @@
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="py-8">
             <span id="mainContent-mainContainer">
-                @Body
+                <ErrorBoundary @ref="ErrorBoundary">
+                    <ChildContent>
+                        @Body
+                    </ChildContent>
+                    <ErrorContent>
+                        <MudAlert Severity="Severity.Error" Variant="Variant.Filled" ShowCloseIcon="true" CloseIconClicked="(() => RecoverError())">An error has occurred. Please try again.</MudAlert>
+                    </ErrorContent>
+                </ErrorBoundary>
             </span>
         </MudContainer>
     </MudMainContent>
