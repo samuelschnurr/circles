@@ -5,7 +5,7 @@ namespace Io.Schnurr.Circles.App.Components.Base;
 
 public sealed partial class MainLayout : IDisposable
 {
-    private ErrorBoundary ErrorBoundary { get; set; }
+    private ErrorBoundary? ErrorBoundary { get; set; }
 
     protected override void OnInitialized()
     {
@@ -26,5 +26,5 @@ public sealed partial class MainLayout : IDisposable
 
     public void Dispose() => AppState.StateChanged -= HandleStateHasChanged;
 
-    private void RecoverError() => ErrorBoundary.Recover();
+    private void RecoverError() => ErrorBoundary?.Recover();
 }
