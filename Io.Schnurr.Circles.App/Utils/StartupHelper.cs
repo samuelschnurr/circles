@@ -11,9 +11,7 @@ internal static class StartupHelper
     internal static void AddApiConfiguration(this WebAssemblyHostBuilder builder)
     {
         var baseAddress = builder.Configuration["ApiHttpsPath"] ?? throw new Exception("Api Path not found");
-
-        using ServiceProvider serviceProvider = builder.Services.BuildServiceProvider();
-        var httpExceptionInterceptor = serviceProvider.GetRequiredService<HttpExceptionInterceptor>();
+        var httpExceptionInterceptor = new HttpExceptionInterceptor();
 
         builder.Services.AddScoped(sp => new HttpClient(httpExceptionInterceptor)
         {
@@ -40,8 +38,6 @@ internal static class StartupHelper
     internal static void AddServiceConfiguration(this WebAssemblyHostBuilder builder)
     {
         builder.Services.AddScoped<AdvertisementService>();
-        //builder.Services.AddSingleton<ISnackbar, SnackbarService>();
-        builder.Services.AddSingleton<HttpExceptionInterceptor>();
     }
 
     internal static void AddFluentValidationConfiguration()
