@@ -9,16 +9,14 @@ internal static class AdvertisementService
 
     internal static async Task<IResult> GetAll()
     {
-        // Simulate loading
-        await Task.Delay(new Random().Next(500, 2500));
+        await SimulateLoading();
         IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null);
         return TypedResults.Ok(result);
     }
 
     internal static async Task<IResult> GetByUser(string userMailAddress)
     {
-        // Simulate loading
-        await Task.Delay(new Random().Next(500, 2500));
+        await SimulateLoading();
         IEnumerable<Advertisement> result = advertisements.Where(a => a.DeletedAt == null && a.CreatedBy.ToLower() == userMailAddress);
         return TypedResults.Ok(result);
     }
@@ -29,5 +27,8 @@ internal static class AdvertisementService
         var advertisement = app.MapGroup(nameof(Advertisement));
         advertisement.MapGet("/", AdvertisementService.GetAll);
         advertisement.MapGet("/{userMailAddress}", AdvertisementService.GetByUser);
+        advertisement.MapPost("/", AdvertisementService.CreateOrUpdate);
     }
+
+    private static async Task SimulateLoading() => await Task.Delay(new Random().Next(500, 2500));
 }
