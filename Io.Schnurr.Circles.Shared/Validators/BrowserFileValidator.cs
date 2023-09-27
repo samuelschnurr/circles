@@ -8,16 +8,22 @@ public class BrowserFileValidator : BaseValidator<BrowserFile>
 {
     public BrowserFileValidator()
     {
-        RuleFor(x => x.File)
-            .NotEmpty();
-
-        RuleFor(x => x.Name)
+        //TODO: SHOW Correct file validataion for IBRowserFile and regular file
+        // Validate Base64 File
+        When(x => x.File == null, () =>
+        {
+            RuleFor(x => x.Name)
               .NotEmpty();
 
-        RuleFor(x => x.Size)
+            RuleFor(x => x.Base64File)
+              .NotEmpty();
+
+            RuleFor(x => x.Size)
             .LessThanOrEqualTo(10485760)
             .WithMessage("The maximum file size is 10 MB");
+        });
 
+        // Validate IBrowserFile
         When(x => x.File != null, () =>
         {
             RuleFor(x => x.File.Name)
