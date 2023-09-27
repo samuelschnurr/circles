@@ -25,6 +25,6 @@ public class AdvertisementValidator : BaseValidator<Advertisement>
             .IsInEnum();
 
         RuleFor(x => x.Image)
-            .SetValidator(new BrowserFileValidator());
+        .SetValidator(new BrowserFileValidator());
     }
 }

@@ -24,7 +24,7 @@
                 <MudTextField Label="Title" Immediate="true" @bind-Value="Model.Title" For="@(() => Model.Title)" />
                 <MudTextField Label="Price" Immediate="true" @bind-Value="Model.Price" For="@(() => Model.Price)" />
                 <EnumSelect Label="Condition" Immediate="true" SelectedValue="Model.Condition" OnSelectedValueChanged="@((AdvertisementCondition c) => SetCondition(c))" For="@(() => Model.Condition)" />
-                <FileUpload BrowserFile="Model.Image" For="@(() => Model.Image.File)" />
+                <FileUpload BrowserFile="Model.Image" For="@(() => Model.Image)" />
             </MudItem>
             <MudItem xs="12" lg="6">
                 <MudTextField Label="Description" Immediate="true" Lines="15" @bind-Value="Model.Description" For="@(() => Model.Description)" />

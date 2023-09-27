@@ -16,16 +16,25 @@ public partial class FileUpload
 
     private string FileDisplayString => string.IsNullOrEmpty(BrowserFile?.Name) ? string.Empty : $"{BrowserFile?.Name} ({BrowserFile?.Size.BytesToMegabytes()} Mb)";
 
-    private async Task SetFile(InputFileChangeEventArgs args)
+    private async Task SetFile(IBrowserFile file)
     {
-        var file = args.File;
         BrowserFile.Name = file.Name;
         BrowserFile.Size = file.Size;
+        BrowserFile.LastModified = file.LastModified;
+        BrowserFile.ContentType = file.ContentType;
 
-        using var ms = new MemoryStream();
-        await file.OpenReadStream().CopyToAsync(ms);
-        var bytes = ms.ToArray();
-        var base64File = Convert.ToBase64String(bytes);
-        BrowserFile.Base64File = base64File;
+        try
+        {
+            using var ms = new MemoryStream();
+            // 10 MB maximum per file as mentioned in validator
+            await file.OpenReadStream(10485760).CopyToAsync(ms);
+            var bytes = ms.ToArray();
+            var base64File = Convert.ToBase64String(bytes);
+            BrowserFile.Base64File = base64File;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }
