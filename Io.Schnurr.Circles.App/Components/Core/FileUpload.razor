@@ -1,4 +1,4 @@
-﻿<MudFileUpload T="IBrowserFile" @bind-Files="BrowserFile.File" For="For" OnFilesChanged="SetFile" SuppressOnChangeWhenInvalid="true">
+﻿<MudFileUpload T="IBrowserFile" @bind-Files="BrowserFile.File" For="For" OnFilesChanged="SetFile" SuppressOnChangeWhenInvalid="true" Accept=".png, .jpg">
     <ButtonTemplate>
         <MudContainer Class="d-flex pa-0">
             <MudText Class="mr-auto align-self-center" Typo="Typo.body2">@FileDisplayString</MudText>
