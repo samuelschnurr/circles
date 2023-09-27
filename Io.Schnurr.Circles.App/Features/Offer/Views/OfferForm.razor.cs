@@ -29,7 +29,8 @@ public partial class OfferForm
 
     private readonly AdvertisementValidator advertisementValidator = new();
 
-    private Advertisement Model => OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) ?? new Advertisement();
+    private Advertisement Model = new Advertisement(); // TODO: The problem is here. I cant use => to get the modelvalue and need =. Where to init Model from id?
+    //private Advertisement Model => OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) ?? new Advertisement();
 
     private bool ShowLoadingSpinner => !OfferState.Value.IsReady;
 
@@ -53,11 +54,11 @@ public partial class OfferForm
 
         if (form.IsValid)
         {
-            await AdvertisementService.PostAdvertisement(Model);
+            //await AdvertisementService.PostAdvertisement(Model);
         }
     }
 
-    // TODO: Show edit form filen when Model exists
+    // TODO: Show edit form values when Model exists
     // TODO: Receive, Validate and Store Post in API with fluent
     // TODO: Show Loading when api is loading
 }
