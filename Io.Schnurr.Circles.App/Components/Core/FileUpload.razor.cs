@@ -14,7 +14,7 @@ public partial class FileUpload
     [Parameter]
     public Expression<Func<IBrowserFile>> For { get; set; }
 
-    private string FileDisplayString => BrowserFile?.File == null ? string.Empty : $"{BrowserFile?.File?.Name} ({BrowserFile?.File?.Size.BytesToMegabytes()} Mb)";
+    private string FileDisplayString => $"{BrowserFile?.Name} ({BrowserFile?.Size.BytesToMegabytes()} Mb)";
 
     private async Task SetFile(InputFileChangeEventArgs args)
     {

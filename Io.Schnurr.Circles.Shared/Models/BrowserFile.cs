@@ -8,5 +8,9 @@ public class BrowserFile
     [JsonIgnore]
     public IBrowserFile File { get; set; }
 
+    public string Name { get; set; }
+
+    public long Size { get; set; }
+
     public string Base64File { get; set; }
 }

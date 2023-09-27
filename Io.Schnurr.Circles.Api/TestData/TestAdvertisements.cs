@@ -324,6 +324,7 @@ internal static class TestAdvertisements
         var base64Bytes = Convert.ToBase64String(bytes);
         var base64String = string.Format("data:{0}base64,{1}", MimeType, base64Bytes);
 
-        return new BrowserFile() { Base64File = base64String };
+        return new BrowserFile() { Base64File = base64String, Name = fileName, Size = bytes.LongLength };
+
     }
 }
