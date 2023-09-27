@@ -21,6 +21,37 @@ internal static class AdvertisementService
         return TypedResults.Ok(result);
     }
 
+    internal static async Task<IResult> CreateOrUpdate(Advertisement advertisement)
+    {
+        // TODO: ADD Automatic FluentValidation on this type
+        await SimulateLoading();
+
+        if (advertisement == null)
+        {
+            throw new ArgumentNullException(nameof(advertisement));
+        }
+
+        return Results.Ok();
+
+        //TODO: Implement CreateOrUpdate();
+        //var advertisementIndex = advertisements.ToList().FindIndex(a => a.Id == advertisement.Id);
+
+        //if (advertisementIndex == -1)
+        //{
+        //    // Simulate create
+        //    advertisement.Id = advertisements.Max(a => a.Id) + 1;
+        //    advertisement.CreatedAt = DateTime.UtcNow;
+        //    advertisements.ToList().Add(advertisement);
+        //    return TypedResults.Created($"/{nameof(advertisement)}/{advertisement.Id}", advertisement);
+        //}
+        //else
+        //{
+        //    // Simulate update
+        //    advertisements.ElementAt(advertisementIndex).= advertisement;
+        //    return Results.NoContent();
+        //}
+    }
+
     internal static void MapRoutes(WebApplication app)
     {
         // Using MapGroup to not duplicate "/advertisement/..." in mappings

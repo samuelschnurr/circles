@@ -54,7 +54,7 @@ public partial class OfferForm
 
         if (form.IsValid)
         {
-            //await AdvertisementService.PostAdvertisement(Model);
+            await AdvertisementService.PostAdvertisement(Model);
         }
     }
 

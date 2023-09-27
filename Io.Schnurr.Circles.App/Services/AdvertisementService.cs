@@ -27,6 +27,13 @@ public class AdvertisementService
         return advertisements;
     }
 
+    internal async Task<Advertisement?> PostAdvertisement(Advertisement advertisement)
+    {
+        var response = await HttpClient.PostAsJsonAsync($"{nameof(Advertisement)}", advertisement);
+        var createdAdvertisement = await response.Content.ReadFromJsonAsync<Advertisement>();
+        return createdAdvertisement;
+    }
+
     internal static IEnumerable<Advertisement> SortAdvertisements(IEnumerable<Advertisement> advertisements, SortColumn sortColumn, SortDirection sortDirection)
     {
         var sortAscending = sortDirection == SortDirection.Ascending;
