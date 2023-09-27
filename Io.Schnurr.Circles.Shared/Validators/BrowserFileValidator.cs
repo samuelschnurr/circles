@@ -13,8 +13,8 @@ public class BrowserFileValidator : BaseValidator<BrowserFile>
           .WithMessage("'File' must not be empty.");
 
         RuleFor(x => x.Size)
-        .LessThanOrEqualTo(10485760)
-        .WithMessage("The maximum file size is 10 MB");
+        .LessThanOrEqualTo(2621440)
+        .WithMessage("The maximum file size is 2,5 MB");
 
         RuleFor(x => x.ContentType)
              .Must(BeValidImageType)

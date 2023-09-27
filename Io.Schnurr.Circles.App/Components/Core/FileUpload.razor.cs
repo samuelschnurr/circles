@@ -26,8 +26,8 @@ public partial class FileUpload
         try
         {
             using var ms = new MemoryStream();
-            // 10 MB maximum per file as mentioned in validator
-            await file.OpenReadStream(10485760).CopyToAsync(ms);
+            // 2,5 MB maximum per file as mentioned in validator
+            await file.OpenReadStream(2621440).CopyToAsync(ms);
             var bytes = ms.ToArray();
             var base64File = Convert.ToBase64String(bytes);
             BrowserFile.Base64File = base64File;
