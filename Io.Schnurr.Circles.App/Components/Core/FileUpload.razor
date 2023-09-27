@@ -1,8 +1,16 @@
 ﻿<MudFileUpload T="IBrowserFile" For="For" FilesChanged="SetFile" SuppressOnChangeWhenInvalid="true" Accept=".png, .jpg, .jpeg">
     <ButtonTemplate>
         <MudContainer Class="d-flex pa-0">
-            <MudText Class="mr-auto align-self-center" Typo="Typo.body2">@FileDisplayString</MudText>
+            @if (IsUploadingFile)
+            {
+                <MudText Class="mr-auto align-self-center" Typo="Typo.body2">Loading...</MudText>
+            }
+            else
+            {
+                <MudText Class="mr-auto align-self-center" Typo="Typo.body2">@FileDisplayString</MudText>
+            }
             <MudButton Class="ml-auto my-4"
+                       Disabled="IsUploadingFile"
                        HtmlTag="label"
                        Variant="Variant.Filled"
                        Color="Color.Primary"

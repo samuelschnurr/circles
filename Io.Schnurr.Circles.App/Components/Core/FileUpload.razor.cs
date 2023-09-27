@@ -16,8 +16,11 @@ public partial class FileUpload
 
     private string FileDisplayString => string.IsNullOrEmpty(BrowserFile?.Name) ? string.Empty : $"{BrowserFile?.Name} ({BrowserFile?.Size.BytesToMegabytes()} Mb)";
 
+    private bool IsUploadingFile = false;
+
     private async Task SetFile(IBrowserFile file)
     {
+        IsUploadingFile = true;
         BrowserFile.Name = file.Name;
         BrowserFile.Size = file.Size;
         BrowserFile.LastModified = file.LastModified;
@@ -35,6 +38,10 @@ public partial class FileUpload
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            IsUploadingFile = false;
         }
     }
 }
