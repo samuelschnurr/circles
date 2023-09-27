@@ -14,11 +14,13 @@ public partial class FileUpload
     [Parameter]
     public Expression<Func<IBrowserFile>> For { get; set; }
 
-    private string FileDisplayString => $"{BrowserFile?.Name} ({BrowserFile?.Size.BytesToMegabytes()} Mb)";
+    private string FileDisplayString => string.IsNullOrEmpty(BrowserFile?.Name) ? string.Empty : $"{BrowserFile?.Name} ({BrowserFile?.Size.BytesToMegabytes()} Mb)";
 
     private async Task SetFile(InputFileChangeEventArgs args)
     {
         var file = args.File;
+        BrowserFile.Name = file.Name;
+        BrowserFile.Size = file.Size;
 
         using var ms = new MemoryStream();
         await file.OpenReadStream().CopyToAsync(ms);
