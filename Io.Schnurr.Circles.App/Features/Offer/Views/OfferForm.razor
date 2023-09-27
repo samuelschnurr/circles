@@ -1,4 +1,5 @@
-﻿@using Io.Schnurr.Circles.Shared.Enums;
+﻿@using Io.Schnurr.Circles.App.Services;
+@using Io.Schnurr.Circles.Shared.Enums;
 @using Io.Schnurr.Circles.Shared.Models;
 @using Io.Schnurr.Circles.Shared.Validators;
 @attribute [Route(Routes.Offer.Form)]
@@ -17,42 +18,18 @@
 }
 
 <MudPaper Elevation="6" Class="pa-3">
-    <MudForm Model="model" @ref="form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
+    <MudForm Model="Model" @ref="form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
         <MudGrid>
             <MudItem xs="12" lg="6">
-                <MudTextField Label="Title" Immediate="true" @bind-Value="model.Title" For="@(() => model.Title)" />
-                <MudTextField Label="Price" Immediate="true" @bind-Value="model.Price" For="@(() => model.Price)" />
-                <EnumSelect Label="Condition" Immediate="true" SelectedValue="model.Condition" OnSelectedValueChanged="@((AdvertisementCondition c) => SetCondition(c))" For="@(() => model.Condition)" />
-                <FileUpload BrowserFile="model.Image" For="@(() => model.Image.File)" />
+                <MudTextField Label="Title" Immediate="true" @bind-Value="Model.Title" For="@(() => Model.Title)" />
+                <MudTextField Label="Price" Immediate="true" @bind-Value="Model.Price" For="@(() => Model.Price)" />
+                <EnumSelect Label="Condition" Immediate="true" SelectedValue="Model.Condition" OnSelectedValueChanged="@((AdvertisementCondition c) => SetCondition(c))" For="@(() => Model.Condition)" />
+                <FileUpload BrowserFile="Model.Image" For="@(() => Model.Image.File)" />
             </MudItem>
             <MudItem xs="12" lg="6">
-                <MudTextField Label="Description" Immediate="true" Lines="15" @bind-Value="model.Description" For="@(() => model.Description)" />
+                <MudTextField Label="Description" Immediate="true" Lines="15" @bind-Value="Model.Description" For="@(() => Model.Description)" />
             </MudItem>
             <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto ma-4" OnClick="@(async () => await Submit())">Submit</MudButton>
         </MudGrid>
     </MudForm>
 </MudPaper>
-
-
-@code {
-    // TODO: Show edit form with values when model exists
-    // TODO: Extract Code to code behind
-    // TODO: Submit Form To API
-    // TODO: Receive, Validate and Store Post in API
-    // TODO: Implement Snackbars and use also for error boundary?
-    [Inject] ISnackbar Snackbar { get; set; }
-
-    MudForm form;
-    AdvertisementValidator advertisementValidator = new AdvertisementValidator();
-    Advertisement model = new Advertisement();
-
-    private async Task Submit()
-    {
-        await form.Validate();
-
-        if (form.IsValid)
-        {
-            Snackbar.Add("Submited!");
-        }
-    }
-}

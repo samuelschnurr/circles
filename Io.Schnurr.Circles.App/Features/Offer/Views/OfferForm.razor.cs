@@ -1,9 +1,12 @@
 using Fluxor;
 using Io.Schnurr.Circles.App.Features.Offer.Store;
+using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
+using Io.Schnurr.Circles.Shared.Validators;
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 using static Io.Schnurr.Circles.App.Features.Offer.Store.OfferActions;
 
 namespace Io.Schnurr.Circles.App.Features.Offer.Views;
@@ -17,11 +20,18 @@ public partial class OfferForm
     private IState<OfferState> OfferState { get; set; }
 
     [Inject]
-    NavigationManager NavigationManager { get; set; }
+    private NavigationManager NavigationManager { get; set; }
 
-    private bool ShowLoadingSpinner => Advertisement == null;
+    [Inject]
+    private AdvertisementService AdvertisementService { get; set; }
 
-    private Advertisement? Advertisement => OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) ?? new Advertisement();
+    private MudForm form;
+
+    private readonly AdvertisementValidator advertisementValidator = new();
+
+    private Advertisement Model => OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) ?? new Advertisement();
+
+    private bool ShowLoadingSpinner => !OfferState.Value.IsReady;
 
     protected override Task OnInitializedAsync()
     {
@@ -35,5 +45,19 @@ public partial class OfferForm
 
     private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Page);
 
-    private void SetCondition(AdvertisementCondition condition) => model.Condition = condition;
+    private void SetCondition(AdvertisementCondition condition) => Model.Condition = condition;
+
+    private async Task Submit()
+    {
+        await form.Validate();
+
+        if (form.IsValid)
+        {
+            await AdvertisementService.PostAdvertisement(Model);
+        }
+    }
+
+    // TODO: Show edit form filen when Model exists
+    // TODO: Receive, Validate and Store Post in API with fluent
+    // TODO: Show Loading when api is loading
 }
