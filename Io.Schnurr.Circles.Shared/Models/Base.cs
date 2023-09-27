@@ -2,7 +2,7 @@
 
 public abstract class Base
 {
-    public int Id { get; init; }
-    public DateTime CreatedAt { get; init; }
-    public DateTime? DeletedAt { get; init; }
+    public int Id { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? DeletedAt { get; set; }
 }
