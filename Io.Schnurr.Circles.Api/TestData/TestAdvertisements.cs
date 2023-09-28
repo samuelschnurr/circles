@@ -6,7 +6,7 @@ namespace Io.Schnurr.Circles.Api.TestData;
 internal static class TestAdvertisements
 {
     private const string FolderPath = "./TestData/Images/";
-    private const string MimeType = "image/jpeg;";
+    private const string MimeType = "image/jpeg";
 
     internal static readonly List<Advertisement> advertisements = new()
         {
@@ -317,7 +317,7 @@ internal static class TestAdvertisements
     {
         var bytes = File.ReadAllBytes(FolderPath + fileName);
         var base64Bytes = Convert.ToBase64String(bytes);
-        var base64String = string.Format("data:{0}base64,{1}", MimeType, base64Bytes);
+        var base64String = string.Format("data:{0};base64,{1}", MimeType, base64Bytes);
 
         return new BrowserFile() { Base64File = base64String, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
 
