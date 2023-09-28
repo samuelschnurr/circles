@@ -26,9 +26,9 @@ internal static class AdvertisementService
         // TODO: ADD Automatic FluentValidation on this type
         await SimulateLoading();
 
-        if (advertisement == null)
+        if (!SimulateAuthorization(advertisement.CreatedBy))
         {
-            throw new ArgumentNullException(nameof(advertisement));
+            return TypedResults.Unauthorized();
         }
 
         return Results.Ok();
@@ -62,4 +62,6 @@ internal static class AdvertisementService
     }
 
     private static async Task SimulateLoading() => await Task.Delay(new Random().Next(500, 2500));
+
+    private static bool SimulateAuthorization(string userMail) => string.Equals(userMail.ToLower(), TestUserContext.MailAddress.ToLower());
 }
