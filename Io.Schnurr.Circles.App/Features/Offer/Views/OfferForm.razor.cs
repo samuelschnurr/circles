@@ -4,6 +4,7 @@ using Io.Schnurr.Circles.App.Services;
 using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
+using Io.Schnurr.Circles.Shared.TestData;
 using Io.Schnurr.Circles.Shared.Validators;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
@@ -31,7 +32,7 @@ public partial class OfferForm
 
     // TODO: Show edit form values when Model exists
     // TODO: The problem is here. I cant use => to get the modelvalue and need =. Where to init Model from id?
-    private Advertisement Model = new Advertisement();
+    private Advertisement Model = new Advertisement() { CreatedBy = TestUserContext.MailAddress };
     //private Advertisement Model => OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) ?? new Advertisement();
 
     private bool ShowLoadingSpinner => !OfferState.Value.IsReady;
