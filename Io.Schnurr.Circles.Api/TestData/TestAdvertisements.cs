@@ -8,9 +8,7 @@ internal static class TestAdvertisements
     private const string FolderPath = "./TestData/Images/";
     private const string MimeType = "image/jpeg;";
 
-    internal static List<Advertisement> GetAdvertisements()
-    {
-        List<Advertisement> advertisements = new()
+    internal static readonly List<Advertisement> advertisements = new()
         {
             new Advertisement
             {
@@ -315,16 +313,13 @@ internal static class TestAdvertisements
             }
         };
 
-        return advertisements;
-    }
-
     private static BrowserFile GetImageAsBrowserFile(string fileName)
     {
         var bytes = File.ReadAllBytes(FolderPath + fileName);
         var base64Bytes = Convert.ToBase64String(bytes);
         var base64String = string.Format("data:{0}base64,{1}", MimeType, base64Bytes);
 
-        return new BrowserFile() { Base64File = base64String, Name = fileName, Size = bytes.LongLength };
+        return new BrowserFile() { Base64File = base64String, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
 
     }
 }
