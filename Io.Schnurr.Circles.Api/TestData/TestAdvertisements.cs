@@ -1,4 +1,5 @@
-﻿using Io.Schnurr.Circles.Shared.Enums;
+﻿using Io.Schnurr.Circles.App.Utils;
+using Io.Schnurr.Circles.Shared.Enums;
 using Io.Schnurr.Circles.Shared.Models;
 
 namespace Io.Schnurr.Circles.Api.TestData;
@@ -316,10 +317,9 @@ internal static class TestAdvertisements
     private static BrowserFile GetImageAsBrowserFile(string fileName)
     {
         var bytes = File.ReadAllBytes(FolderPath + fileName);
-        var base64Bytes = Convert.ToBase64String(bytes);
-        var base64String = string.Format("data:{0};base64,{1}", MimeType, base64Bytes);
+        var base64Content = Helpers.ConvertBytesToBase64Async(bytes, MimeType).Result;
 
-        return new BrowserFile() { Base64File = base64String, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
+        return new BrowserFile() { Base64File = base64Content, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
 
     }
 }

@@ -32,8 +32,7 @@ public partial class FileUpload
             // 2,5 MB maximum per file as mentioned in validator
             await file.OpenReadStream(2621440).CopyToAsync(ms);
             var bytes = ms.ToArray();
-            var base64Bytes = Convert.ToBase64String(bytes);
-            var base64String = string.Format("data:{0};base64,{1}", file.ContentType, base64Bytes);
+            var base64String = await Helpers.ConvertBytesToBase64Async(bytes, file.ContentType);
             BrowserFile.Base64File = base64String;
         }
         catch (Exception ex)
