@@ -12,7 +12,7 @@ public class BrowserFile : IBrowserFile
 
     public string ContentType { get; set; }
 
-    public string Base64File { get; set; }
+    public string Base64Content { get; set; }
 
     public Stream OpenReadStream(long maxAllowedSize = 512000, CancellationToken cancellationToken = default) => throw new NotImplementedException();
 }

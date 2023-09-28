@@ -319,7 +319,7 @@ internal static class TestAdvertisements
         var bytes = File.ReadAllBytes(FolderPath + fileName);
         var base64Content = Helpers.ConvertBytesToBase64Async(bytes, MimeType).Result;
 
-        return new BrowserFile() { Base64File = base64Content, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
+        return new BrowserFile() { Base64Content = base64Content, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
 
     }
 }
