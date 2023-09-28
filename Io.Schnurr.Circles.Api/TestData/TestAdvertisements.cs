@@ -317,9 +317,9 @@ internal static class TestAdvertisements
     private static BrowserFile GetImageAsBrowserFile(string fileName)
     {
         var bytes = File.ReadAllBytes(FolderPath + fileName);
-        var base64Content = Task.Run(async () => await Helpers.ConvertBytesToBase64Async(bytes, MimeType));
+        var base64Content = Helpers.ConvertBytesToBase64Async(bytes, MimeType);
 
-        return new BrowserFile() { Base64Content = base64Content.Result, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
+        return new BrowserFile() { Base64Content = base64Content, Name = fileName, Size = bytes.LongLength, ContentType = MimeType };
 
     }
 }

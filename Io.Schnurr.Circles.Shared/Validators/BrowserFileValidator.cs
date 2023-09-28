@@ -22,7 +22,12 @@ public class BrowserFileValidator : BaseValidator<BrowserFile>
              .WithMessage("Invalid file type. Please select JPG, JPEG, or PNG files.");
 
         RuleFor(x => x.Base64Content)
-          .NotEmpty();
+          .NotEmpty()
+          .When(x => x.ByteContent == null || x.ByteContent.Length <= 0);
+
+        RuleFor(x => x.ByteContent)
+          .NotEmpty()
+          .When(x => string.IsNullOrEmpty(x.Base64Content));
     }
 
     private bool BeValidImageType(string contentType)

@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Io.Schnurr.Circles.Api.TestData;
+using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Models;
 using Io.Schnurr.Circles.Shared.TestData;
 
@@ -35,6 +36,8 @@ internal static class AdvertisementService
         {
             return TypedResults.Unauthorized();
         }
+
+        advertisement.Image.Base64Content = Helpers.ConvertBytesToBase64Async(advertisement.Image.ByteContent, advertisement.Image.ContentType);
 
         var dbAdvertisements = TestAdvertisements.advertisements;
         var advertisementIndex = dbAdvertisements.FindIndex(a => a.Id == advertisement.Id);

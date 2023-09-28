@@ -18,9 +18,9 @@ public static class Helpers
         return false;
     }
 
-    public static async Task<string> ConvertBytesToBase64Async(byte[] bytes, string mimeType)
+    public static string ConvertBytesToBase64Async(byte[] bytes, string mimeType)
     {
-        var base64Bytes = await Task.Run(() => Convert.ToBase64String(bytes));
+        var base64Bytes = Convert.ToBase64String(bytes);
         var base64String = string.Format("data:{0};base64,{1}", mimeType, base64Bytes);
         return base64String;
     }
