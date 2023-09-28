@@ -29,6 +29,24 @@ internal static class AdvertisementService
         {
             return TypedResults.Unauthorized();
         }
+
+        var dbAdvertisements = TestAdvertisements.advertisements;
+        var advertisementIndex = dbAdvertisements.FindIndex(a => a.Id == advertisement.Id);
+
+        if (advertisementIndex == -1)
+        {
+            // Simulate create
+            advertisement.Id = dbAdvertisements.Max(a => a.Id) + 1;
+            advertisement.CreatedAt = DateTime.UtcNow;
+            dbAdvertisements.Add(advertisement);
+            return TypedResults.Created($"/{nameof(advertisement)}/{advertisement.Id}", advertisement);
+        }
+        else
+        {
+            // Simulate update
+            dbAdvertisements[advertisementIndex] = advertisement;
+            return Results.NoContent();
+        }
     }
 
     internal static void MapRoutes(WebApplication app)
