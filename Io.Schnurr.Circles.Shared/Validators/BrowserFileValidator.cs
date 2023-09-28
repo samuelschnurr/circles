@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Io.Schnurr.Circles.App.Utils;
 using Io.Schnurr.Circles.Shared.Models;
 
 namespace Io.Schnurr.Circles.Shared.Validators;
@@ -13,7 +14,7 @@ public class BrowserFileValidator : BaseValidator<BrowserFile>
           .WithMessage("'File' must not be empty.");
 
         RuleFor(x => x.Size)
-        .LessThanOrEqualTo(2621440)
+        .LessThanOrEqualTo(Helpers.MaxFileSize)
         .WithMessage("The maximum file size is 2,5 MB");
 
         RuleFor(x => x.ContentType)

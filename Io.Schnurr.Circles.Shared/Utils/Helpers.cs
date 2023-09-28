@@ -2,6 +2,8 @@
 
 public static class Helpers
 {
+    public static long MaxFileSize => 2500 * 1024; // 2,5 Mb
+
     public static bool HasNull(params dynamic?[] nullableValues)
     {
 #pragma warning disable S3267 // Loops should be simplified with "LINQ" expressions
