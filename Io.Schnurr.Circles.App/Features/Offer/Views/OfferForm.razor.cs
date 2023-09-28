@@ -57,8 +57,10 @@ public partial class OfferForm
 
         if (form.IsValid)
         {
-            // TODO: Show Loading when api is loading
+            Dispatcher.Dispatch(new SetOfferStateIsLoadingAction(true));
             await AdvertisementService.PostAdvertisement(Model);
+            Dispatcher.Dispatch(new SetOfferStateIsLoadingAction(false));
+            NavigateBack();
         }
     }
 }

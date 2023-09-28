@@ -7,8 +7,6 @@
 
 <PageTitle>Offer</PageTitle>
 
-<NavigationBar OnNavigateBack="NavigateBack" />
-
 @{
     if (ShowLoadingSpinner)
     {
@@ -17,6 +15,7 @@
     }
 }
 
+<NavigationBar OnNavigateBack="NavigateBack" />
 <MudPaper Elevation="6" Class="pa-3">
     <MudForm Model="Model" @ref="form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
         <MudGrid>
