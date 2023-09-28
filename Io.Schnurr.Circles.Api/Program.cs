@@ -1,7 +1,11 @@
+using FluentValidation;
 using Io.Schnurr.Circles.Api;
+using Io.Schnurr.Circles.Shared.Models;
+using Io.Schnurr.Circles.Shared.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
+builder.Services.AddScoped<IValidator<Advertisement>, AdvertisementValidator>();
 
 var app = builder.Build();
 

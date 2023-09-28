@@ -1,4 +1,5 @@
-﻿using Io.Schnurr.Circles.Api.TestData;
+﻿using FluentValidation;
+using Io.Schnurr.Circles.Api.TestData;
 using Io.Schnurr.Circles.Shared.Models;
 using Io.Schnurr.Circles.Shared.TestData;
 
@@ -20,10 +21,15 @@ internal static class AdvertisementService
         return TypedResults.Ok(result);
     }
 
-    // TODO: ADD Automatic FluentValidation on this type
-    internal static async Task<IResult> CreateOrUpdate(Advertisement advertisement)
+    internal static async Task<IResult> CreateOrUpdate(IValidator<Advertisement> validator, Advertisement advertisement)
     {
         await SimulateLoading();
+        var validationResult = await validator.ValidateAsync(advertisement);
+
+        if (!validationResult.IsValid)
+        {
+            return Results.ValidationProblem(validationResult.ToDictionary());
+        }
 
         if (!SimulateAuthorization(advertisement.CreatedBy))
         {
