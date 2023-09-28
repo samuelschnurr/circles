@@ -29,6 +29,7 @@ public class AdvertisementService
 
     internal async Task<Advertisement?> PostAdvertisement(Advertisement advertisement)
     {
+        //TODO: Errorhandling? Does loadingspinner stop correctly when api throws error or 4xx?
         var response = await HttpClient.PostAsJsonAsync($"{nameof(Advertisement)}", advertisement);
         var createdAdvertisement = await response.Content.ReadFromJsonAsync<Advertisement>();
         return createdAdvertisement;
