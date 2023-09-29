@@ -27,15 +27,29 @@ public partial class OfferForm
     private AdvertisementService AdvertisementService { get; set; }
 
     private MudForm Form { get; set; }
-    private Advertisement Model { get; set; }
+
     private readonly AdvertisementValidator advertisementValidator = new();
 
-    // TODO: Show edit form values when Model exists
-    // TODO: The problem is here. I cant use => to get the modelvalue and need =. Where to init Model from id?
-    private Advertisement Model = new Advertisement() { CreatedBy = TestUserContext.MailAddress };
-    //private Advertisement Model => OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) ?? new Advertisement();
+    private Advertisement? Model;
 
-    private bool ShowLoadingSpinner => !OfferState.Value.IsReady;
+    private bool ShowLoadingSpinner()
+    {
+        if (Model != null)
+        {
+            return false;
+        }
+
+        if (Id <= 0)
+        {
+            Model = new Advertisement() { CreatedBy = TestUserContext.MailAddress };
+        }
+        else if (OfferState.Value.IsReady)
+        {
+            Model = OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id);
+        }
+
+        return Model == null;
+    }
 
     protected override Task OnInitializedAsync()
     {
