@@ -17,7 +17,7 @@
 
 <NavigationBar OnNavigateBack="NavigateBack" />
 <MudPaper Elevation="6" Class="pa-3">
-    <MudForm Model="Model" @ref="form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
+    <MudForm Model="Model" @ref="Form" Validation="advertisementValidator.ValidateValue" ValidationDelay="0">
         <MudGrid>
             <MudItem xs="12" lg="6">
                 <MudTextField Label="Title" Immediate="true" @bind-Value="Model.Title" For="@(() => Model.Title)" />

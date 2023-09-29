@@ -26,8 +26,8 @@ public partial class OfferForm
     [Inject]
     private AdvertisementService AdvertisementService { get; set; }
 
-    private MudForm form;
-
+    private MudForm Form { get; set; }
+    private Advertisement Model { get; set; }
     private readonly AdvertisementValidator advertisementValidator = new();
 
     // TODO: Show edit form values when Model exists
@@ -53,9 +53,9 @@ public partial class OfferForm
 
     private async Task Submit()
     {
-        await form.Validate();
+        await Form.Validate();
 
-        if (form.IsValid)
+        if (Form.IsValid)
         {
             Dispatcher.Dispatch(new SetOfferStateIsLoadingAction(true));
             await AdvertisementService.PostAdvertisement(Model);
