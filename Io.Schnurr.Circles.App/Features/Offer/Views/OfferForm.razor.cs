@@ -30,9 +30,25 @@ public partial class OfferForm
 
     private readonly AdvertisementValidator advertisementValidator = new();
 
-    private Advertisement? Model;
+    private Advertisement? Model { get; set; }
 
-    private bool ShowLoadingSpinner()
+    private bool ShowLoadingSpinner => SetupFormModel();
+
+    protected override Task OnInitializedAsync()
+    {
+        if (OfferState.Value.Items == null)
+        {
+            Dispatcher.Dispatch(new LoadAdvertisementsAction());
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Page);
+
+    private void SetCondition(AdvertisementCondition condition) => Model!.Condition = condition;
+
+    private bool SetupFormModel()
     {
         if (Model != null)
         {
@@ -51,20 +67,6 @@ public partial class OfferForm
         return Model == null;
     }
 
-    protected override Task OnInitializedAsync()
-    {
-        if (OfferState.Value.Items == null)
-        {
-            Dispatcher.Dispatch(new LoadAdvertisementsAction());
-        }
-
-        return Task.CompletedTask;
-    }
-
-    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Page);
-
-    private void SetCondition(AdvertisementCondition condition) => Model.Condition = condition;
-
     private async Task Submit()
     {
         await Form.Validate();
@@ -72,7 +74,7 @@ public partial class OfferForm
         if (Form.IsValid)
         {
             Dispatcher.Dispatch(new SetOfferStateIsLoadingAction(true));
-            await AdvertisementService.PostAdvertisement(Model);
+            await AdvertisementService.PostAdvertisement(Model!);
             Dispatcher.Dispatch(new SetOfferStateIsLoadingAction(false));
             NavigateBack();
         }
