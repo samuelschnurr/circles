@@ -28,14 +28,18 @@ public partial class OfferForm
 
     private MudForm Form { get; set; }
 
+    private Advertisement NewAdvertisement { get; set; }
+
+    private Advertisement? Model => Id > 0 ? OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id) : NewAdvertisement;
+
     private readonly AdvertisementValidator advertisementValidator = new();
 
-    private Advertisement? Model { get; set; }
-
-    private bool ShowLoadingSpinner => SetupFormModel();
+    private bool ShowLoadingSpinner => Model == null;
 
     protected override Task OnInitializedAsync()
     {
+        NewAdvertisement = new Advertisement() { CreatedBy = TestUserContext.MailAddress };
+
         if (OfferState.Value.Items == null)
         {
             Dispatcher.Dispatch(new LoadAdvertisementsAction());
@@ -47,25 +51,6 @@ public partial class OfferForm
     private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Page);
 
     private void SetCondition(AdvertisementCondition condition) => Model!.Condition = condition;
-
-    private bool SetupFormModel()
-    {
-        if (Model != null)
-        {
-            return false;
-        }
-
-        if (Id <= 0)
-        {
-            Model = new Advertisement() { CreatedBy = TestUserContext.MailAddress };
-        }
-        else if (OfferState.Value.IsReady)
-        {
-            Model = OfferState.Value.Items?.SingleOrDefault(i => i.Id == Id);
-        }
-
-        return Model == null;
-    }
 
     private async Task Submit()
     {
