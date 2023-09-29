@@ -34,7 +34,7 @@ public partial class OfferForm
 
     private readonly AdvertisementValidator advertisementValidator = new();
 
-    private bool ShowLoadingSpinner => Model == null;
+    private bool ShowLoadingSpinner => !OfferState.Value.IsReady || Model == null;
 
     protected override Task OnInitializedAsync()
     {
