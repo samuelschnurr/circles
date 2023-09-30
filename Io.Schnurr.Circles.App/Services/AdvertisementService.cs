@@ -17,16 +17,26 @@ public class AdvertisementService
 
     internal async Task<IEnumerable<Advertisement>?> GetAll()
     {
-        // Task.Result is ok here, because task has already been completed
-        return await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement))
-            .ContinueWith(task => { return task.IsFaulted ? Array.Empty<Advertisement>() : task.Result; });
+        try
+        {
+            return await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement));
+        }
+        catch (HttpRequestException)
+        {
+            return Array.Empty<Advertisement>();
+        }
     }
 
     internal async Task<IEnumerable<Advertisement>?> GetByUser()
     {
-        // Task.Result is ok here, because task has already been completed
-        return await HttpClient.GetFromJsonAsync<Advertisement[]>($"{nameof(Advertisement)}/{TestUserContext.MailAddress}")
-            .ContinueWith(task => { return task.IsFaulted ? Array.Empty<Advertisement>() : task.Result; });
+        try
+        {
+            return await HttpClient.GetFromJsonAsync<Advertisement[]>($"{nameof(Advertisement)}/{TestUserContext.MailAddress}");
+        }
+        catch (HttpRequestException)
+        {
+            return Array.Empty<Advertisement>();
+        }
     }
 
     internal async Task PostAdvertisement(Advertisement advertisement)
