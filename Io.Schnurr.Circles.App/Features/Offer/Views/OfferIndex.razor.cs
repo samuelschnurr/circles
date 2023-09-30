@@ -2,9 +2,9 @@
 using Io.Schnurr.Circles.App.Features.Offer.Store;
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Pages;
+namespace Io.Schnurr.Circles.App.Features.Offer.Views;
 
-public partial class Offer
+public partial class OfferIndex
 {
     [Inject]
     private IState<OfferState> OfferState { get; set; }
