@@ -34,5 +34,5 @@ public partial class BoardDetail
         return Task.CompletedTask;
     }
 
-    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Board.Page);
+    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Board.Index);
 }

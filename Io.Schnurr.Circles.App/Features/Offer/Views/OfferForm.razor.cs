@@ -48,7 +48,7 @@ public partial class OfferForm
         return Task.CompletedTask;
     }
 
-    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Page);
+    private void NavigateBack() => NavigationManager.NavigateTo(Routes.Offer.Index);
 
     private void SetCondition(AdvertisementCondition condition) => Model!.Condition = condition;
 

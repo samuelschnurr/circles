@@ -7,26 +7,26 @@ internal abstract class Routes
 
     internal abstract class Base
     {
-        internal const string Page = "/";
+        internal const string Index = "/";
     }
 
     internal abstract class Circle
     {
-        internal const string Page = "/circle";
+        internal const string Index = "/circle";
     }
 
     internal abstract class Board
     {
-        internal const string Page = "/board";
-        internal const string Detail = $"{Page}{DetailSegment}";
-        internal static string GetDetailPath(int id) => FormatDetailPath(Page, id);
+        internal const string Index = "/board";
+        internal const string Detail = $"{Index}{DetailSegment}";
+        internal static string GetDetailPath(int id) => FormatDetailPath(Index, id);
     }
 
     internal abstract class Offer
     {
-        internal const string Page = "/offer";
-        internal const string Form = $"{Page}{FormSegment}";
-        internal static string GetFormPath(int? id = null) => FormatFormPath(Page, id);
+        internal const string Index = "/offer";
+        internal const string Form = $"{Index}{FormSegment}";
+        internal static string GetFormPath(int? id = null) => FormatFormPath(Index, id);
     }
 
     private static string FormatDetailPath(string page, int id) => string.Format($"{page}/{{0}}", id);
