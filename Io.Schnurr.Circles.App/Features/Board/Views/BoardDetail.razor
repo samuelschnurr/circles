@@ -3,8 +3,6 @@
 
 <PageTitle>Board</PageTitle>
 
-<NavigationBar OnNavigateBack="NavigateBack" />
-
 @{
     if (ShowLoadingSpinner)
     {
@@ -13,6 +11,7 @@
     }
 }
 
+<NavigationBar OnNavigateBack="NavigateBack" />
 <MudContainer MaxWidth="MaxWidth.Large">
     <MudGrid>
         <MudItem xs="12" md="6">
