@@ -7,7 +7,7 @@ using static Io.Schnurr.Circles.App.Features.Offer.Store.OfferActions;
 
 namespace Io.Schnurr.Circles.App.Features.Offer.Views;
 
-public partial class OfferIndex
+public partial class OfferList
 {
     [Inject]
     private IState<OfferState> OfferState { get; set; }

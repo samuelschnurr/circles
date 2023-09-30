@@ -8,7 +8,7 @@ using static Io.Schnurr.Circles.App.Features.Board.Store.BoardActions;
 
 namespace Io.Schnurr.Circles.App.Features.Board.Views;
 
-public partial class BoardIndex
+public partial class BoardList
 {
     [Inject]
     private IState<BoardState> BoardState { get; set; }
