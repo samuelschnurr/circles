@@ -24,7 +24,7 @@
         return;
     }
 
-    if (!Data.Any())
+    if (!Data!.Any())
     {
         // Show information, when no Tiles are rendered because of missing data
         <MudText Class="d-flex justify-center mt-16" Typo="Typo.body1">No records found</MudText>
@@ -33,7 +33,7 @@
 
     <MudGrid Spacing="6">
         @{
-            foreach (var d in Data)
+            foreach (var d in Data!)
             {
                 <Tile Title="@d.Title"
                       Description="@d.Description"
