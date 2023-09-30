@@ -37,10 +37,14 @@ internal static class AdvertisementService
             return TypedResults.Unauthorized();
         }
 
-        advertisement.Image.Base64Content = Helpers.ConvertBytesToBase64Async(advertisement.Image.ByteContent, advertisement.Image.ContentType);
-
         var dbAdvertisements = TestAdvertisements.advertisements;
         var advertisementIndex = dbAdvertisements.FindIndex(a => a.Id == advertisement.Id);
+
+        if (advertisement.Image.ByteContent != null)
+        {
+            // Update Base64Content, if new Image has been uploaded
+            advertisement.Image.Base64Content = Helpers.ConvertBytesToBase64Async(advertisement.Image.ByteContent, advertisement.Image.ContentType);
+        }
 
         if (advertisementIndex == -1)
         {
