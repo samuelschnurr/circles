@@ -16,11 +16,11 @@ public partial class BoardList
     [Inject]
     private NavigationManager NavigationManager { get; set; }
 
-    private IEnumerable<Advertisement> Data => GetAdvertisements();
+    private IEnumerable<Advertisement>? Data => GetAdvertisements();
 
     public bool ShowTileView => BoardState.Value.IsTileView;
 
-    public bool ShowLoadingSpinner => !BoardState.Value.IsReady;
+    public bool ShowLoadingSpinner => !BoardState.Value.IsReady || Data == null;
 
     protected override async Task OnInitializedAsync()
     {
@@ -28,7 +28,7 @@ public partial class BoardList
         await Task.CompletedTask;
     }
 
-    private IEnumerable<Advertisement> GetAdvertisements()
+    private IEnumerable<Advertisement>? GetAdvertisements()
     {
         var advertisements = BoardState.Value.Items;
         var filteredAdvertisements = AdvertisementService.FilterAdvertisements(advertisements, BoardState.Value.SearchString);
