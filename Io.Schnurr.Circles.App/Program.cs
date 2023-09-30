@@ -9,12 +9,12 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.AddApiConfiguration();
-builder.AddFluxorConfiguration();
-builder.AddServiceConfiguration();
-
 builder.Services.AddBlazoredLocalStorage();
+builder.AddFluxorConfiguration();
+
 builder.Services.AddMudServices();
+builder.AddServiceConfiguration();
+builder.AddApiConfiguration();
 
 StartupHelper.AddFluentValidationConfiguration();
 
