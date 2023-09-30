@@ -9,6 +9,9 @@ internal class HttpStatusCodeService : DelegatingHandler
     public HttpStatusCodeService(ISnackbar snackbar)
     {
         this.snackbar = snackbar;
+        this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomRight;
+        this.snackbar.Configuration.HideTransitionDuration = 500;
+        this.snackbar.Configuration.ShowTransitionDuration = 500;
     }
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
