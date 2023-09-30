@@ -18,13 +18,13 @@ internal class HttpStatusCodeService : DelegatingHandler
     {
         var response = await base.SendAsync(request, cancellationToken);
 
-        if (response.IsSuccessStatusCode)
-        {
-            snackbar.Add("Success!", Severity.Success);
-        }
-        else
+        if (!response.IsSuccessStatusCode)
         {
             snackbar.Add("Error!", Severity.Error);
+        }
+        else if (request.Method != HttpMethod.Get)
+        {
+            snackbar.Add("Success!", Severity.Success);
         }
 
         return response;
