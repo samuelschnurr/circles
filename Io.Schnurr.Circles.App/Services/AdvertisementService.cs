@@ -17,46 +17,45 @@ public class AdvertisementService
 
     internal async Task<IEnumerable<Advertisement>?> GetAll()
     {
-        IEnumerable<Advertisement>? advertisements = await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement));
-        return advertisements;
+        // Task.Result is ok here, because task has already been completed
+        return await HttpClient.GetFromJsonAsync<Advertisement[]>(nameof(Advertisement))
+            .ContinueWith(task => { return task.IsFaulted ? Array.Empty<Advertisement>() : task.Result; });
     }
 
     internal async Task<IEnumerable<Advertisement>?> GetByUser()
     {
-        IEnumerable<Advertisement>? advertisements = await HttpClient.GetFromJsonAsync<Advertisement[]>($"{nameof(Advertisement)}/{TestUserContext.MailAddress}");
-        return advertisements;
+        // Task.Result is ok here, because task has already been completed
+        return await HttpClient.GetFromJsonAsync<Advertisement[]>($"{nameof(Advertisement)}/{TestUserContext.MailAddress}")
+            .ContinueWith(task => { return task.IsFaulted ? Array.Empty<Advertisement>() : task.Result; });
     }
 
-    internal async Task<Advertisement?> PostAdvertisement(Advertisement advertisement)
+    internal async Task PostAdvertisement(Advertisement advertisement)
     {
-        //TODO: Errorhandling? Does loadingspinner stop correctly when api throws error or 4xx?
-        var response = await HttpClient.PostAsJsonAsync($"{nameof(Advertisement)}", advertisement);
-        var createdAdvertisement = await response.Content.ReadFromJsonAsync<Advertisement>();
-        return createdAdvertisement;
+        await HttpClient.PostAsJsonAsync($"{nameof(Advertisement)}", advertisement);
     }
 
-    internal static IEnumerable<Advertisement> SortAdvertisements(IEnumerable<Advertisement> advertisements, SortColumn sortColumn, SortDirection sortDirection)
+    internal static IEnumerable<Advertisement>? SortAdvertisements(IEnumerable<Advertisement>? advertisements, SortColumn sortColumn, SortDirection sortDirection)
     {
         var sortAscending = sortDirection == SortDirection.Ascending;
-        IEnumerable<Advertisement> sortedAdvertisements = new List<Advertisement>();
+        IEnumerable<Advertisement>? sortedAdvertisements = new List<Advertisement>();
 
         switch (sortColumn)
         {
             case SortColumn.CreatedAt:
-                sortedAdvertisements = advertisements.Order(a => a.CreatedAt, sortAscending);
+                sortedAdvertisements = advertisements?.Order(a => a.CreatedAt, sortAscending);
                 break;
             case SortColumn.Title:
-                sortedAdvertisements = advertisements.Order(a => a.Title, sortAscending);
+                sortedAdvertisements = advertisements?.Order(a => a.Title, sortAscending);
                 break;
             case SortColumn.Price:
-                sortedAdvertisements = advertisements.Order(a => a.Price, sortAscending);
+                sortedAdvertisements = advertisements?.Order(a => a.Price, sortAscending);
                 break;
         }
 
         return sortedAdvertisements;
     }
 
-    internal static IEnumerable<Advertisement> FilterAdvertisements(IEnumerable<Advertisement> advertisements, string searchString)
+    internal static IEnumerable<Advertisement>? FilterAdvertisements(IEnumerable<Advertisement> advertisements, string searchString)
     {
         var filteredAdvertisements = advertisements?.Where(a =>
         {
@@ -72,6 +71,6 @@ public class AdvertisementService
             return result;
         });
 
-        return filteredAdvertisements ?? new List<Advertisement>();
+        return filteredAdvertisements;
     }
 }
