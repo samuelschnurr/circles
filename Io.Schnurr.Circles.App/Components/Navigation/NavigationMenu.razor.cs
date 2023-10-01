@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Components.Routing;
 using MudBlazor;
 
-namespace Io.Schnurr.Circles.App.Components.Base;
+namespace Io.Schnurr.Circles.App.Components.Navigation;
 
-public sealed partial class NavMenu : IDisposable
+public sealed partial class NavigationMenu : IDisposable
 {
     [Inject]
     private NavigationManager NavigationManager { get; init; }

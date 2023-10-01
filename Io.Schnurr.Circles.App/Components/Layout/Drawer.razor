@@ -1,8 +1,10 @@
-﻿<MudDrawer Open="IsDrawerOpen" OpenChanged="OnToggleDrawer">
+﻿@using Io.Schnurr.Circles.App.Components.Navigation
+
+<MudDrawer Open="IsDrawerOpen" OpenChanged="OnToggleDrawer">
     <MudDrawerHeader>
         <MudText Typo="Typo.h5" Class="mt-1">Circles</MudText>
     </MudDrawerHeader>
-    <NavMenu />
+    <NavigationMenu />
     <MudSpacer />
     <MudDivider Class="flex-grow-0" />
     <MudContainer Class="d-flex justify-center my-1">

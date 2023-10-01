@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace Io.Schnurr.Circles.App.Components.Core;
+namespace Io.Schnurr.Circles.App.Components.UserInterface;
 
 public partial class IconButton
 {

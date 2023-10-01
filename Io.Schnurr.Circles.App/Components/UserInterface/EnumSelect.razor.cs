@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Components.Core;
+namespace Io.Schnurr.Circles.App.Components.UserInterface;
 
 public partial class EnumSelect<T> where T : Enum
 {

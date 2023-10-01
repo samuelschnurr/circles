@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using static Io.Schnurr.Circles.App.Features.App.Store.AppActions;
 
-namespace Io.Schnurr.Circles.App.Components.Base;
+namespace Io.Schnurr.Circles.App.Components.Layout;
 
 public sealed partial class MainLayout : IDisposable
 {

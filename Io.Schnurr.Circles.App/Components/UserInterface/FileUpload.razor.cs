@@ -4,7 +4,7 @@ using Io.Schnurr.Circles.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace Io.Schnurr.Circles.App.Components.Core;
+namespace Io.Schnurr.Circles.App.Components.UserInterface;
 
 public partial class FileUpload
 {

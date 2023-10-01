@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Components.Base;
+namespace Io.Schnurr.Circles.App.Components.Utils;
 
 public partial class Provider
 {

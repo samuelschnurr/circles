@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 
-namespace Io.Schnurr.Circles.App.Components.Core;
+namespace Io.Schnurr.Circles.App.Components.UserInterface;
 
 public partial class Tile
 {

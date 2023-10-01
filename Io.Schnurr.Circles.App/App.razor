@@ -1,16 +1,4 @@
-﻿@using Io.Schnurr.Circles.App.Components.Base;
+﻿@using Io.Schnurr.Circles.App.Components.Navigation;
 
 <Fluxor.Blazor.Web.StoreInitializer />
-
-<Router AppAssembly="@typeof(App).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <MudAlert Severity="Severity.Warning" Variant="Variant.Filled">  Sorry, there's nothing at this address.</MudAlert>
-        </LayoutView>
-    </NotFound>
-</Router>
+<AppRouter />
