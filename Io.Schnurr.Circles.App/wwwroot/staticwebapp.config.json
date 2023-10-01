@@ -1,0 +1,10 @@
+// Fallback route must be set for Azure Static Web App deployments to load routes correctly on page refresh.
+// https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-blazor#fallback-route
+{
+    "navigationFallback": {
+        "rewrite": "/index.html"
+    }
+}
+
+// For BlobStorage deployments this can be achieved, by setting "index.html" to the Index document name AND the Error document path.
+// In BlobStorage deployments then the routes will work, but will still show an error in the network inspection until microsoft will support routing fallbacks in BlobStorages.
