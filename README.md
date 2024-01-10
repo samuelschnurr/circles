@@ -36,6 +36,6 @@ Comming soon
 
 ## License
 
-This repository is under MIT license (see <a href="https://github.com/samuelschnurr/circles/blob/main/LICENSE">LICENSE</a>).
+This repository is under GPL-2.0 license (see <a href="https://github.com/samuelschnurr/circles/blob/main/LICENSE">LICENSE</a>).
 
 Third party libraries are distributed under their own terms in the <a href="https://github.com/samuelschnurr/circles/blob/main/LICENSE-3RD-PARTY">LICENSE-3RD-PARTY</a> file.
