@@ -32,7 +32,17 @@ dotnet run --launch-profile https
 Repeat this step for the `.csproj` in the project `Io.Schnurr.Circles.Api`
 
 ## Demonstration
-Comming soon
+
+<p align="center">
+<img alt="Two images, one shows the overview of the platform where the records are displayed as tiles and one shows the records as table records." src="https://github.com/samuelschnurr/circles/blob/main/Docs/TileViewTableView-WithLayout.jpg" style="width:80%" />
+
+<img alt="Image of the detail view of a record of the platform. It shows the image of a drone and corresponding seller data like price, condition and a description." src="https://github.com/samuelschnurr/circles/blob/main/Docs/DetailView-WithLayout.jpg" style="width:80%" />
+
+<img alt="Two images, one shows the platform in light mode and one in dark mode." src="https://github.com/samuelschnurr/circles/blob/main/Docs/LightModeDarkMode-WithLayout.jpg" style="width:80%" />
+
+<img alt="Shows the platform in mobile view to demonstrate responsiveness" src="https://github.com/samuelschnurr/circles/blob/main/Docs/ResponsiveDesign-WithLayout.jpg" style="width:80%" />
+
+</p>
 
 ## License
 
