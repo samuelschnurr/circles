@@ -2,7 +2,9 @@
 
 [![.NET CI](https://github.com/samuelschnurr/circles/actions/workflows/dotnet.yml/badge.svg)](https://github.com/samuelschnurr/circles/actions/workflows/dotnet.yml)
 
-This repository provides a platform for managing classified ads. The prototype implementation is used for the evaluation of Blazor WebAssembly and as a showcase
+This repository provides a platform for managing classified ads. The prototype implementation is used for the evaluation of Blazor WebAssembly and as a showcase.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V3WX3OK)
 
 ## Before you start
   - Install the <a href="https://dotnet.microsoft.com/download/dotnet/7.0">.NET 7 SDK</a>
